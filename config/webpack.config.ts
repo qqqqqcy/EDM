@@ -17,10 +17,10 @@ const config: webpack.Configuration = {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     alias: {
       // stylesheets: getProjectUrl( 'stylesheets'),
-      package: getProjectUrl("package"),
-      lib: getProjectUrl("lib")
+      lib: getProjectUrl("lib"),
+      package: getProjectUrl("package")
     },
-    modules: [getProjectUrl("include"), "node_modules"]
+    // modules: [getProjectUrl("lib"), "node_modules"]
   },
   module: {
     rules: [

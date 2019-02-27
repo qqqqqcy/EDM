@@ -2,9 +2,7 @@
   "compilerOptions": {
     "declaration": true,
     "baseUrl": ".",
-    "paths": {
-      "*": ["*", "lib/*", "package/*"]
-    },
+    "paths": { "lib/*": ["lib/*"] },
     "rootDirs": ["package"],
     "outDir": "lib",
     "module": "esnext",
