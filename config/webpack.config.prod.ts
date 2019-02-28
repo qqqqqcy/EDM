@@ -1,11 +1,18 @@
-import * as webpack from "webpack";
+import webpack from "webpack";
 
 import base from "./webpack.config";
+import * as webpackMerge from "webpack-merge";
+import { getProjectUrl } from "./until";
 
 const config: webpack.Configuration = {
   mode: "production",
+  output: {
+    path: getProjectUrl("lib"),
+    library: "eled-mobile",
+    libraryTarget: "umd"
+  },
   externals: {
-    react: {
+    "react": {
       commonjs: "react",
       commonjs2: "react",
       amd: "react",
@@ -19,4 +26,4 @@ const config: webpack.Configuration = {
     }
   }
 };
-module.exports = Object.assign({}, base, config);
+module.exports = webpackMerge(base, config);

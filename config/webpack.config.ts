@@ -1,25 +1,22 @@
-import * as webpack from "webpack";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import webpack from "webpack";
+import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { CheckerPlugin } from "awesome-typescript-loader";
 import { getProjectUrl } from "./until";
+
 const devMode: boolean = process.env.NODE_ENV !== "production";
 
 const config: webpack.Configuration = {
   entry: {
     index: "./package/index.tsx"
   },
-  output: {
-    path: getProjectUrl("lib", "package"),
-    library: "eled-mobile",
-    libraryTarget: "umd"
-  },
+
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
     alias: {
       // stylesheets: getProjectUrl( 'stylesheets'),
-      lib: getProjectUrl("lib"),
-      package: getProjectUrl("package")
-    },
+      // "@lib": getProjectUrl("lib"),
+      // "@package": getProjectUrl("package")
+    }
     // modules: [getProjectUrl("lib"), "node_modules"]
   },
   module: {
@@ -34,12 +31,21 @@ const config: webpack.Configuration = {
           }
         }
       },
-      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         test: /\.tsx?$/,
-        enforce: "pre",
-        use: [{ loader: "tslint-loader" }]
+        loader: "awesome-typescript-loader",
+        options: {
+          useCache: true,
+          configFileName: getProjectUrl(
+            `tsconfig${devMode ? "" : ".prod"}.json`
+          )
+        }
       },
+      // {
+      //   test: /\.tsx?$/,
+      //   enforce: "pre",
+      //   use: [{ loader: "tslint-loader" }]
+      // },
       // {
       //   test: /icons.+\.svg$/,
       //   loader: 'svg-sprite-loader',
@@ -74,6 +80,7 @@ const config: webpack.Configuration = {
       }
     ]
   },
+
   plugins: [
     new CheckerPlugin(),
     new MiniCssExtractPlugin({
