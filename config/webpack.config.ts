@@ -35,7 +35,7 @@ const config: webpack.Configuration = {
         test: /\.tsx?$/,
         loader: "awesome-typescript-loader",
         options: {
-          useCache: true,
+          // useCache: true,
           configFileName: getProjectUrl(
             `tsconfig${devMode ? "" : ".prod"}.json`
           )

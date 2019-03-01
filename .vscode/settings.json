@@ -10,5 +10,5 @@
   // "editor.formatOnSave": false,
   // "javascript.format.enable": false,
 
-  "tslint.exclude": "node_modules/**/*"
+  "tslint.exclude": "node_modules/**/*",
 }

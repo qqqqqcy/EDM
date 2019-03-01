@@ -1,4 +1,4 @@
-export interface Props {
+export interface PropsType {
   text: string;
   callBack?: () => void;
 }

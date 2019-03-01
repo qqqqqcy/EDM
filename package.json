@@ -5,8 +5,8 @@
   "main": "lib/package/index.js",
   "types": "lib/package/index",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.dev.ts",
-    "build": "cross-env NODE_ENV=production webpack -p --config ./config/webpack.config.prod.ts",
+    "dev": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.json\" webpack-dev-server --config ./config/webpack.config.dev.ts",
+    "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.prod.json\" webpack -p --config ./config/webpack.config.prod.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,8 +24,7 @@
     "url": "https://github.com/xiajunqcy/elephant-ui/issues"
   },
   "homepage": "https://github.com/xiajunqcy/elephant-ui#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/html-webpack-plugin": "^3.2.0",
     "@babel/core": "^7.3.4",

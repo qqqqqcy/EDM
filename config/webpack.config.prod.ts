@@ -24,6 +24,6 @@ const config: webpack.Configuration = {
       amd: "react-dom",
       root: "ReactDOM"
     }
-  }
+  },
 };
 module.exports = webpackMerge(base, config);
