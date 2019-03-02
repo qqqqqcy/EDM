@@ -5,5 +5,6 @@
     "outDir": "lib",
     "declaration": true
   },
-  "include": ["package/**/*"]
+  "include": ["package/**/*"],
+  "files": ["package/**/propsType.ts"]
 }
