@@ -1,5 +1,5 @@
 import { SFC } from "react";
-import { BaseProps } from "./BaseProps";
+import { BaseProps } from "./CommonProps";
 
 const defaultProps = {
   className: "",
