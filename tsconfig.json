@@ -9,5 +9,5 @@
       "@lib*": ["lib*"]
     }
   },
-  "include": ["examples", "typings"]
+  "include": ["examples/**/*", "typings/**/*", "lib/**/*.ts"]
 }

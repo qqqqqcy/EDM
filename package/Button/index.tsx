@@ -1,21 +1,33 @@
 import * as React from "react";
-
-import { ButtonProps } from "./PropsType";
+import classnames from "classnames";
+import { ButtonProps, ButtonSize } from "./PropsType";
 import { withDefaultProps, setDefaultProps } from "../common/withDefaultProps";
-import "./style.css";
+
+import "./style";
 
 const defaultProps = setDefaultProps({
-  size: "large",
-  callBack: () => {}
+  prefixCls: "edm-button",
+  size: "large" as ButtonSize,
+  onClick: (() => {}) as onClick
 });
 
-export default withDefaultProps<ButtonProps, typeof defaultProps>(
+export default withDefaultProps(
   defaultProps,
-  ({ size, callBack, prefixCls, ...restProps }: ButtonProps) => (
-    <div className={prefixCls}>
-      <button {...restProps} onClick={callBack}>
-        children {size}
-      </button>
-    </div>
-  )
+  ({
+    size,
+    onClick,
+    children,
+    prefixCls,
+    className,
+    ...restProps
+  }: ButtonProps) => {
+    const cls = classnames(prefixCls, className, {
+      [`${prefixCls}-small`]: size === "small"
+    });
+    return (
+      <a role="button" className={cls} onClick={onClick} {...restProps}>
+        {children}
+      </a>
+    );
+  }
 );

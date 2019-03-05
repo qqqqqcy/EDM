@@ -8,8 +8,6 @@ const defaultProps = {
   style: {}
 };
 
-declare type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
-
 export const withDefaultProps = <
   P extends object,
   DP extends Partial<P> = Partial<P>

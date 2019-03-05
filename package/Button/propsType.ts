@@ -1,6 +1,6 @@
 import { BaseProps } from "../common/CommonProps";
-
+export type ButtonSize = "small" | "large";
 export interface ButtonProps extends BaseProps {
-  size?: "small" | "large";
-  callBack: () => void;
+  size?: ButtonSize;
+  onClick?: onClick;
 }

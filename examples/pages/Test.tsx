@@ -3,17 +3,29 @@ import * as React from "react";
 // import { Button } from "../../lib/package";
 import { Button } from "@package/index";
 // import { Button } from "@lib/index";
+
 export default class Test extends React.Component {
-  callBack = () => {
+  onClick = () => {
     console.log("click!");
   };
   render() {
     return (
       <div>
         <h1>Hello world</h1>
-        <Button callBack={this.callBack}>
-          Button
-        </Button>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <h1>Hello world</h1>
+        <div>
+          <Button size={"small"} onClick={this.onClick}>
+            Button
+          </Button>
+        </div>
       </div>
     );
   }

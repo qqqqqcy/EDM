@@ -6,5 +6,5 @@
     "declaration": true
   },
   "include": ["package/**/*"],
-  "files": ["package/**/propsType.ts"]
+  "files": ["typings/index.d.ts"]
 }
