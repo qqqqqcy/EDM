@@ -1,2 +1,5 @@
+// 公用 props
+export { default as BaseProps } from ".";
+
 export { default as Button } from "./Button";
-export { default as ButtonTypes } from "./Button/PropsType";
+export { default as ButtonProps } from "./Button/PropsType";

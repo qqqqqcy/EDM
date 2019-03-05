@@ -11,7 +11,9 @@ export default class Test extends React.Component {
     return (
       <div>
         <h1>Hello world</h1>
-        <Button text="Button" callBack={this.callBack} />
+        <Button callBack={this.callBack}>
+          Button
+        </Button>
       </div>
     );
   }

@@ -1,4 +1,6 @@
-export interface PropsType {
-  text: string;
-  callBack?: () => void;
+import { BaseProps } from "../common/BaseProps";
+
+export interface ButtonProps extends BaseProps {
+  size?: "small" | "large";
+  callBack: () => void;
 }

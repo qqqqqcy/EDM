@@ -1,17 +1,21 @@
 import * as React from "react";
-import { PropsType } from "./PropsType";
 
-export interface ButtonProps extends PropsType {}
+import { ButtonProps } from "./PropsType";
+import { withDefaultProps, setDefaultProps } from "../common/withDefaultProps";
+import "./style.css";
 
-export default class Button extends React.PureComponent<ButtonProps> {
-  render() {
-    const { text, callBack } = this.props;
-    return (
-      <div>
-        <button onClick={() => (callBack ? callBack() : "")}>
-          {text}
-        </button>
-      </div>
-    );
-  }
-}
+const defaultProps = setDefaultProps({
+  size: "large",
+  callBack: () => {}
+});
+
+export default withDefaultProps<ButtonProps, typeof defaultProps>(
+  defaultProps,
+  ({ size, callBack, prefixCls, ...restProps }: ButtonProps) => (
+    <div className={prefixCls}>
+      <button {...restProps} onClick={callBack}>
+        children {size}
+      </button>
+    </div>
+  )
+);
