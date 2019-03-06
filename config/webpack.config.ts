@@ -1,4 +1,4 @@
-import webpack from "webpack";
+import webpack, { DefinePlugin } from "webpack";
 import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { CheckerPlugin } from "awesome-typescript-loader";
 import { getProjectUrl } from "./until";
@@ -11,12 +11,7 @@ const config: webpack.Configuration = {
   },
 
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx",".scss"],
-    alias: {
-      // stylesheets: getProjectUrl( 'stylesheets'),
-      // "@lib": getProjectUrl("lib"),
-      // "@component": getProjectUrl("component")
-    }
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"]
     // modules: [getProjectUrl("lib"), "node_modules"]
   },
   module: {
@@ -82,6 +77,9 @@ const config: webpack.Configuration = {
   },
 
   plugins: [
+    new DefinePlugin({
+      $PREFIX: JSON.stringify("edm")
+    }),
     new CheckerPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
@@ -92,5 +90,4 @@ const config: webpack.Configuration = {
     modules: ["node_modules", getProjectUrl("loaders")]
   }
 };
-
 export default config;
