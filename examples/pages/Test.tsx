@@ -1,7 +1,7 @@
 import * as React from "react";
-// import { Button } from "../../package";
-// import { Button } from "../../lib/package";
-// import { Button } from "@package/index";
+// import { Button } from "../../component";
+// import { Button } from "../../lib/component";
+// import { Button } from "@component/index";
 import { Button } from "@lib/index";
 
 export default class Test extends React.Component {

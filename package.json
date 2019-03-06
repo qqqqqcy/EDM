@@ -2,8 +2,8 @@
   "name": "eled-mobile",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/package/index.js",
-  "types": "lib/package/index",
+  "main": "lib/component/index.js",
+  "types": "lib/component/index",
   "scripts": {
     "dev": "cross-env NODE_ENV=development TS_NODE_PROJECT=\"tsconfig.json\" webpack-dev-server --config ./config/webpack.config.dev.ts",
     "build": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig.prod.json\" webpack -p --config ./config/webpack.config.prod.ts",

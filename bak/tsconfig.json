@@ -11,14 +11,14 @@
     "rootDirs": ["lib", "config", "example"],
     "baseUrl": ".",
     "paths": {
-      "@package*": ["package*"]
+      "@component*": ["component*"]
     }
     // "noImplicitAny": true,
     // "noUnusedParameters": true,
     // "strictNullChecks": true,
     // "experimentalDecorators": true,
-    // "files": ["package/index.tsx"]
-    // "include": ["package/*"]
+    // "files": ["component/index.tsx"]
+    // "include": ["component/*"]
     // "forceConsistentCasingInFileNames": true,
     // "noImplicitReturns": true,
     // "noImplicitThis": true,

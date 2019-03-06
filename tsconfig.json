@@ -4,9 +4,9 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@package*": ["package*"],
+      "@component*": ["component*"],
       "@lib*": ["lib*"]
     }
   },
-  "include": ["package/**/*","examples/**/*", "typings/**/*", "lib/**/*.ts"]
+  "include": ["component/**/*","examples/**/*", "typings/**/*", "lib/**/*.ts"]
 }

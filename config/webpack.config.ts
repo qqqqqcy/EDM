@@ -7,7 +7,7 @@ const devMode: boolean = process.env.NODE_ENV !== "production";
 
 const config: webpack.Configuration = {
   entry: {
-    index: "./package/index.tsx"
+    index: "./component/index.tsx"
   },
 
   resolve: {
@@ -15,7 +15,7 @@ const config: webpack.Configuration = {
     alias: {
       // stylesheets: getProjectUrl( 'stylesheets'),
       // "@lib": getProjectUrl("lib"),
-      // "@package": getProjectUrl("package")
+      // "@component": getProjectUrl("component")
     }
     // modules: [getProjectUrl("lib"), "node_modules"]
   },

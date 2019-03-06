@@ -1,10 +1,8 @@
 import { SFC } from "react";
-import { BaseProps } from "./CommonProps";
+import { DefaultProps } from "./propsType";
+import { defaultProps } from "./commonProps";
 
-export const setDefaultProps = <
-  P extends object,
-  DP extends Partial<P> = Partial<P>
->(
+export default <P extends object, DP extends Partial<P> = Partial<P>>(
   defaultProps: DP,
   Cmp: SFC<P>
 ) => {
@@ -16,21 +14,14 @@ export const setDefaultProps = <
   // return (Cmp as SFC<any>) as SFC<Required<P>>;
 };
 
-export const defaultBaseProps = {
-  className: "",
-  children: "",
-  prefixCls: "",
-  style: {}
-};
-
 /**
  * 设置组件中可选参数的初始值
  * @ 可选参数：必须定义初始值
  * @ 必传参数：不能定义初始值
  */
 export const getDefaultProps = <T>(
-  obj: GetNullableType<T, BaseProps> & BaseProps
+  obj: GetNullableType<T, DefaultProps> & DefaultProps
 ) => ({
-  ...defaultBaseProps,
+  ...defaultProps,
   ...obj
 });

@@ -1,10 +1,8 @@
 import * as React from "react";
 
-export interface BaseProps {
+export interface DefaultProps {
   className?: string;
   children?: React.ReactNode;
   prefixCls?: string;
   style?: React.CSSProperties;
 }
-
-export type onClick = (e: React.MouseEvent<HTMLElement>) => void;

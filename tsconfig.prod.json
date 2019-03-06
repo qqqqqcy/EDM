@@ -5,6 +5,6 @@
     "outDir": "lib",
     "declaration": true
   },
-  "include": ["package/**/*"],
+  "include": ["component/**/*"],
   "files": ["typings/index.d.ts"]
 }
