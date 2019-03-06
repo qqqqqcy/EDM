@@ -1,7 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "strictNullChecks": true,
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
@@ -9,5 +8,5 @@
       "@lib*": ["lib*"]
     }
   },
-  "include": ["examples/**/*", "typings/**/*", "lib/**/*.ts"]
+  "include": ["package/**/*","examples/**/*", "typings/**/*", "lib/**/*.ts"]
 }

@@ -7,6 +7,4 @@ export interface BaseProps {
   style?: React.CSSProperties;
 }
 
-// export interface Props extends BaseProps {
-//   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
-// }
+export type onClick = (e: React.MouseEvent<HTMLElement>) => void;

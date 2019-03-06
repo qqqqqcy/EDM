@@ -1,6 +1,11 @@
 import { BaseProps } from "../common/CommonProps";
-export type ButtonSize = "small" | "large";
 export interface ButtonProps extends BaseProps {
-  size?: ButtonSize;
-  onClick?: onClick;
+  size?: "small" | "large";
+  onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }
+
+// import { BaseProps } from "../common/CommonProps";
+// export interface ButtonProps {
+//   size?: "small" | "large";
+//   onClick: (e: React.MouseEvent<HTMLElement>) => void;
+// }
