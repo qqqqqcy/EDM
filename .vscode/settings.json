@@ -7,8 +7,7 @@
   // "eslint.autoFixOnSave": true,
 
   // // 为了避免和 eslint 冲突，讲编辑器默认的代码检查规则关闭（如果开启了）
-  // "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   // "javascript.format.enable": false,
-
-  "tslint.exclude": "node_modules/**/*",
+  "tslint.exclude": "node_modules/**/*"
 }

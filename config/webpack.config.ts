@@ -36,11 +36,11 @@ const config: webpack.Configuration = {
           )
         }
       },
-      // {
-      //   test: /\.tsx?$/,
-      //   enforce: "pre",
-      //   use: [{ loader: "tslint-loader" }]
-      // },
+      {
+        test: /\.tsx?$/,
+        enforce: "pre",
+        use: [{ loader: "tslint-loader" }]
+      },
       // {
       //   test: /icons.+\.svg$/,
       //   loader: 'svg-sprite-loader',

@@ -1,5 +1,5 @@
 {
-  "extends": ["tslint:recommended", "tslint-react"],
+  // "extends": ["tslint:latest", "tslint-config-prettier"],
   "rules": {
     "no-console": [false, "log", "error"],
     "jsx-no-multiline-js": false,
@@ -8,9 +8,7 @@
     "space-before-function-paren": false,
     "no-namespace": false,
     "label-position": false,
-    "quotemark": [true, "double", "jsx-double"],
     "member-access": false,
-    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "no-unused-expression": [true, "allow-fast-null-checks"],
     "member-ordering": false,
     "trailing-comma": false,
@@ -42,5 +40,6 @@
   },
   "linterOptions": {
     "exclude": ["node_modules", "node_modules/**/*"]
-  }
+  },
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"]
 }

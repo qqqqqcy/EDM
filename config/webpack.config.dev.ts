@@ -9,6 +9,11 @@ import * as webpackMerge from "webpack-merge";
 
 const config: webpack.Configuration = {
   mode: "development",
+  devServer: {
+    port: 80,
+    headers: { "Access-Control-Allow-Origin": "*" },
+    disableHostCheck: true
+  },
   entry: {
     example: getProjectUrl("examples", "index.tsx")
   },
