@@ -6,9 +6,12 @@ type NullableKeys<T> = {
 }[keyof T];
 
 // type GetNullableType<T> = Pick<T, NullableKeys<T>>;
-type GetNullableType<T extends D, D = {}> = Required<
-  Pick<T, NullableKeys<Omit<T, keyof D>>>
->;
+/**
+ * 设置组件中可选参数的初始值
+ * @ 可选参数：必须定义初始值
+ * @ 必传参数：不能定义初始值
+ */
+type GetNullableType<T> = Required<Pick<T, NullableKeys<T>>>;
 
 // 存放通用类型
 // type onClick = (e: React.MouseEvent<HTMLElement>) => void;

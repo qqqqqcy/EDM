@@ -11,8 +11,9 @@ export default class Test extends React.Component {
     return (
       <div>
         <h1>Hello world</h1>
+        <h1>Hello world</h1>
         <div>
-          <Button ghost={true} size="small" onClick={this.onClick}>
+          <Button disabled={true} size="large" onClick={this.onClick}>
             Button
           </Button>
         </div>

@@ -1,8 +1,22 @@
 import * as React from "react";
 
-export interface DefaultProps {
+export type Children = any;
+export type Style = React.CSSProperties;
+
+export interface DefaultBaseProps {
   className?: string;
-  children?: React.ReactNode;
+  children?: Children;
   prefixCls?: string;
-  style?: React.CSSProperties;
+  style?: Style;
+}
+
+export interface TouchFeedbackProps {
+  disabled?: boolean;
+  activeClassName?: string;
+  activeStyle?: Style;
+  children?: Children;
+}
+
+export interface TouchState {
+  active: boolean;
 }

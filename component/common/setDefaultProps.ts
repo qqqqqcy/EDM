@@ -1,6 +1,19 @@
 import { SFC } from "react";
-import { DefaultProps } from "./propsType";
-import { defaultProps } from "./commonProps";
+import { DefaultBaseProps, TouchFeedbackProps } from "./PropsType";
+
+// 基础属性
+export const defaultBaseProps: Required<DefaultBaseProps> = {
+  className: "",
+  children: "",
+  prefixCls: "",
+  style: {}
+};
+export const touchFeedbackProps: Required<TouchFeedbackProps> = {
+  disabled: false,
+  activeClassName: "",
+  activeStyle: {},
+  children: ""
+};
 
 export default <P extends object, DP extends Partial<P> = Partial<P>>(
   defaultProps: DP,
@@ -13,15 +26,3 @@ export default <P extends object, DP extends Partial<P> = Partial<P>>(
   return (Cmp as SFC<any>) as SFC<Props>;
   // return (Cmp as SFC<any>) as SFC<Required<P>>;
 };
-
-/**
- * 设置组件中可选参数的初始值
- * @ 可选参数：必须定义初始值
- * @ 必传参数：不能定义初始值
- */
-export const getDefaultProps = <T>(
-  obj: GetNullableType<T, DefaultProps> & DefaultProps
-) => ({
-  ...defaultProps,
-  ...obj
-});
