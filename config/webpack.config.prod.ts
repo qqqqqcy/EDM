@@ -5,6 +5,9 @@ import * as webpackMerge from "webpack-merge";
 import { getProjectUrl } from "./until";
 
 const config: webpack.Configuration = {
+  entry: {
+    index: "./component/index.tsx"
+  },
   mode: "production",
   output: {
     path: getProjectUrl("lib"),
@@ -12,7 +15,7 @@ const config: webpack.Configuration = {
     libraryTarget: "umd"
   },
   externals: {
-    "react": {
+    react: {
       commonjs: "react",
       commonjs2: "react",
       amd: "react",
@@ -24,6 +27,6 @@ const config: webpack.Configuration = {
       amd: "react-dom",
       root: "ReactDOM"
     }
-  },
+  }
 };
 module.exports = webpackMerge(base, config);

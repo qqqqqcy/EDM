@@ -6,10 +6,6 @@ import { getProjectUrl } from "./until";
 const devMode: boolean = process.env.NODE_ENV !== "production";
 
 const config: webpack.Configuration = {
-  entry: {
-    index: "./component/index.tsx"
-  },
-
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"]
     // modules: [getProjectUrl("lib"), "node_modules"]
