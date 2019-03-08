@@ -16,7 +16,3 @@ export interface TouchFeedbackProps {
   activeStyle?: Style;
   children?: Children;
 }
-
-export interface TouchState {
-  active: boolean;
-}

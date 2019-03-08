@@ -13,12 +13,14 @@ const defaultProps: GetNullableType<ButtonProps> = {
   ...touchFeedbackProps,
   prefixCls: `${$PREFIX}-button`,
   ghost: false,
-  size: "large"
+  size: "large",
+  type: "default"
 };
 
 export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
   const {
     size,
+    type,
     ghost,
     onClick,
     disabled,
@@ -29,11 +31,12 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
     activeClassName,
     ...restProps
   } = props;
-  const cls = classnames(prefixCls, className, {
+  const cls = classnames(prefixCls, "aaa", className, {
     [`${prefixCls}-small`]: size === "small",
+    [`${prefixCls}-primary`]: type === "primary",
+    [`${prefixCls}-disabled`]: disabled,
     [`${prefixCls}-ghost`]: ghost
   });
-  console.log(size.length);
   return (
     <TouchFeedback
       activeClassName={

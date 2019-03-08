@@ -12,7 +12,13 @@ export default setDefaultProps(
   (props: Required<TouchFeedbackProps>) => {
     const { children, disabled, activeStyle, activeClassName } = props;
 
-    const [active, setActive] = React.useState(false);
+    const [active, setActive]: [
+      boolean,
+      (active: boolean) => void
+    ] = React.useState(false);
+    // const useState = React.useState(false);
+    // const active = useState[0];
+    // const setActive = useState[1];
 
     const triggerEvent = (
       type: string,

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Button } from "@component/index";
-// import { Button } from "@lib/index";
+// import { Button } from "@component/index";
+import { Button } from "@lib/index";
 
 export default class Test extends React.Component {
   onClick = () => {
@@ -13,7 +13,7 @@ export default class Test extends React.Component {
         <h1>Hello world</h1>
         <h1>Hello world</h1>
         <div>
-          <Button disabled={true} size="large" onClick={this.onClick}>
+          <Button ghost={true} onClick={this.onClick}>
             Button
           </Button>
         </div>
