@@ -15,3 +15,8 @@ type GetNullableType<T> = Required<Pick<T, NullableKeys<T>>>;
 
 // 存放通用类型
 // type onClick = (e: React.MouseEvent<HTMLElement>) => void;
+
+declare module "*.svg" {
+  const content: any;
+  export default content;
+}

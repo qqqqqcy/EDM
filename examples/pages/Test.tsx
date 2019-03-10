@@ -1,6 +1,6 @@
 import * as React from "react";
-// import { Button } from "@component/index";
-import { Button } from "@lib/index";
+// import { Button } from "@lib/index";
+import { Button, Icon } from "@component/index";
 
 export default class Test extends React.Component {
   onClick = () => {
@@ -16,6 +16,7 @@ export default class Test extends React.Component {
           <Button ghost={true} onClick={this.onClick}>
             Button
           </Button>
+          <Icon name="alipay" />
         </div>
       </div>
     );

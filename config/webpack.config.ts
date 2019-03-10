@@ -37,10 +37,10 @@ const config: webpack.Configuration = {
         enforce: "pre",
         use: [{ loader: "tslint-loader" }]
       },
-      // {
-      //   test: /icons.+\.svg$/,
-      //   loader: 'svg-sprite-loader',
-      // },
+      {
+        test: /\.svg$/,
+        loader: "svg-sprite-loader"
+      },
       // {
       //   test: /guui\.svg$/,
       //   loader: 'file-loader',
