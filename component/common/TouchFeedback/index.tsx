@@ -73,7 +73,6 @@ export default setDefaultProps(
     const child = React.Children.only(children);
 
     if (!disabled && active) {
-      console.log(!disabled);
       let { style, className } = child.props;
       if (activeStyle !== false) {
         if (activeStyle) {

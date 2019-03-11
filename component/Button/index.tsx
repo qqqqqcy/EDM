@@ -13,8 +13,11 @@ const defaultProps: GetNullableType<ButtonProps> = {
   ...touchFeedbackProps,
   prefixCls: `${$PREFIX}-button`,
   ghost: false,
-  size: "large",
-  type: "default"
+  inline: false,
+  radius: true,
+  size: "middle",
+  type: "default",
+  onClick: () => {}
 };
 
 export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
@@ -22,6 +25,9 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
     size,
     type,
     ghost,
+    style,
+    inline,
+    radius,
     onClick,
     disabled,
     children,
@@ -31,12 +37,18 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
     activeClassName,
     ...restProps
   } = props;
-  const cls = classnames(prefixCls, "aaa", className, {
-    [`${prefixCls}-small`]: size === "small",
-    [`${prefixCls}-primary`]: type === "primary",
-    [`${prefixCls}-disabled`]: disabled,
-    [`${prefixCls}-ghost`]: ghost
-  });
+  const cls = classnames(
+    prefixCls,
+    className,
+    `${prefixCls}-${size}`,
+    `${prefixCls}-${type}`,
+    {
+      [`${prefixCls}-radius`]: radius === true,
+      [`${prefixCls}-disabled`]: disabled,
+      [`${prefixCls}-ghost`]: ghost,
+      [`${prefixCls}-inline`]: inline
+    }
+  );
   return (
     <TouchFeedback
       activeClassName={
@@ -48,9 +60,14 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
       <a
         role="button"
         className={cls}
+        style={
+          typeof radius === "string"
+            ? { ...style, borderRadius: radius }
+            : style
+        }
+        {...restProps}
         onClick={disabled ? undefined : onClick}
         aria-disabled={disabled}
-        {...restProps}
       >
         {children}
       </a>
