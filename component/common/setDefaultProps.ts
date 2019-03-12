@@ -23,8 +23,7 @@ export const transitionWrapProps: Required<TransitionWrapProps> = {
   time: 250,
   transitionClassName: "",
   unmountOnExit: true,
-  children: "",
-  onEntry: () => {}
+  children: ""
 };
 
 export default <P extends object, DP extends Partial<P> = Partial<P>>(

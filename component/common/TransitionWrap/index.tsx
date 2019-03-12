@@ -35,6 +35,9 @@ export default setDefaultProps(
     const [show, setShow] = React.useState(visible);
 
     React.useEffect(() => {
+      if (!children) {
+        return;
+      }
       if (visible) {
         if (
           status !== statusCase.entry &&
@@ -77,16 +80,21 @@ export default setDefaultProps(
         }
       }
     }, [visible, status]);
-
-    if (show || !unmountOnExit) {
-      const child = React.Children.only(children);
-      let { className } = child.props;
-      if (transitionClassName) {
-        className = classnames(className, `${transitionClassName}-${status}`);
-      }
-      return React.cloneElement(child, {
-        className
-      });
+    if (children && (show || !unmountOnExit)) {
+      return (
+        <React.Fragment>
+          {React.Children.map(children, child => {
+            let { className } = child.props;
+            if (transitionClassName) {
+              className = classnames(
+                className,
+                `${transitionClassName}-${status}`
+              );
+            }
+            return React.cloneElement(child, { className });
+          })}
+        </React.Fragment>
+      );
     } else {
       return null;
     }

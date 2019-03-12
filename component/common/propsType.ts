@@ -22,8 +22,8 @@ export interface TransitionWrapProps {
   transitionClassName?: string;
   unmountOnExit?: boolean;
   children?: Children;
-  onEntry?: () => void;
 }
+
 export type TransitionStatus =
   | "entry"
   | "entry-active"
