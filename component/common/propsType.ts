@@ -16,3 +16,18 @@ export interface TouchFeedbackProps {
   activeStyle?: Style;
   children?: Children;
 }
+export interface TransitionWrapProps {
+  visible?: boolean;
+  time?: number;
+  transitionClassName?: string;
+  unmountOnExit?: boolean;
+  children?: Children;
+  onEntry?: () => void;
+}
+export type TransitionStatus =
+  | "entry"
+  | "entry-active"
+  | "entry-done"
+  | "exit"
+  | "exit-active"
+  | "exit-done";

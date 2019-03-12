@@ -1,0 +1,28 @@
+* {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.hello {
+  height: 50px;
+  overflow: hidden;
+  background: yellow;
+  display: block;
+  transition: all 1s;
+}
+.hello-entry {
+  height: 0px;
+  color: red;
+}
+.hello-entry-active {
+  color: blue;
+}
+.hello-entry-done {
+  color: green;
+}
+.hello-exit-active {
+  height: 0px;
+}
+.hello-exit-down {
+  height: 1000px;
+}

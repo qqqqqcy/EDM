@@ -1,5 +1,9 @@
 import { SFC } from "react";
-import { DefaultBaseProps, TouchFeedbackProps } from "./PropsType";
+import {
+  DefaultBaseProps,
+  TouchFeedbackProps,
+  TransitionWrapProps
+} from "./PropsType";
 
 // 基础属性
 export const defaultBaseProps: Required<DefaultBaseProps> = {
@@ -13,6 +17,14 @@ export const touchFeedbackProps: Required<TouchFeedbackProps> = {
   activeClassName: "",
   activeStyle: {},
   children: ""
+};
+export const transitionWrapProps: Required<TransitionWrapProps> = {
+  visible: true,
+  time: 250,
+  transitionClassName: "",
+  unmountOnExit: true,
+  children: "",
+  onEntry: () => {}
 };
 
 export default <P extends object, DP extends Partial<P> = Partial<P>>(

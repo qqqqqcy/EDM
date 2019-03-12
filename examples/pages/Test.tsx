@@ -1,17 +1,28 @@
 import * as React from "react";
-// import { Button } from "@lib/index";
+// import { Button, Icon } from "@lib/index";
 import { Button, Icon } from "@component/index";
-
-export default class Test extends React.Component {
+import TransitionWrap from "@component/common/TransitionWrap";
+import "./style.scss";
+export default class Test extends React.Component<{}, { vi: boolean }> {
+  state = {
+    vi: false
+  };
   onClick = () => {
     console.log("click!");
+    this.setState({ vi: !this.state.vi });
   };
 
   render() {
     return (
       <div>
         <h1>Hello world</h1>
-        <h1>Hello world</h1>
+        <TransitionWrap
+          time={1000}
+          transitionClassName="hello"
+          visible={this.state.vi}
+        >
+          <h1 className="hello">Hello world</h1>
+        </TransitionWrap>
         <div>
           <Button size="large" type="primary" onClick={this.onClick}>
             <Icon size="large" color="#fff" name="alipay" />
@@ -29,7 +40,7 @@ export default class Test extends React.Component {
             primary
           </Button>
           <br />
-          <Button size="large" disabled={true} onClick={this.onClick}>
+          <Button size="large" disabled={true}>
             default
           </Button>
           <br />
