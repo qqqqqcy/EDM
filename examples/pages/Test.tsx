@@ -1,11 +1,16 @@
 import * as React from "react";
-// import { Button, Icon } from "@lib/index";
-import { Button, Icon } from "@component/index";
+import { Button, Icon } from "@lib/index";
+// import { Button, Icon } from "@component/index";
 import TransitionWrap from "@component/common/TransitionWrap";
+import Portal from "@component/common/Portal";
 import "./style.scss";
-export default class Test extends React.Component<{}, { vi: boolean }> {
+export default class Test extends React.Component<
+  {},
+  { vi: boolean; vp: boolean }
+> {
   state = {
-    vi: false
+    vi: true,
+    vp: true
   };
   onClick = () => {
     console.log("click!");
@@ -16,13 +21,21 @@ export default class Test extends React.Component<{}, { vi: boolean }> {
     return (
       <div>
         <h1>Hello world</h1>
-        <TransitionWrap
-          time={1000}
-          transitionClassName="hello"
-          visible={this.state.vi}
-        >
-          <h1 className="hello">Hello world</h1>
-        </TransitionWrap>
+
+        <Portal>
+          <div>
+            <TransitionWrap
+              time={1000}
+              visible={this.state.vi}
+              transitionClassName="hello"
+              onExitDone={() => console.log("onExitDone")}
+              onEntryDone={() => console.log("onEntryDone")}
+            >
+              <h1 className="hello">Hello world</h1>
+              <h1 className="hello">world Hello </h1>
+            </TransitionWrap>
+          </div>
+        </Portal>
         <div>
           <Button size="large" type="primary" onClick={this.onClick}>
             <Icon size="large" color="#fff" name="alipay" />

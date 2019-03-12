@@ -22,6 +22,8 @@ export interface TransitionWrapProps {
   transitionClassName?: string;
   unmountOnExit?: boolean;
   children?: Children;
+  onEntryDone?: () => void;
+  onExitDone?: () => void;
 }
 
 export type TransitionStatus =
@@ -31,3 +33,10 @@ export type TransitionStatus =
   | "exit"
   | "exit-active"
   | "exit-done";
+
+export interface PortalProps {
+  visible?: boolean;
+  mountNode?: Element;
+  time?: number;
+  children?: Children;
+}

@@ -25,6 +25,8 @@ export default setDefaultProps(
       time,
       visible,
       children,
+      onExitDone,
+      onEntryDone,
       unmountOnExit,
       transitionClassName
     } = props;
@@ -59,6 +61,8 @@ export default setDefaultProps(
             () => setStatus(statusCase.entryDone),
             time
           );
+        } else if (status === statusCase.entryDone) {
+          onEntryDone();
         }
       } else {
         if (
@@ -74,12 +78,22 @@ export default setDefaultProps(
         } else if (status === statusCase.exitActive) {
           timer = window.setTimeout(() => setStatus(statusCase.exitDone), time);
         } else if (status === statusCase.exitDone) {
+          onExitDone();
+
           if (show && unmountOnExit) {
             setShow(false);
           }
         }
       }
     }, [visible, status]);
+
+    React.useEffect(() => {
+      return () => {
+        window.clearTimeout(timer);
+        onExitDone();
+      };
+    }, []);
+
     if (children && (show || !unmountOnExit)) {
       return (
         <React.Fragment>

@@ -1,5 +1,3 @@
-declare global {}
-
 // 公用 props
 export { default as commonProps } from "./common/PropsType";
 
