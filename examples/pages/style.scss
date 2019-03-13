@@ -22,7 +22,8 @@
 .hello-entry-done {
   color: green;
 }
-.hello-exit-active {
+.hello-exit-active,
+.hello-exit-done {
   height: 0px;
   padding: 0;
   margin: 0;

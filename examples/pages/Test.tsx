@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Button, Icon } from "@lib/index";
-// import { Button, Icon } from "@component/index";
+// import { Button, Icon } from "@lib/index";
+import { Button, Icon } from "@component/index";
 import TransitionWrap from "@component/common/TransitionWrap";
 import Portal from "@component/common/Portal";
 import "./style.scss";
+import MessageInstance from "@component/MessageBox/index.tsx";
 export default class Test extends React.Component<
   {},
   { vi: boolean; vp: boolean }
@@ -14,6 +15,7 @@ export default class Test extends React.Component<
   };
   onClick = () => {
     console.log("click!");
+    MessageInstance.show();
     this.setState({ vi: !this.state.vi });
   };
 
@@ -22,20 +24,23 @@ export default class Test extends React.Component<
       <div>
         <h1>Hello world</h1>
 
-        <Portal>
+        <Portal time={1000} visible={this.state.vi}>
           <div>
             <TransitionWrap
               time={1000}
               visible={this.state.vi}
               transitionClassName="hello"
+              unmountOnExit={false}
               onExitDone={() => console.log("onExitDone")}
               onEntryDone={() => console.log("onEntryDone")}
             >
               <h1 className="hello">Hello world</h1>
               <h1 className="hello">world Hello </h1>
+              <h1 className="hello">world Hello </h1>
             </TransitionWrap>
           </div>
         </Portal>
+
         <div>
           <Button size="large" type="primary" onClick={this.onClick}>
             <Icon size="large" color="#fff" name="alipay" />
