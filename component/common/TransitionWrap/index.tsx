@@ -16,8 +16,6 @@ const statusCase: { [propName: string]: TransitionStatus } = {
   exitDone: "exit-done"
 };
 
-let timer: number;
-
 export default setDefaultProps(
   defaultProps,
   (props: Required<TransitionWrapProps>) => {
@@ -30,6 +28,7 @@ export default setDefaultProps(
       unmountOnExit,
       transitionClassName
     } = props;
+    let timer: number;
 
     const [status, setStatus]: UseType<TransitionStatus> = React.useState(
       visible ? statusCase.entry : statusCase.exit
