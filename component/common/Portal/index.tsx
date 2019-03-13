@@ -7,14 +7,19 @@ const defaultProps: GetNullableType<PortalProps> = {
   ...portalProps
 };
 
-let timer: number;
 export default setDefaultProps(defaultProps, (props: Required<PortalProps>) => {
+  let timer: number;
+
   const { mountNode, children, visible, time } = props;
   const [show, useShow]: UseType<boolean> = React.useState(visible);
   React.useEffect(() => {
     window.clearTimeout(timer);
-    if (time && !visible) {
-      timer = window.setTimeout(() => useShow(false), time + 20);
+    if (!visible) {
+      if (time) {
+        timer = window.setTimeout(() => useShow(false), time + 20);
+      } else {
+        useShow(false);
+      }
     } else {
       useShow(true);
     }
