@@ -14,9 +14,22 @@ export default class Test extends React.Component<
     vp: true
   };
   onClick = () => {
-    console.log("click!");
-    MessageInstance.show();
-    this.setState({ vi: !this.state.vi });
+    MessageInstance.show({
+      children: (
+        <Button
+          ghost={true}
+          size="large"
+          type="primary"
+          onClick={() => {
+            MessageInstance.clear();
+          }}
+        >
+          <Icon size="large" color="red" name="alipay" />
+          remove
+        </Button>
+      )
+    });
+    this.setState({ vi: !this.state.vi, vp: true });
   };
 
   render() {
@@ -24,15 +37,15 @@ export default class Test extends React.Component<
       <div>
         <h1>Hello world</h1>
 
-        <Portal time={1000} visible={this.state.vi}>
+        <Portal visible={this.state.vp}>
           <div>
             <TransitionWrap
-              time={1000}
+              time={2000}
               visible={this.state.vi}
               transitionClassName="hello"
-              unmountOnExit={false}
-              onExitDone={() => console.log("onExitDone")}
-              onEntryDone={() => console.log("onEntryDone")}
+              onExitDone={() => {
+                this.setState({ vp: this.state.vi });
+              }}
             >
               <h1 className="hello">Hello world</h1>
               <h1 className="hello">world Hello </h1>
@@ -48,15 +61,6 @@ export default class Test extends React.Component<
           </Button>
           <br />
 
-          <Button
-            ghost={true}
-            size="large"
-            type="primary"
-            onClick={this.onClick}
-          >
-            <Icon size="large" color="red" name="alipay" />
-            primary
-          </Button>
           <br />
           <Button size="large" disabled={true}>
             default

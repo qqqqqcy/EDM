@@ -1,0 +1,15 @@
+.docs {
+  display: flex;
+  &-side {
+    width: 300px;
+    background: #ccc;
+    height: 100vh;
+    li {
+      height: 50px;
+      border: 1px solid;
+    }
+    li:hover {
+      background: #aaa;
+    }
+  }
+}

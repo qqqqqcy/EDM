@@ -23,7 +23,7 @@ const config: webpack.Configuration = {
     plugins: [new TsConfigPathsPlugin({ forceIsolatedModules: true })]
   },
   plugins: [
-    ...(base.plugins as webpack.Plugin[]),
+    // ...(base.plugins as webpack.Plugin[]),
     new HtmlWebpackPlugin({
       title: "eled-mobile",
       template: "index.html"
