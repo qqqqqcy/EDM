@@ -19,22 +19,25 @@ let messageInstance: any;
 //     console.log(test);
 //   }
 // }
-function getMessageInstance(str: string) {
+function getMessageInstance() {
   if (messageInstance) {
-    messageInstance.remove();
-    // messageInstance = null;
+    return messageInstance;
   } else {
-    messageInstance = Test.create({ v: true });
-    console.log(messageInstance);
+    messageInstance = Test.create({ time: 200, content: "first" });
+    return messageInstance;
   }
 }
 
-function messageBox(content: string = "default") {
-  getMessageInstance(content);
-}
+// function messageBox(content: string = "default") {
+// }
 
 export default {
-  show(str?: string) {
-    return messageBox(str);
+  show(obj: any) {
+    getMessageInstance().show(obj);
+  },
+  clear() {
+    if (messageInstance) {
+      return messageInstance.clear("cccc");
+    }
   }
 };

@@ -25,6 +25,7 @@ export const transitionWrapProps: Required<TransitionWrapProps> = {
   transitionClassName: "",
   unmountOnExit: true,
   children: "",
+  onEntry: () => {},
   onEntryDone: () => {},
   onExitDone: () => {}
 };

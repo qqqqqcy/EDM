@@ -23,17 +23,18 @@ export default setDefaultProps(
       time,
       visible,
       children,
+      onEntry,
       onExitDone,
       onEntryDone,
       unmountOnExit,
       transitionClassName
     } = props;
-    let timer: number;
 
     const [status, setStatus]: UseType<TransitionStatus> = React.useState(
       visible ? statusCase.entry : statusCase.exit
     );
     const [show, setShow] = React.useState(visible);
+    const [timer, useTimer]: UseType<number> = React.useState(0);
 
     React.useEffect(() => {
       if (!children) {
@@ -51,14 +52,13 @@ export default setDefaultProps(
             setShow(true);
           }
         } else if (status === statusCase.entry) {
-          timer = window.setTimeout(
-            () => setStatus(statusCase.entryActive),
-            20
+          onEntry();
+          useTimer(
+            window.setTimeout(() => setStatus(statusCase.entryActive), 0)
           );
         } else if (status === statusCase.entryActive) {
-          timer = window.setTimeout(
-            () => setStatus(statusCase.entryDone),
-            time
+          useTimer(
+            window.setTimeout(() => setStatus(statusCase.entryDone), time)
           );
         } else if (status === statusCase.entryDone) {
           onEntryDone();
@@ -75,7 +75,9 @@ export default setDefaultProps(
         if (status === statusCase.exit) {
           setStatus(statusCase.exitActive);
         } else if (status === statusCase.exitActive) {
-          timer = window.setTimeout(() => setStatus(statusCase.exitDone), time);
+          useTimer(
+            window.setTimeout(() => setStatus(statusCase.exitDone), time)
+          );
         } else if (status === statusCase.exitDone) {
           onExitDone();
 

@@ -8,19 +8,20 @@ const defaultProps: GetNullableType<PortalProps> = {
 };
 
 export default setDefaultProps(defaultProps, (props: Required<PortalProps>) => {
-  let timer: number;
-
   const { mountNode, children, visible, time } = props;
   const [show, useShow]: UseType<boolean> = React.useState(visible);
+  // timer 放函数外面会导致不同组件相互影响，放里面每次状态刷新都会生成新的作用域。因此需要单独设置一个 state
+  const [timer, useTimer]: UseType<number> = React.useState(0);
   React.useEffect(() => {
     window.clearTimeout(timer);
     if (!visible) {
       if (time) {
-        timer = window.setTimeout(() => useShow(false), time + 20);
+        useTimer(window.setTimeout(() => useShow(false), time));
       } else {
         useShow(false);
       }
     } else {
+      console.log("useShow");
       useShow(true);
     }
   }, [visible]);

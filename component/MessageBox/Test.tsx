@@ -1,79 +1,92 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import Portal from "../common/Portal";
+// import Portal from "../common/Portal";
+import MessageBox from "./MessageBox";
 let div: any;
 
-const Test: React.SFC<{ v: boolean }> = props => {
-  const { v } = props;
-  const [vi, setVi] = React.useState(true);
-  React.useEffect(() => {
-    console.log("useEffect", v);
-    setVi(false);
-  }, [v]);
-  return (
-    <Portal time={1000} visible={vi}>
-      <div>
-        <h1
-          onClick={() => {
-            setVi(!vi);
-          }}
-        >
-          {v}
-          {vi}
-          hello React!
-        </h1>
-      </div>
-    </Portal>
-  );
-};
+// const Test: React.SFC<MessageBoxProps & { v: boolean }> = props => {
+//   const { v = false, time, content } = props;
+//   const [vi, setVi] = React.useState(v);
+//   React.useEffect(() => {
+//     setVi(v);
+//   }, [v]);
+//   return (
+//     <Portal time={time} visible={vi}>
+//       <div>
+//         <h1
+//           onClick={() => {
+//             setVi(!vi);
+//           }}
+//         >
+//           hello React!,{content}
+//           <br />
+//           {vi ? "true" : "false"}
+//         </h1>
+//       </div>
+//     </Portal>
+//   );
+// };
 
-export default class TTest extends React.PureComponent<
-  { v: boolean },
-  { v: boolean }
+interface MessageBoxProps {
+  time: number;
+  content: string;
+}
+
+export default class MessageBoxWrap extends React.PureComponent<
+  MessageBoxProps,
+  { v: boolean; content: any }
 > {
   constructor(props: any) {
     super(props);
-    console.log("test");
     this.state = {
-      v: props.v
+      v: props.v,
+      content: props.content
     };
   }
-  static create = (props: any) => {
-    console.log("create");
+  static create = (props: MessageBoxProps) => {
     div = document.createElement("div");
     document.body.appendChild(div);
-    const message: any = ReactDOM.render(<TTest v={props.v} />, div);
+    const message: any = ReactDOM.render(<MessageBoxWrap {...props} />, div);
     return {
-      remove() {
-        return message.destroy();
+      clear() {
+        return message.clear();
+      },
+      show(obj: any) {
+        console.log("hhshow");
+        return message.show(obj);
       }
     };
   };
 
-  destroy = () => {
-    this.setState({ v: false });
-    console.log(this.state);
-    console.log(this);
+  clear = () => {
+    const { time } = this.props;
+    // this.setState({ v: false });
+    return new Promise((res, rej) => {
+      if (this.state.v) {
+        this.setState({ v: false }, () => setTimeout(() => res(), time));
+      } else {
+        res();
+      }
+    });
+  };
+
+  show = async (obj: any) => {
+    await this.clear();
+    this.setState({
+      content: obj.children,
+      v: true
+    });
   };
 
   render() {
-    const { v } = this.state;
-    console.log("render", v);
-    // return <Test v={v} />;
+    const { v, content } = this.state;
     return (
-      <Portal time={1000} visible={v}>
-        <div>
-          <h1
-            onClick={() => {
-              this.setState({ v: !v });
-            }}
-          >
-            {"asd"}
-            {v ? "hello React!" : null}
-          </h1>
-        </div>
-      </Portal>
+      <MessageBox clear={this.clear} visible={v}>
+        Hhh <br />
+        {content}
+      </MessageBox>
     );
+    // return <Test v={v} content={content} time={this.props.time} />;
   }
 }

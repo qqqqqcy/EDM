@@ -22,6 +22,7 @@ export interface TransitionWrapProps {
   transitionClassName?: string;
   unmountOnExit?: boolean;
   children?: Children;
+  onEntry?: () => void;
   onEntryDone?: () => void;
   onExitDone?: () => void;
 }
