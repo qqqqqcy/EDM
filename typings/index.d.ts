@@ -1,3 +1,5 @@
+import "./custom.d";
+
 // 存放通用方法
 type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 // 取出所有选填属性
@@ -15,6 +17,7 @@ type NullableKeys<T> = {
 
 // 存放通用类型
 // type onClick = (e: React.MouseEvent<HTMLElement>) => void;
+import "./raw-loader";
 
 declare module "*.svg" {
   const content: any;

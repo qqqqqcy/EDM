@@ -18,7 +18,6 @@ export default class Test extends React.Component<
       children: (
         <Button
           ghost={true}
-          size="large"
           type="primary"
           onClick={() => {
             MessageInstance.clear();

@@ -14,6 +14,8 @@ const config: webpack.Configuration = {
     // port: 80,
     headers: { "Access-Control-Allow-Origin": "*" },
     disableHostCheck: true
+    // 如果不启用无法使用 BrowserRouter
+    // historyApiFallback: true
   },
   entry: {
     example: getProjectUrl("examples", "index.tsx")

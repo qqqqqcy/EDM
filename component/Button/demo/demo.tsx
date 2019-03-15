@@ -8,16 +8,22 @@ class Demo extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello world</h1>
-        <h1>Hello world</h1>
-
         <div>
           <Button size="large" type="primary" onClick={this.onClick}>
             <Icon size="large" color="#fff" name="alipay" />
             primary
           </Button>
           <br />
-
+          <Button
+            disabled={true}
+            size="large"
+            type="primary"
+            onClick={this.onClick}
+          >
+            <Icon size="large" color="#fff" name="alipay" />
+            primary
+          </Button>
+          <br />
           <br />
           <Button size="large" disabled={true}>
             default

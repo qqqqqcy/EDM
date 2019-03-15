@@ -57,7 +57,7 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
       activeStyle={activeStyle}
       disabled={disabled}
     >
-      <a
+      <p
         role="button"
         className={cls}
         style={
@@ -70,7 +70,7 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
         aria-disabled={disabled}
       >
         {children}
-      </a>
+      </p>
     </TouchFeedback>
   );
 });
