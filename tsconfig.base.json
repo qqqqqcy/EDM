@@ -8,8 +8,10 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "esModuleInterop": true
   },
-  "typeRoots": ["node_modules/@types", "typings/**/*"],
+  // "typeRoots": ["node_modules/@types", "typings/**/*"],
+  "files": ["typings/index.d.ts"],
   "exclude": ["node_modules"]
 }

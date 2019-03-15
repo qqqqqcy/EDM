@@ -1,5 +1,3 @@
-import * as React from "react";
-
 export type Children = any;
 export type Style = React.CSSProperties;
 

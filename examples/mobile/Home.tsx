@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { cpConfig } from "../until/pageList";
 import { Button } from "@component/index";
 import { Link } from "react-router-dom";

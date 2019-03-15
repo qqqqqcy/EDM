@@ -1,5 +1,5 @@
 // import classnames from "classnames";
-// import * as React from "react";
+// import React from "react";
 
 import Test from "./Test";
 // import Notification from 'rmc-notification';

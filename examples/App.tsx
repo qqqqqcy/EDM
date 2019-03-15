@@ -1,7 +1,7 @@
-import * as React from "react";
+import React from "react";
 import { HashRouter as Router, Route, Redirect } from "react-router-dom";
 
-import Test from "./pages/Test";
+// import Test from "./pages/Test";
 
 import Mmobile from "./mobile";
 import DocsPage from "./containers/docs";

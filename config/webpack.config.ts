@@ -1,5 +1,5 @@
 import webpack, { DefinePlugin } from "webpack";
-import * as MiniCssExtractPlugin from "mini-css-extract-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { CheckerPlugin } from "awesome-typescript-loader";
 import { getProjectUrl } from "./until";
 

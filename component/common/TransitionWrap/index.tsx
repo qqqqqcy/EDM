@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import classnames from "classnames";
 import { TransitionWrapProps, TransitionStatus } from "../PropsType";
 import setDefaultProps, { transitionWrapProps } from "../setDefaultProps";

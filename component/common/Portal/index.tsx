@@ -1,5 +1,5 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom";
 import { PortalProps } from "../PropsType";
 import setDefaultProps, { portalProps } from "../setDefaultProps";
 

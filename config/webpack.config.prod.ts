@@ -1,7 +1,7 @@
 import webpack from "webpack";
 
 import base from "./webpack.config";
-import * as webpackMerge from "webpack-merge";
+import webpackMerge from "webpack-merge";
 import { getProjectUrl } from "./until";
 
 const config: webpack.Configuration = {

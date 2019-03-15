@@ -8,5 +8,5 @@
       "@lib*": ["lib*"]
     }
   },
-  "include": ["component/**/*","examples/**/*", "typings/**/*", "lib/**/*.ts"]
+  "include": ["component/**/*", "examples/**/*", "lib/**/*.ts"]
 }

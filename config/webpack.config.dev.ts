@@ -2,10 +2,10 @@ import webpack from "webpack";
 import base from "./webpack.config";
 // import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
-import * as HtmlWebpackPlugin from "html-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 import { getProjectUrl } from "./until";
 import { TsConfigPathsPlugin } from "awesome-typescript-loader";
-import * as webpackMerge from "webpack-merge";
+import webpackMerge from "webpack-merge";
 
 const config: webpack.Configuration = {
   mode: "development",

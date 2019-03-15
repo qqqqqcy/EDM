@@ -1,8 +1,8 @@
-import * as React from "react";
+import React from "react";
 import "./index.scss";
-import * as ReactMarkdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import { cpConfig, pageList } from "../../until/pageList";
-import { Button } from "@lib/index";
+import { Button } from "@component/index";
 
 export default class Docs extends React.PureComponent<
   null,

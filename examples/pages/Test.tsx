@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 // import { Button, Icon } from "@lib/index";
 import { Button, Icon } from "@component/index";
 import TransitionWrap from "@component/common/TransitionWrap";

@@ -1,6 +1,7 @@
-import * as React from "react";
+import React from "react";
 import classnames from "classnames";
 import { ButtonProps } from "./PropsType";
+
 import setDefaultProps, {
   defaultBaseProps,
   touchFeedbackProps
