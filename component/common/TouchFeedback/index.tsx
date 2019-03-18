@@ -3,13 +3,16 @@ import classnames from "classnames";
 import { TouchFeedbackProps } from "../PropsType";
 import setDefaultProps, { touchFeedbackProps } from "../setDefaultProps";
 
-const defaultProps: GetNullableType<TouchFeedbackProps> = {
+interface TouchFeedbackPropsType extends TouchFeedbackProps {
+  children: React.ReactElement;
+}
+const defaultProps: GetNullableType<TouchFeedbackPropsType> = {
   ...touchFeedbackProps
 };
 
 export default setDefaultProps(
   defaultProps,
-  (props: Required<TouchFeedbackProps>) => {
+  (props: Required<TouchFeedbackPropsType>) => {
     const { children, disabled, activeStyle, activeClassName } = props;
 
     const [active, setActive]: UseType<boolean> = React.useState(false);

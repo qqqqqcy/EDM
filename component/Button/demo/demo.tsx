@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { Button, Icon } from "@component/index";
 class Demo extends React.Component {
   onClick = () => {
@@ -10,7 +10,7 @@ class Demo extends React.Component {
       <div>
         <div>
           <Button size="large" type="primary" onClick={this.onClick}>
-            <Icon size="large" color="#fff" name="alipay" />
+            <Icon size="large" fill="#fff" name="alipay" />
             primary
           </Button>
           <br />
@@ -20,7 +20,7 @@ class Demo extends React.Component {
             type="primary"
             onClick={this.onClick}
           >
-            <Icon size="large" color="#fff" name="alipay" />
+            <Icon size="large" fill="#fff" name="alipay" />
             primary
           </Button>
           <br />
@@ -35,7 +35,7 @@ class Demo extends React.Component {
             </Button>
             <Button inline={true} type="secondary" onClick={this.onClick}>
               secondary
-              <Icon color="red" name="alipay" />
+              <Icon fill="red" name="alipay" />
             </Button>
             <Button
               inline={true}
@@ -44,7 +44,7 @@ class Demo extends React.Component {
               type="secondary"
               onClick={this.onClick}
             >
-              <Icon size="large" color="red" name="alipay" />
+              <Icon size="large" fill="red" name="alipay" />
               secondary
             </Button>
           </div>

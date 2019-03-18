@@ -16,15 +16,13 @@ export const defaultBaseProps: Required<DefaultBaseProps> = {
 export const touchFeedbackProps: Required<TouchFeedbackProps> = {
   disabled: false,
   activeClassName: "",
-  activeStyle: {},
-  children: ""
+  activeStyle: {}
 };
 export const transitionWrapProps: Required<TransitionWrapProps> = {
   visible: true,
   time: 250,
   transitionClassName: "",
   unmountOnExit: true,
-  children: "",
   onEntry: () => {},
   onEntryDone: () => {},
   onExitDone: () => {}

@@ -9,28 +9,15 @@ const defaultProps: GetNullableType<IconProps> = {
   ...defaultBaseProps,
   prefixCls: `${$PREFIX}-icon`,
   size: "middle",
-  color: "",
+  fill: "",
   onClick: () => {}
 };
 
 export default setDefaultProps(defaultProps, (props: Required<IconProps>) => {
-  const {
-    name,
-    size,
-    color,
-    style,
-    className,
-    prefixCls,
-    ...restProps
-  } = props;
+  const { name, size, className, prefixCls, ...restProps } = props;
   const cls = classnames(prefixCls, className, `${prefixCls}-${size}`);
   return (
-    <svg
-      aria-hidden="true"
-      className={cls}
-      style={color ? { fill: color, ...style } : style}
-      {...restProps}
-    >
+    <svg aria-hidden="true" className={cls} {...restProps}>
       <use xlinkHref={`#${name}`} />
     </svg>
   );

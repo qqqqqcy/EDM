@@ -3,7 +3,11 @@ import classnames from "classnames";
 import { TransitionWrapProps, TransitionStatus } from "../PropsType";
 import setDefaultProps, { transitionWrapProps } from "../setDefaultProps";
 
-const defaultProps: GetNullableType<TransitionWrapProps> = {
+interface TransitionWrapPropsWithChildren extends TransitionWrapProps {
+  children: React.ReactElement | React.ReactElement[];
+}
+
+const defaultProps: GetNullableType<TransitionWrapPropsWithChildren> = {
   ...transitionWrapProps
 };
 
@@ -18,7 +22,7 @@ const statusCase: { [propName: string]: TransitionStatus } = {
 
 export default setDefaultProps(
   defaultProps,
-  (props: Required<TransitionWrapProps>) => {
+  (props: Required<TransitionWrapPropsWithChildren>) => {
     const {
       time,
       visible,

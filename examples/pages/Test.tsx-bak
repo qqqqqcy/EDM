@@ -23,7 +23,7 @@ export default class Test extends React.Component<
             MessageInstance.clear();
           }}
         >
-          <Icon size="large" color="red" name="alipay" />
+          <Icon _size="large" _color="red" _name="alipay" />
           remove
         </Button>
       )
@@ -55,7 +55,7 @@ export default class Test extends React.Component<
 
         <div>
           <Button size="large" type="primary" onClick={this.onClick}>
-            <Icon size="large" color="#fff" name="alipay" />
+            <Icon _size="large" _color="#fff" _name="alipay" />
             primary
           </Button>
           <br />
@@ -71,7 +71,7 @@ export default class Test extends React.Component<
             </Button>
             <Button inline={true} type="secondary" onClick={this.onClick}>
               secondary
-              <Icon color="red" name="alipay" />
+              <Icon _color="red" _name="alipay" />
             </Button>
             <Button
               inline={true}
@@ -80,7 +80,7 @@ export default class Test extends React.Component<
               type="secondary"
               onClick={this.onClick}
             >
-              <Icon size="large" color="red" name="alipay" />
+              <Icon _size="large" _color="red" _name="alipay" />
               secondary
             </Button>
           </div>
@@ -102,7 +102,7 @@ export default class Test extends React.Component<
           >
             default|ghost
           </Button>
-          <Icon name="alipay" />
+          <Icon _name="alipay" />
         </div>
       </div>
     );

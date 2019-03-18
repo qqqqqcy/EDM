@@ -9,10 +9,10 @@ class Demo extends React.Component {
     return (
       <div>
         <div>
-          <Icon size="large" color="red" name="alipay" />
-          <Icon size="large" color="blue" name="alipay" />
-          <Icon size="large" color="#ccc" name="alipay" />
-          <Icon size="large" color="#ccc" name="wechat" />
+          <Icon size="large" fill="red" name="alipay" />
+          <Icon size="large" fill="blue" name="alipay" />
+          <Icon size="large" fill="#ccc" name="alipay" />
+          <Icon size="large" fill="#ccc" name="wechat" />
         </div>
       </div>
     );

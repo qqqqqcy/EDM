@@ -1,4 +1,5 @@
-export type Children = any;
+export type Children = React.ReactNode;
+export type ReactChildren = React.ReactElement;
 export type Style = React.CSSProperties;
 
 export interface DefaultBaseProps {
@@ -12,14 +13,12 @@ export interface TouchFeedbackProps {
   disabled?: boolean;
   activeClassName?: string;
   activeStyle?: Style;
-  children?: Children;
 }
 export interface TransitionWrapProps {
   visible?: boolean;
   time?: number;
   transitionClassName?: string;
   unmountOnExit?: boolean;
-  children?: Children;
   onEntry?: () => void;
   onEntryDone?: () => void;
   onExitDone?: () => void;
