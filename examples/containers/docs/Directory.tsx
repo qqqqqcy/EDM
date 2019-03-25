@@ -1,6 +1,6 @@
 import React from "react";
 import { cpConfig } from "../../until/pageList";
-import { Button } from "@component/index";
+import { Button } from "@lib/index";
 import { Link } from "react-router-dom";
 
 const Directory: React.SFC = () => {
@@ -10,7 +10,7 @@ const Directory: React.SFC = () => {
         <div key={key}>
           <br />
           <Link to={`/docs/${key}`}>
-            <Button radius={false} ghost={true}>
+            <Button _radius={false} _ghost={true}>
               {key}
             </Button>
           </Link>

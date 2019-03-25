@@ -1,6 +1,9 @@
+delete process.env.TS_NODE_PROJECT;
+
 import webpack, { DefinePlugin } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import { CheckerPlugin } from "awesome-typescript-loader";
+// import { CheckerPlugin } from "awesome-typescript-loader";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { getProjectUrl } from "./until";
 
 const devMode: boolean = process.env.NODE_ENV !== "production";
@@ -24,12 +27,11 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.tsx?$/,
-        loader: "awesome-typescript-loader",
+        // loader: "awesome-typescript-loader",
+        loader: "ts-loader",
         options: {
           // useCache: true,
-          configFileName: getProjectUrl(
-            `tsconfig${devMode ? "" : ".prod"}.json`
-          )
+          configFile: getProjectUrl(`tsconfig${devMode ? "" : ".prod"}.json`)
         }
       },
       {
@@ -76,7 +78,8 @@ const config: webpack.Configuration = {
     new DefinePlugin({
       $PREFIX: JSON.stringify("edm")
     }),
-    new CheckerPlugin(),
+    new ForkTsCheckerWebpackPlugin(),
+    // new CheckerPlugin(),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"

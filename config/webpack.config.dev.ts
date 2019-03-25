@@ -1,9 +1,10 @@
 import webpack from "webpack";
 import base from "./webpack.config";
-// import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { getProjectUrl } from "./until";
+// ts-loader 提供的 TsConfigPathsPlugin 插件会报错，待抽出
+// import TsConfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 import { TsConfigPathsPlugin } from "awesome-typescript-loader";
 import webpackMerge from "webpack-merge";
 
@@ -22,10 +23,10 @@ const config: webpack.Configuration = {
   },
   devtool: "source-map",
   resolve: {
-    plugins: [new TsConfigPathsPlugin({ forceIsolatedModules: true })]
+    plugins: [new TsConfigPathsPlugin()]
+    // plugins: [new TsConfigPathsPlugin()]
   },
   plugins: [
-    // ...(base.plugins as webpack.Plugin[]),
     new HtmlWebpackPlugin({
       title: "eled-mobile",
       template: "index.html"

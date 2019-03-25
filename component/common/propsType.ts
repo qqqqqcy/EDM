@@ -2,12 +2,12 @@ export type Children = React.ReactNode;
 export type ReactChildren = React.ReactElement;
 export type Style = React.CSSProperties;
 
-export interface DefaultBaseProps {
-  className?: string;
-  children?: Children;
-  prefixCls?: string;
-  style?: Style;
-}
+// export interface DefaultBaseProps {
+//   // className?: string;
+//   // children?: Children;
+//   prefixCls?: string;
+//   // style?: Style;
+// }
 
 export interface TouchFeedbackProps {
   disabled?: boolean;

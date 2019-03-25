@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Button, Icon } from "@component/index";
+// import { Button, Icon } from "@lib/index";
 class Demo extends React.Component {
   onClick = () => {
     console.log("onclick");
@@ -9,50 +10,49 @@ class Demo extends React.Component {
     return (
       <div>
         <div>
-          <Button size="large" type="primary" onClick={this.onClick}>
-            <Icon size="large" fill="#fff" name="alipay" />
-            primary
+          <Button _size="large" _type="primary" onClick={this.onClick}>
+            <Icon _size="large" fill="#fff" _name="alipay" /> primary
           </Button>
           <br />
           <Button
             disabled={true}
-            size="large"
-            type="primary"
+            _size="large"
+            _type="primary"
             onClick={this.onClick}
           >
-            <Icon size="large" fill="#fff" name="alipay" />
+            <Icon _size="large" fill="#fff" _name="alipay" />
             primary
           </Button>
           <br />
           <br />
-          <Button size="large" disabled={true}>
+          <Button _size="large" disabled={true}>
             default
           </Button>
           <br />
           <div>
-            <Button inline={true} ghost={true} onClick={this.onClick}>
+            <Button _inline={true} _ghost={true} onClick={this.onClick}>
               default|ghost
             </Button>
-            <Button inline={true} type="secondary" onClick={this.onClick}>
+            <Button _inline={true} _type="secondary" onClick={this.onClick}>
               secondary
-              <Icon fill="red" name="alipay" />
+              <Icon fill="red" _name="alipay" />
             </Button>
             <Button
-              inline={true}
-              size="large"
-              radius={false}
-              type="secondary"
+              _inline={true}
+              _size="large"
+              _radius={false}
+              _type="secondary"
               onClick={this.onClick}
             >
-              <Icon size="large" fill="red" name="alipay" />
+              <Icon _size="large" fill="red" _name="alipay" />
               secondary
             </Button>
           </div>
           <br />
           <Button
-            ghost={true}
+            _ghost={true}
             disabled={true}
-            type="secondary"
+            _type="secondary"
             onClick={this.onClick}
           >
             secondary|ghost
@@ -60,13 +60,13 @@ class Demo extends React.Component {
           <br />
           <Button
             style={{ color: "rgb(100,200,50)" }}
-            radius="10px"
-            ghost={true}
+            _radius="10px"
+            _ghost={true}
             onClick={this.onClick}
           >
             default|ghost
           </Button>
-          <Icon name="alipay" />
+          <Icon _name="alipay" />
         </div>
       </div>
     );

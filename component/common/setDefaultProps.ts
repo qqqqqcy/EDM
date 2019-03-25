@@ -1,18 +1,18 @@
 import { SFC } from "react";
 import {
-  DefaultBaseProps,
+  // DefaultBaseProps,
   TouchFeedbackProps,
   TransitionWrapProps,
   PortalProps
 } from "./PropsType";
 
 // 基础属性
-export const defaultBaseProps: Required<DefaultBaseProps> = {
-  className: "",
-  children: "",
-  prefixCls: "",
-  style: {}
-};
+// export const defaultBaseProps: Required<DefaultBaseProps> = {
+//   // className: "",
+//   // children: "",
+//   prefixCls: ""
+//   // style: {}
+// };
 export const touchFeedbackProps: Required<TouchFeedbackProps> = {
   disabled: false,
   activeClassName: "",

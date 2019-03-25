@@ -1,15 +1,36 @@
 .docs {
   display: flex;
+  text-decoration: none;
+  min-height: 150vh;
   &-side {
+    flex-shrink: 0;
     width: 300px;
-    background: #ccc;
-    height: 100vh;
+    background: #eee;
+    height: inherit;
     li {
       height: 50px;
       border: 1px solid;
     }
     li:hover {
       background: #aaa;
+    }
+  }
+
+  &-main {
+    flex-grow: 1;
+    padding: 20px;
+    pre code {
+      max-height: 70vh;
+    }
+  }
+
+  &-iframe {
+    flex-shrink: 0;
+    background: #eee;
+    padding-top: 20px;
+    iframe {
+      border: 1px solid #eee;
+      background: #fff;
     }
   }
 }
