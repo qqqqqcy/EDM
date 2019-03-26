@@ -1,5 +1,0 @@
-project/**/build
-project/**/lib
-gulpfile.js
-project/*/config.js
-project/**/*.scss

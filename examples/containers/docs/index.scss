@@ -11,15 +11,17 @@
     min-height: 150vh;
 
   &-side {
-    flex-shrink: 0;
     width: 300px;
-    background: #eee;
     height: inherit;
+    background: #eee;
+    flex-shrink: 0;
+
     li {
       height: 50px;
 
       border: 1px solid;
     }
+
     li:hover {
       background: #fff;
     }
