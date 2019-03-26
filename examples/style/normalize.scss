@@ -22,8 +22,10 @@ html {
    * Remove the margin in all browsers.
    */
 
-body {
-    margin: 0;
+html, body {
+   height: 100%;
+   margin: 0;
+   background-color: #f7f7f7;
 }
 
 /**

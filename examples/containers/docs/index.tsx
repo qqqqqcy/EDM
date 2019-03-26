@@ -4,53 +4,67 @@ import ReactMarkdown from "react-markdown";
 import { cpConfig, pageList } from "../../until/pageList";
 import { Button } from "@component/index";
 
-export default class Docs extends React.PureComponent<
-  null,
-  { sourceCode: any; iframeSrc: any }
-> {
-  state = {
-    sourceCode: "",
-    iframeSrc: "/"
-  };
+export default class Docs extends React.PureComponent<null, { sourceCode: any; iframeSrc: any }> {
+    state = {
+        sourceCode: "",
+        iframeSrc: "/"
+    };
 
-  getText = (str: string = "") => {
-    setTimeout(() => {
-      document.querySelectorAll("pre code").forEach(block => {
-        hljs.highlightBlock(block);
-      });
-    }, 100);
-    return `\`\`\`html ${str.replace(/(^[" ]|[" ]$)/g, "")}\`\`\``;
-  };
-  render() {
-    const { sourceCode } = this.state;
-    return (
-      <div className="docs">
-        <div className="docs-side">
-          {cpConfig.component.map((key: string) => (
-            <Button
-              key={key}
-              onClick={() => {
-                const { sourceCode = "" } = pageList[key];
-                // const obj = require(`../../../component/${item}/demo`);
-                this.setState({
-                  sourceCode,
-                  iframeSrc: `#/mobile/${key}`
-                });
-              }}
-            >
-              {key}
-            </Button>
-          ))}
-        </div>
-        <div className="docs-main">
-          <ReactMarkdown source={this.getText(sourceCode)} />
-        </div>
-        <div className="docs-iframe">
-          <iframe src={this.state.iframeSrc} width="375" height="667" />
-        </div>
-      </div>
-    );
-  }
+    getText = (str: string = "") => {
+        setTimeout(() => {
+            document.querySelectorAll("pre code").forEach(block => {
+                hljs.highlightBlock(block);
+            });
+        }, 100);
+        return `\`\`\`html ${str.replace(/(^[" ]|[" ]$)/g, "")}\`\`\``;
+    };
+    render() {
+        const { sourceCode } = this.state;
+        return (
+            <div className="docs">
+                <div className="docs-header">
+                    <div className="search-box" />
+                </div>
+
+                <div className="docs-wrap">
+                    <div className="docs-side">
+                        {cpConfig.component.map((key: string) => (
+                            <Button
+                                key={key}
+                                onClick={() => {
+                                    const { sourceCode = "" } = pageList[key];
+                                    // const obj = require(`../../../component/${item}/demo`);
+                                    this.setState({
+                                        sourceCode,
+                                        iframeSrc: `#/mobile/${key}`
+                                    });
+                                }}
+                            >
+                                {key}
+                            </Button>
+                        ))}
+                    </div>
+
+                    <div className="docs-view">
+                        <div className="docs-page-content">
+                            <div className="docs-main">
+                                <div className="docs-code">
+                                    <ReactMarkdown source={this.getText(sourceCode)} />
+                                </div>
+                                <div className="docs-iframe">
+                                    <iframe src={this.state.iframeSrc} width="375" height="667" frameBorder="0" />
+                                </div>
+                            </div>
+                            <div className="docs-api">
+                                <h3>API</h3>
+                                <p>适用平台：WEB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
 
 // todo TSX 高亮
