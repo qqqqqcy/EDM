@@ -1,17 +1,29 @@
-delete process.env.TS_NODE_PROJECT;
-
 import webpack, { DefinePlugin } from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-// import { CheckerPlugin } from "awesome-typescript-loader";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { getProjectUrl } from "./until";
+// const StyleLintPlugin = require("stylelint-webpack-plugin");
+// const stylelint = require("stylelint");
+// const postImport = require("postcss-import");
+// const postcssFlexbugsFixes = require("postcss-flexbugs-fixes");
+
+import autoprefixer from "autoprefixer";
+import cssnano from "cssnano";
 
 const devMode: boolean = process.env.NODE_ENV !== "production";
+const tsconfig = getProjectUrl(`tsconfig${devMode ? "" : ".prod"}.json`);
 
 const config: webpack.Configuration = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"]
     // modules: [getProjectUrl("lib"), "node_modules"]
+    // plugins: [
+    //   new StyleLintPlugin({
+    // configFile: getProjectUrl("stylelint.config.js"),
+    // files: ["examples/**/*.s(a|c)ss", "component/**/*.s(a|c)ss"],
+    //     context: getProjectUrl()
+    //   })
+    // ]
   },
   module: {
     rules: [
@@ -27,11 +39,9 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.tsx?$/,
-        // loader: "awesome-typescript-loader",
         loader: "ts-loader",
         options: {
-          // useCache: true,
-          configFile: getProjectUrl(`tsconfig${devMode ? "" : ".prod"}.json`)
+          configFile: tsconfig
         }
       },
       {
@@ -52,23 +62,38 @@ const config: webpack.Configuration = {
       //   loader: 'text-loader',
       // },
       {
-        test: /\.s([ac])ss$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode
-            ? "style-loader"
-            : ({
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                  // publicPath: '../'
-                }
-              } as webpack.Loader),
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
           "css-loader",
           {
-            loader: "sass-loader",
+            loader: "postcss-loader",
             options: {
-              includePaths: [getProjectUrl("stylesheets", "include")]
+              // postImport,
+              plugins: () => [
+                //   stylelint({
+                //     fix: true,
+                //     configFile: getProjectUrl(".stylelintrc"),
+                //     configBasedir: getProjectUrl()
+                //   }),
+                //   postcssFlexbugsFixes,
+                autoprefixer({
+                  browsers: [
+                    "last 2 versions",
+                    "Firefox ESR",
+                    "> 1%",
+                    "ie >= 9",
+                    "iOS >= 8",
+                    "Android >= 4"
+                  ]
+                }),
+                cssnano({
+                  preset: "default"
+                })
+              ]
             }
-          }
+          },
+          "sass-loader"
         ]
       }
     ]
@@ -78,11 +103,15 @@ const config: webpack.Configuration = {
     new DefinePlugin({
       $PREFIX: JSON.stringify("edm")
     }),
-    new ForkTsCheckerWebpackPlugin(),
-    // new CheckerPlugin(),
+    // 检查代码中的类型错误
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
+      // filename: devMode ? "[name].css" : "[name].[hash].css",
+      // chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
     })
   ],
   resolveLoader: {

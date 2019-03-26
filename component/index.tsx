@@ -1,4 +1,5 @@
 // 公用 props
+import "./style";
 // export { default as commonProps } from "./common/PropsType";
 
 export { default as Button } from "./Button";
