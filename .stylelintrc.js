@@ -1,34 +1,20 @@
-{
-  "extends": ["stylelint-config-standard"],
-  "plugins": ["stylelint-order"],
-  "rules": {
-    "font-family-name-quotes": "always-where-recommended",
-    "function-url-quotes": "always",
-    "number-leading-zero": "never",
-    "number-no-trailing-zeros": true,
-    "string-quotes": "double",
-    "length-zero-no-unit": true,
-    "value-list-comma-newline-after": "always-multi-line",
-    "shorthand-property-no-redundant-values": true,
-
-    "keyframe-declaration-no-important": true,
-
-    "selector-class-pattern": "^[a-z]+([a-z0-9]?|[a-z0-9\\-\\_]*[a-z0-9])$",
-    "selector-id-pattern": "^[a-z]+([a-z0-9]?|[a-z0-9\\-\\_]*[a-z0-9])$",
-    "value-keyword-case": "lower",
-    "no-empty-source": null,
-    "at-rule-no-unknown": null,
-
-    "max-nesting-depth": 3,
-    "no-duplicate-selectors": true,
-
+module.exports = {
+  extends: ["stylelint-config-recommended-scss"],
+  plugins: ["stylelint-order"], // stylelint-order是CSS属性排序插件
+  rules: {
+    /**
+     * 规则 | Rules
+     * @ref https://cloud.tencent.com/developer/section/1489630
+     */
     "order/order": [
+      // 指定声明块内的内容顺序
       ["custom-properties", "declarations"],
       {
-        "disableFix": true
+        disableFix: true
       }
     ],
     "order/properties-order": [
+      // 指定声明块内属性的字母顺序
       "position",
       "top",
       "right",
@@ -177,4 +163,4 @@
       "speak"
     ]
   }
-}
+};

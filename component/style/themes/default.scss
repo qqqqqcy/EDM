@@ -8,7 +8,7 @@ $color-default-gradient-dark: #f10000;
 $color-default-gradient-light: #ff7e0e;
 // 黑色
 $color-dark: #2e2d2d;
-$color-light: #ffffff;
+$color-light: #fff;
 $radius-size-big: 999px;
 $font-size: 14 * $hd;
 $font-size-sm: 12 * $hd;
@@ -34,14 +34,15 @@ $button-color-tap: rgba($color-dark, 0.1);
 $button-color-light: $color-light;
 $button-radius: $radius-size-big;
 // -------------------------------------------------
-$fontFamily: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
-  Lucida Grande, sans-serif;
+$fontFamily: roboto, helvetica neue light, helvetica neue, helvetica, arial,
+  lucida grande, sans-serif;
 
 @function getBorder1($color) {
   @return px(1) solid $color;
 }
 
 // prettier 会自动修改 PX 为 px，所以通过调用函数来返回 PX
+
 /* prettier-ignore */
 @function px($px) {
   @return $px + PX;

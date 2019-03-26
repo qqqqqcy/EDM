@@ -3,7 +3,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { getProjectUrl } from "./until";
 // const StyleLintPlugin = require("stylelint-webpack-plugin");
-// const stylelint = require("stylelint");
+import { lint } from "stylelint";
+
 // const postImport = require("postcss-import");
 // const postcssFlexbugsFixes = require("postcss-flexbugs-fixes");
 
@@ -69,13 +70,13 @@ const config: webpack.Configuration = {
           {
             loader: "postcss-loader",
             options: {
-              // postImport,
               plugins: () => [
-                //   stylelint({
-                //     fix: true,
-                //     configFile: getProjectUrl(".stylelintrc"),
-                //     configBasedir: getProjectUrl()
-                //   }),
+                lint({
+                  fix: true,
+                  configFile: getProjectUrl(".stylelintrc.js"),
+                  configBasedir: getProjectUrl(),
+                  files: ["component/**/*.s(a|c)ss", "examples/**/*.s(a|c)ss"]
+                }),
                 //   postcssFlexbugsFixes,
                 autoprefixer({
                   browsers: [
