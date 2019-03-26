@@ -1,8 +1,4 @@
-import { DefaultBaseProps } from "../common/PropsType";
-
-export interface IconProps extends DefaultBaseProps {
-  name: "wechat" | "alipay";
-  size?: "small" | "middle" | "large";
-  fill?: string;
-  onClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
+export interface IconProps extends React.SVGProps<SVGSVGElement> {
+  _name: "wechat" | "alipay";
+  _size?: "small" | "middle" | "large";
 }

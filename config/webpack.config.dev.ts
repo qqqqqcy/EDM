@@ -1,16 +1,19 @@
 import webpack from "webpack";
 import base from "./webpack.config";
-// import TsconfigPathsPlugin from "tsconfig-paths-webpack-plugin";
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
+// import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { getProjectUrl } from "./until";
-import { TsConfigPathsPlugin } from "awesome-typescript-loader";
+
+// 使用 awesome-typescript-loader 插件打包 tsx，文件无法生成类型文件
+// https://github.com/s-panferov/awesome-typescript-loader/issues/411
+import TsConfigPathsPlugin from "tsconfig-paths-webpack-plugin";
+
 import webpackMerge from "webpack-merge";
 
 const config: webpack.Configuration = {
   mode: "development",
   devServer: {
-    // todo： 删除 port
     // port: 80,
     headers: { "Access-Control-Allow-Origin": "*" },
     disableHostCheck: true
@@ -22,10 +25,9 @@ const config: webpack.Configuration = {
   },
   devtool: "source-map",
   resolve: {
-    plugins: [new TsConfigPathsPlugin({ forceIsolatedModules: true })]
+    plugins: [new TsConfigPathsPlugin()]
   },
   plugins: [
-    // ...(base.plugins as webpack.Plugin[]),
     new HtmlWebpackPlugin({
       title: "eled-mobile",
       template: "index.html"

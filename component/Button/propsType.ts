@@ -1,10 +1,14 @@
-import { DefaultBaseProps, TouchFeedbackProps } from "../common/PropsType";
+import { TouchFeedbackProps } from "../common/PropsType";
 
-export interface ButtonProps extends DefaultBaseProps, TouchFeedbackProps {
-  size?: "small" | "middle" | "large";
-  ghost?: boolean;
-  inline?: boolean;
-  type?: "default" | "primary" | "secondary";
-  radius?: boolean | string;
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+export interface ButtonProps
+  extends TouchFeedbackProps,
+    React.DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    > {
+  _size?: "small" | "middle" | "large";
+  _ghost?: boolean;
+  _inline?: boolean;
+  _type?: "default" | "primary" | "secondary";
+  _radius?: boolean | string;
 }

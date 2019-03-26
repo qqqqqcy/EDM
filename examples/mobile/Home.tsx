@@ -10,7 +10,7 @@ const Home: React.SFC = () => {
         <div key={key}>
           <br />
           <Link to={`/mobile/${key}`}>
-            <Button radius={false} ghost={true}>
+            <Button _radius={false} _ghost={true}>
               {key}
             </Button>
           </Link>

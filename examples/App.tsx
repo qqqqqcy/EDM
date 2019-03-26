@@ -17,7 +17,7 @@ export default class App extends React.PureComponent {
             <Route
               exact={true}
               path="/"
-              render={() => <Redirect to="/mobile" />}
+              render={() => <Redirect to="/docs" />}
               // render={() => <Redirect to="/docs/introduce" />}
             />
             <Route path="/mobile" component={Mmobile as any} />

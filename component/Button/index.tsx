@@ -1,38 +1,18 @@
 import React from "react";
 import classnames from "classnames";
 import { ButtonProps } from "./PropsType";
-
-import setDefaultProps, {
-  defaultBaseProps,
-  touchFeedbackProps
-} from "../common/setDefaultProps";
-
 import TouchFeedback from "../common/TouchFeedback";
+const prefixCls = `${$PREFIX}-button`;
 
-const defaultProps: GetNullableType<ButtonProps> = {
-  ...defaultBaseProps,
-  ...touchFeedbackProps,
-  prefixCls: `${$PREFIX}-button`,
-  ghost: false,
-  inline: false,
-  radius: true,
-  size: "middle",
-  type: "default",
-  onClick: () => {}
-};
-
-export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
+export default (props: ButtonProps) => {
   const {
-    size,
-    type,
-    ghost,
+    _size = "middle",
+    _type = "default",
+    _ghost = false,
+    _radius = true,
+    _inline = false,
     style,
-    inline,
-    radius,
-    onClick,
     disabled,
-    children,
-    prefixCls,
     className,
     activeStyle,
     activeClassName,
@@ -41,13 +21,13 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
   const cls = classnames(
     prefixCls,
     className,
-    `${prefixCls}-${size}`,
-    `${prefixCls}-${type}`,
+    `${prefixCls}-${_size}`,
+    `${prefixCls}-${_type}`,
     {
-      [`${prefixCls}-radius`]: radius === true,
+      [`${prefixCls}-radius`]: _radius === true,
       [`${prefixCls}-disabled`]: disabled,
-      [`${prefixCls}-ghost`]: ghost,
-      [`${prefixCls}-inline`]: inline
+      [`${prefixCls}-ghost`]: _ghost,
+      [`${prefixCls}-inline`]: _inline
     }
   );
   return (
@@ -58,20 +38,18 @@ export default setDefaultProps(defaultProps, (props: Required<ButtonProps>) => {
       activeStyle={activeStyle}
       disabled={disabled}
     >
-      <p
+      <button
+        {...restProps}
         role="button"
         className={cls}
         style={
-          typeof radius === "string"
-            ? { ...style, borderRadius: radius }
+          typeof _radius === "string"
+            ? { ...style, borderRadius: _radius }
             : style
         }
-        {...restProps}
-        onClick={disabled ? undefined : onClick}
+        disabled={disabled}
         aria-disabled={disabled}
-      >
-        {children}
-      </p>
+      />
     </TouchFeedback>
   );
-});
+};
