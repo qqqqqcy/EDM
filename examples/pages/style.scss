@@ -4,27 +4,31 @@
 }
 
 .hello {
+  display: block;
   height: 50px;
   overflow: hidden;
   background: yellow;
-  display: block;
   transition: all 2s;
 }
+
 .hello-entry {
-  height: 0px;
+  height: 0;
   padding: 0;
   margin: 0;
   color: red;
 }
+
 .hello-entry-active {
   color: blue;
 }
+
 .hello-entry-done {
   color: green;
 }
+
 .hello-exit-active,
 .hello-exit-done {
-  height: 0px;
+  height: 0;
   padding: 0;
   margin: 0;
 }

@@ -10,6 +10,6 @@
   "editor.formatOnSave": true,
   // "javascript.format.enable": false,
   "tslint.exclude": "node_modules/**/*",
-  "prettier.stylelintIntegration": false
-  // "prettier.eslintIntegration": true
+  "prettier.stylelintIntegration": true
+  // "beautify.ignore": "**/*"
 }
