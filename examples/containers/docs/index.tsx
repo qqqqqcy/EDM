@@ -70,10 +70,6 @@ export default class Docs extends React.PureComponent<null, { sourceCode: any; i
                                     <iframe src={this.state.iframeSrc} width="375" height="667" frameBorder="0" />
                                 </div>
                             </div>
-                            <div className="docs-api">
-                                <h3>API</h3>
-                                <p>适用平台：WEB</p>
-                            </div>
                         </div>
                     </div>
                 </div>
