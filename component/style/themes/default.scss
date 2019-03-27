@@ -37,12 +37,6 @@ $button-radius: $radius-size-big;
 $fontFamily: roboto, helvetica neue light, helvetica neue, helvetica, arial,
   lucida grande, sans-serif;
 
-@function getBorder1($color) {
-  @return px(1) solid $color;
-}
-
-// prettier 会自动修改 PX 为 px，所以通过调用函数来返回 PX
-
 /* prettier-ignore */
 @function px($px) {
   @return $px + PX;

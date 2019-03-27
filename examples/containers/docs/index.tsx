@@ -11,7 +11,7 @@ export default class Docs extends React.PureComponent<
   state = {
     sourceCode: "",
     table: "",
-    iframeSrc: "#/mobile"
+    iframeSrc: "#/instance"
   };
 
   getText = (str: string = "", table: string = "") => {
@@ -46,7 +46,7 @@ export default class Docs extends React.PureComponent<
                   this.setState({
                     sourceCode,
                     table,
-                    iframeSrc: `#/mobile/${key}`
+                    iframeSrc: `#/instance/${key}`
                   });
                 }}
               >

@@ -30,5 +30,4 @@ A configurable Mobile UI
 
 ### Typescript 相关
 
-- 所有可选参数必须设置默认值
-- 所以必传参数不可设置默认值
+组件需要继承本身标签的所有属性

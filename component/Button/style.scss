@@ -64,7 +64,7 @@ $button-prefix: $preifx + "-button";
 .#{$button-prefix}-ghost {
   background-color: $color-light;
   background-image: none;
-  border: getborder1(currentColor);
+  border: solid px(1);
 }
 
 // 反馈效果
