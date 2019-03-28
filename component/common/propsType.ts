@@ -10,31 +10,25 @@ export type Style = React.CSSProperties;
 // }
 
 export interface TouchFeedbackProps {
-  disabled?: boolean;
-  activeClassName?: string;
-  activeStyle?: Style;
+    disabled?: boolean;
+    activeClassName?: string;
+    activeStyle?: Style;
 }
 export interface TransitionWrapProps {
-  visible?: boolean;
-  time?: number;
-  transitionClassName?: string;
-  unmountOnExit?: boolean;
-  onEntry?: () => void;
-  onEntryDone?: () => void;
-  onExitDone?: () => void;
+    visible?: boolean;
+    time?: number;
+    transitionClassName?: string;
+    unmountOnExit?: boolean;
+    onEntry?: () => void;
+    onEntryDone?: () => void;
+    onExitDone?: () => void;
 }
 
-export type TransitionStatus =
-  | "entry"
-  | "entry-active"
-  | "entry-done"
-  | "exit"
-  | "exit-active"
-  | "exit-done";
+export type TransitionStatus = 'entry' | 'entry-active' | 'entry-done' | 'exit' | 'exit-active' | 'exit-done';
 
 export interface PortalProps {
-  visible?: boolean;
-  mountNode?: Element;
-  time?: number;
-  children?: Children;
+    visible?: boolean;
+    mountNode?: Element;
+    time?: number;
+    children?: Children;
 }

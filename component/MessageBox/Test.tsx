@@ -1,8 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // import Portal from "../common/Portal";
-import MessageBox from "./MessageBox";
+import MessageBox from './MessageBox';
 let div: any;
 
 // const Test: React.SFC<MessageBoxProps & { v: boolean }> = props => {
@@ -29,64 +29,61 @@ let div: any;
 // };
 
 interface MessageBoxProps {
-  time: number;
-  content: string;
+    time: number;
+    content: string;
 }
 
-export default class MessageBoxWrap extends React.PureComponent<
-  MessageBoxProps,
-  { v: boolean; content: any }
-> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      v: props.v,
-      content: props.content
+export default class MessageBoxWrap extends React.PureComponent<MessageBoxProps, { v: boolean; content: any }> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            v: props.v,
+            content: props.content,
+        };
+    }
+    static create = (props: MessageBoxProps) => {
+        div = document.createElement('div');
+        document.body.appendChild(div);
+        const message: any = ReactDOM.render(<MessageBoxWrap {...props} />, div);
+        return {
+            clear() {
+                return message.clear();
+            },
+            show(obj: any) {
+                console.log('hhshow');
+                return message.show(obj);
+            },
+        };
     };
-  }
-  static create = (props: MessageBoxProps) => {
-    div = document.createElement("div");
-    document.body.appendChild(div);
-    const message: any = ReactDOM.render(<MessageBoxWrap {...props} />, div);
-    return {
-      clear() {
-        return message.clear();
-      },
-      show(obj: any) {
-        console.log("hhshow");
-        return message.show(obj);
-      }
+
+    clear = () => {
+        const { time } = this.props;
+        // this.setState({ v: false });
+        return new Promise((res, rej) => {
+            if (this.state.v) {
+                this.setState({ v: false }, () => setTimeout(() => res(), time));
+            } else {
+                res();
+            }
+        });
     };
-  };
 
-  clear = () => {
-    const { time } = this.props;
-    // this.setState({ v: false });
-    return new Promise((res, rej) => {
-      if (this.state.v) {
-        this.setState({ v: false }, () => setTimeout(() => res(), time));
-      } else {
-        res();
-      }
-    });
-  };
+    show = async (obj: any) => {
+        await this.clear();
+        this.setState({
+            content: obj.children,
+            v: true,
+        });
+    };
 
-  show = async (obj: any) => {
-    await this.clear();
-    this.setState({
-      content: obj.children,
-      v: true
-    });
-  };
-
-  render() {
-    const { v, content } = this.state;
-    return (
-      <MessageBox clear={this.clear} visible={v}>
-        Hhh <br />
-        {content}
-      </MessageBox>
-    );
-    // return <Test v={v} content={content} time={this.props.time} />;
-  }
+    render() {
+        const { v, content } = this.state;
+        return (
+            <MessageBox clear={this.clear} visible={v}>
+                Hhh <br />
+                {content}
+            </MessageBox>
+        );
+        // return <Test v={v} content={content} time={this.props.time} />;
+    }
 }

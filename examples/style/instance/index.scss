@@ -1,13 +1,13 @@
 .instance {
-  padding: 50px 10px;
-  &-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    line-height: 2;
-    color: #fff;
-    text-align: center;
-    background-image: linear-gradient(90deg, #ff7e0e, #f10000);
-  }
+    padding: 50px 10px;
+    &-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        line-height: 2;
+        color: #fff;
+        text-align: center;
+        background-image: linear-gradient(90deg, #ff7e0e, #f10000);
+    }
 }

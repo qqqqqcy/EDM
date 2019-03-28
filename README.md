@@ -27,8 +27,8 @@ A configurable Mobile UI
 
 ## 项目特性
 
-- 基于 ts-node 全程使用 Typescript（包括 webpack 配置）
-- 开发模式基于 SFC + React Hooks
+-   基于 ts-node 全程使用 Typescript（包括 webpack 配置）
+-   开发模式基于 SFC + React Hooks
 
 ## 组件开发规范
 

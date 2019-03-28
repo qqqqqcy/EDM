@@ -3,7 +3,7 @@
 // try {
 //   importAll((require as any).context("./", true, /\.svg$/));
 // } catch (error) {}
-import "./icons/wechat.svg";
-import "./icons/alipay.svg";
+import './icons/wechat.svg';
+import './icons/alipay.svg';
 
 // export default ;

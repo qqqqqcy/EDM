@@ -1,16 +1,17 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "jsx": "react",
-    "moduleResolution": "node",
-    "keyofStringsOnly": true,
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "strictNullChecks": true,
-    "esModuleInterop": true
-  },
-  // "typeRoots": ["node_modules/@types", "typings/**/*"],
-  "exclude": ["node_modules"]
+    "compilerOptions": {
+        "target": "es5",
+        "lib": ["es6", "dom"],
+        "jsx": "react",
+        "moduleResolution": "node",
+        "keyofStringsOnly": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "esModuleInterop": true,
+        "baseUrl": "."
+    }
+    // "typeRoots": ["node_modules/@types", "typings/**/*"],
+    // "exclude": ["node_modules"]
 }

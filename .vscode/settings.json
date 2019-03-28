@@ -1,15 +1,11 @@
 {
-  // "emmet.includeLanguages": {
-  //   "javascript": "javascriptreact"
-  // },
-  // // 点击保存时，根据 eslint 规则自定修复，同时集成 prettier 到 eslint 中
-  // "prettier.eslintIntegration": true,
-  // "eslint.autoFixOnSave": true,
-
-  // // 为了避免和 eslint 冲突，讲编辑器默认的代码检查规则关闭（如果开启了）
-  "editor.formatOnSave": true,
-  // "javascript.format.enable": false,
-  "tslint.exclude": "node_modules/**/*",
-  "prettier.stylelintIntegration": true
-  // "beautify.ignore": "**/*"
+    // "eslint.autoFixOnSave": false,
+    "editor.formatOnSave": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        { "language": "typescript", "autoFix": true },
+        { "language": "typescriptreact", "autoFix": true }
+    ],
+    "prettier.stylelintIntegration": true
 }

@@ -8,18 +8,18 @@
 
 ## 特性
 
-- 高质量的 React 基础组件以及丰富的业务组件
-- 内置 TypeScript 类型定义文件
-- 支持定制主题
-- 代码/样式按需加载
-- yarn + webpack + babel + postcss + prettier + stylelint
-- 一套京东设计师绘制的图标库
-- 单测覆盖率在 90% 以上
+-   高质量的 React 基础组件以及丰富的业务组件
+-   内置 TypeScript 类型定义文件
+-   支持定制主题
+-   代码/样式按需加载
+-   yarn + webpack + babel + postcss + prettier + stylelint
+-   一套京东设计师绘制的图标库
+-   单测覆盖率在 90% 以上
 
 ## 支持环境
 
-- React >= 16.8
-- 现代浏览器以及 IE 11 及以上
+-   React >= 16.8
+-   现代浏览器以及 IE 11 及以上
 
 ## 安装
 
@@ -30,10 +30,10 @@ yarn add edm
 ## 使用组件
 
 ```tsx
-import { Button } from "edm";
+import { Button } from 'edm';
 
 // 引入样式
-import "edm/css/index.css";
+import 'edm/css/index.css';
 
 ReactDOM.render(<Button />, mountNode);
 ```

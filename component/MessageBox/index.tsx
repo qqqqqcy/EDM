@@ -1,7 +1,7 @@
 // import classnames from "classnames";
 // import React from "react";
 
-import Test from "./Test";
+import Test from './Test';
 // import Notification from 'rmc-notification';
 // import Icon from '../icon';
 
@@ -20,24 +20,24 @@ let messageInstance: any;
 //   }
 // }
 function getMessageInstance() {
-  if (messageInstance) {
-    return messageInstance;
-  } else {
-    messageInstance = Test.create({ time: 200, content: "first" });
-    return messageInstance;
-  }
+    if (messageInstance) {
+        return messageInstance;
+    } else {
+        messageInstance = Test.create({ time: 200, content: 'first' });
+        return messageInstance;
+    }
 }
 
 // function messageBox(content: string = "default") {
 // }
 
 export default {
-  show(obj: any) {
-    getMessageInstance().show(obj);
-  },
-  clear() {
-    if (messageInstance) {
-      return messageInstance.clear("cccc");
-    }
-  }
+    show(obj: any) {
+        getMessageInstance().show(obj);
+    },
+    clear() {
+        if (messageInstance) {
+            return messageInstance.clear('cccc');
+        }
+    },
 };
