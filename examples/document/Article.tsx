@@ -9,7 +9,7 @@ interface ContainerProps {
   item: DirectoryStructureItem;
 }
 
-export default (props: ContainerProps) => {
+const Article = (props: ContainerProps) => {
   const { item } = props;
   const { demoSource, readme } = getComponent(item);
   function splitReadme(readme: string = "") {
@@ -37,3 +37,5 @@ export default (props: ContainerProps) => {
     </article>
   );
 };
+
+export default Article;

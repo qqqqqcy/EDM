@@ -6,7 +6,7 @@ interface HomeProps {
   structure: { [propName: string]: DirectoryStructureItem[] };
 }
 
-export default (props: HomeProps) => {
+const Home = (props: HomeProps) => {
   const { structure } = props;
   return (
     <div className="instance-home">
@@ -26,3 +26,4 @@ export default (props: HomeProps) => {
     </div>
   );
 };
+export default Home;

@@ -4,8 +4,7 @@ interface IframeProps {
   src: string;
   className: string;
 }
-
-export default (props: IframeProps) => {
+const Iframe = (props: IframeProps) => {
   const { src, className } = props;
   return (
     <div className={`document-iframe ${className}`}>
@@ -13,3 +12,5 @@ export default (props: IframeProps) => {
     </div>
   );
 };
+
+export default Iframe;

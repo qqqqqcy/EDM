@@ -7,7 +7,7 @@ interface AsideProps {
   onClick: (key: string) => void;
 }
 
-export default (props: AsideProps) => {
+const Aside = (props: AsideProps) => {
   const { structure, onClick } = props;
 
   return (
@@ -33,3 +33,4 @@ export default (props: AsideProps) => {
     </div>
   );
 };
+export default Aside;

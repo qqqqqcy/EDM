@@ -3,7 +3,7 @@ import { Button } from "@component/index";
 import Logo from "./component/Logo";
 import { Link } from "react-router-dom";
 
-export default () => {
+const Preface = () => {
   return (
     <div className="preface">
       <header>
@@ -28,3 +28,5 @@ export default () => {
     </div>
   );
 };
+
+export default Preface;

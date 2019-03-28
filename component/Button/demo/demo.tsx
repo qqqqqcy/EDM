@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Button, Icon } from "@component/index";
-export default () => {
+const Demo = () => {
   function onClick() {
-    console.log("onclick");
+    alert("onClick");
   }
 
   return (
@@ -57,3 +57,5 @@ export default () => {
     </div>
   );
 };
+
+export default Demo;

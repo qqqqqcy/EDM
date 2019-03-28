@@ -1,10 +1,12 @@
 import React from "react";
 import "../../logo.svg";
 
-export default () => {
+const Logo = () => {
   return (
     <svg className="preface-logo">
       <use xlinkHref="#logo" />
     </svg>
   );
 };
+
+export default Logo;
