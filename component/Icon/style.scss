@@ -3,15 +3,18 @@ $icon-prefix: $preifx + "-icon";
 .#{$icon-prefix} {
   vertical-align: middle;
 }
+
 .#{$icon-prefix}-middle {
-  height: $font-size;
   width: $font-size;
+  height: $font-size;
 }
+
 .#{$icon-prefix}-small {
-  height: $font-size-sm;
   width: $font-size-sm;
+  height: $font-size-sm;
 }
+
 .#{$icon-prefix}-large {
-  height: $font-size-lg;
   width: $font-size-lg;
+  height: $font-size-lg;
 }

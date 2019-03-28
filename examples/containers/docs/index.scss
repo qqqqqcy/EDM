@@ -31,11 +31,8 @@
   }
 
   &-side {
-    display: inline-block;
-    height: inherit;
-    min-width: 300px;
-    padding-top: 15px;
-    background-color: #fff;
+    width: 300px;
+    background: #eee;
     flex-shrink: 0;
 
     li {

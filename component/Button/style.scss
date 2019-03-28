@@ -50,12 +50,11 @@ $button-prefix: $preifx + "-button";
 
 .#{$button-prefix}-primary {
   color: $color-default;
-  background-image:
-    linear-gradient(
-      to right,
-      $color-default-gradient-light,
-      $color-default-gradient-dark
-    );
+  background-image: linear-gradient(
+    to right,
+    $color-default-gradient-light,
+    $color-default-gradient-dark
+  );
 }
 
 .#{$button-prefix}-secondary {
@@ -65,7 +64,7 @@ $button-prefix: $preifx + "-button";
 .#{$button-prefix}-ghost {
   background-color: $color-light;
   background-image: none;
-  border: getborder1(currentColor);
+  border: solid px(1);
 }
 
 // 反馈效果
@@ -79,5 +78,5 @@ $button-prefix: $preifx + "-button";
 
 // 禁用
 .#{$button-prefix}-disabled {
-  opacity: .4;
+  opacity: 0.4;
 }

@@ -3,7 +3,9 @@
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
+    "sourceMap": true,
     "paths": {
+      "@mod*": ["node_modules/*"],
       "@component*": ["component*"],
       "@lib*": ["lib*"]
     }

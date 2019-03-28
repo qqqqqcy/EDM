@@ -8,7 +8,7 @@ export default class Docs extends React.PureComponent<null, { sourceCode: any; i
     state = {
         sourceCode: "",
         table: "",
-        iframeSrc: "#/mobile"
+        iframeSrc: "#/instance"
     };
 
     getText = (str: string = "", table: string = "") => {
@@ -27,51 +27,37 @@ export default class Docs extends React.PureComponent<null, { sourceCode: any; i
             table
         );
     };
-
     render() {
         const { sourceCode, table } = this.state;
         return (
             <div className="docs">
-                <div className="docs-header">
-                    <div className="search-box" />
+                <div className="docs-side">
+                    {cpConfig.component.map((key: string) => (
+                        <Fragment key={key}>
+                            <Button
+                                _radius={false}
+                                _size="large"
+                                onClick={() => {
+                                    const { sourceCode = "", table = "" } = pageList[key];
+                                    // const obj = require(`../../../component/${item}/demo`);
+                                    this.setState({
+                                        sourceCode,
+                                        table,
+                                        iframeSrc: `#/instance/${key}`
+                                    });
+                                }}
+                            >
+                                {key}
+                            </Button>
+                            <br />
+                        </Fragment>
+                    ))}
                 </div>
-
-                <div className="docs-wrap">
-                    <div className="docs-side">
-                        {cpConfig.component.map((key: string) => (
-                            <Fragment key={key}>
-                                <Button
-                                    _radius={false}
-                                    _size="large"
-                                    onClick={() => {
-                                        const { sourceCode = "", table = "" } = pageList[key];
-                                        // const obj = require(`../../../component/${item}/demo`);
-                                        this.setState({
-                                            sourceCode,
-                                            table,
-                                            iframeSrc: `#/mobile/${key}`
-                                        });
-                                    }}
-                                >
-                                    {key}
-                                </Button>
-                                <br />
-                            </Fragment>
-                        ))}
-                    </div>
-
-                    <div className="docs-view">
-                        <div className="docs-page-content">
-                            <div className="docs-main">
-                                <div className="docs-code">
-                                    <ReactMarkdown source={this.getText(sourceCode, table)} />
-                                </div>
-                                <div className="docs-iframe">
-                                    <iframe src={this.state.iframeSrc} width="375" height="667" frameBorder="0" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div className="docs-main">
+                    <ReactMarkdown source={this.getText(sourceCode, table)} />
+                </div>
+                <div className="docs-iframe">
+                    <iframe src={this.state.iframeSrc} width="375" height="667" />
                 </div>
             </div>
         );

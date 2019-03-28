@@ -32,9 +32,7 @@ export default (props: ButtonProps) => {
   );
   return (
     <TouchFeedback
-      activeClassName={
-        activeClassName || (activeStyle ? `${prefixCls}-active` : undefined)
-      }
+      activeClassName={activeClassName || `${prefixCls}-active`}
       activeStyle={activeStyle}
       disabled={disabled}
     >

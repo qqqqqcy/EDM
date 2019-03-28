@@ -33,11 +33,10 @@ export default setDefaultProps(
       unmountOnExit,
       transitionClassName
     } = props;
-
     const [status, setStatus]: UseType<TransitionStatus> = React.useState(
       visible ? statusCase.entry : statusCase.exit
     );
-    const [show, setShow] = React.useState(visible);
+    const [show, setShow]: UseType<boolean> = React.useState(visible);
     const [timer, useTimer]: UseType<number> = React.useState(0);
 
     React.useEffect(() => {
