@@ -1,22 +1,25 @@
-import React from "react";
-import Home from "./Home";
-import { pageList } from "../until/pageList";
 import { Route, Link, RouteComponentProps } from "react-router-dom";
+import React from "react";
+import { directoryStructure, sortStructure } from "../until/structure";
+import Home from "./Home";
+import Demo from "./Demo";
 
 const Mobile: React.SFC<RouteComponentProps> = props => {
   const { match } = props;
   return (
-    <div className={``}>
-      <h1>
-        <Link to="/instance">back</Link> Header
-      </h1>
-      {match.isExact ? <Home /> : null}
+    <div className="instance">
+      <nav className="instance-nav">
+        <Link to="/instance">Back</Link> Header
+      </nav>
+      {match.isExact ? (
+        <Home structure={sortStructure(directoryStructure)} />
+      ) : null}
 
-      {Object.keys(pageList).map(key => (
+      {directoryStructure.map(item => (
         <Route
-          key={key}
-          path={`/instance/${key}`}
-          component={pageList[key].runnableCode as any}
+          key={item.name}
+          path={`/instance/${item.name}`}
+          component={() => <Demo item={item} />}
         />
       ))}
     </div>

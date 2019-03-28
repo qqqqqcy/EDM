@@ -12,6 +12,5 @@
     "esModuleInterop": true
   },
   // "typeRoots": ["node_modules/@types", "typings/**/*"],
-  "files": ["typings/index.d.ts"],
   "exclude": ["node_modules"]
 }

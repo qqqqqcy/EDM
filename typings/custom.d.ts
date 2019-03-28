@@ -25,13 +25,3 @@ declare module "*.svg" {
   const content: any;
   export default content;
 }
-
-declare module hljs {
-  const highlightBlock: any;
-  //  export default highlightBlock: any;
-}
-
-declare module "react-syntax-highlighter/dist/esm/prism" {
-  import SyntaxHighlighter from "react-syntax-highlighter";
-  export default SyntaxHighlighter;
-}
