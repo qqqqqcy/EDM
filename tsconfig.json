@@ -5,10 +5,10 @@
     "baseUrl": ".",
     "sourceMap": true,
     "paths": {
-      "@mod*": ["node_modules/*"],
       "@component*": ["component*"],
       "@lib*": ["lib*"]
     }
   },
+  "files": ["examples/index.d.ts", "typings/index.d.ts"],
   "include": ["component/**/*", "examples/**/*", "lib/**/*.ts"]
 }

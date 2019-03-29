@@ -4,7 +4,7 @@ import "./importAll";
 import classnames from "classnames";
 const prefixCls = `${$PREFIX}-icon`;
 
-export default (props: IconProps) => {
+const Icon = (props: IconProps) => {
   const {
     _name: name,
     _size: size = "middle",
@@ -18,3 +18,5 @@ export default (props: IconProps) => {
     </svg>
   );
 };
+
+export default Icon;

@@ -4,7 +4,7 @@ import { ButtonProps } from "./PropsType";
 import TouchFeedback from "../common/TouchFeedback";
 const prefixCls = `${$PREFIX}-button`;
 
-export default (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const {
     _size = "middle",
     _type = "default",
@@ -51,3 +51,5 @@ export default (props: ButtonProps) => {
     </TouchFeedback>
   );
 };
+
+export default Button;

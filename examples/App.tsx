@@ -4,7 +4,7 @@ import { HashRouter as Router, Route, Redirect } from "react-router-dom";
 import Instance from "./instance";
 import Document from "./document";
 
-export default () => {
+const App = () => {
   return (
     <div className="App height-100">
       <Router>
@@ -22,3 +22,5 @@ export default () => {
     </div>
   );
 };
+
+export default App;

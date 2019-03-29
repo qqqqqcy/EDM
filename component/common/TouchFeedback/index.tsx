@@ -6,7 +6,7 @@ interface TouchFeedbackPropsType extends TouchFeedbackProps {
   children: React.ReactElement;
 }
 
-export default (props: TouchFeedbackPropsType) => {
+const TouchFeedback = (props: TouchFeedbackPropsType) => {
   const {
     children,
     disabled = false,
@@ -84,3 +84,4 @@ export default (props: TouchFeedbackPropsType) => {
   }
   return React.cloneElement(child, events);
 };
+export default TouchFeedback;

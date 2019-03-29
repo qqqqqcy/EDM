@@ -7,3 +7,6 @@ export { default as Button } from "./Button";
 
 export { default as Icon } from "./Icon";
 // export { default as IconProps } from "./Icon/PropsType";
+
+export { default as CountDown } from "./CountDown";
+// export { default as IconProps } from "./Icon/PropsType";
