@@ -1,2 +1,2 @@
-import introduce from "!!raw-loader!./introduce.md";
+import introduce from '!!raw-loader!./introduce.md';
 export { introduce };

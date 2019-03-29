@@ -1,10 +1,10 @@
-import { SFC } from "react";
+import { SFC } from 'react';
 import {
-  // DefaultBaseProps,
-  TouchFeedbackProps,
-  TransitionWrapProps,
-  PortalProps
-} from "./PropsType";
+    // DefaultBaseProps,
+    TouchFeedbackProps,
+    TransitionWrapProps,
+    PortalProps,
+} from './PropsType';
 
 // 基础属性
 // export const defaultBaseProps: Required<DefaultBaseProps> = {
@@ -14,32 +14,29 @@ import {
 //   // style: {}
 // };
 export const touchFeedbackProps: Required<TouchFeedbackProps> = {
-  disabled: false,
-  activeClassName: "",
-  activeStyle: {}
+    disabled: false,
+    activeClassName: '',
+    activeStyle: {},
 };
 export const transitionWrapProps: Required<TransitionWrapProps> = {
-  visible: true,
-  time: 250,
-  transitionClassName: "",
-  unmountOnExit: true,
-  onEntry: () => {},
-  onEntryDone: () => {},
-  onExitDone: () => {}
+    visible: true,
+    time: 250,
+    transitionClassName: '',
+    unmountOnExit: true,
+    onEntry: () => {},
+    onEntryDone: () => {},
+    onExitDone: () => {},
 };
 export const portalProps: Required<PortalProps> = {
-  visible: true,
-  mountNode: document.body,
-  time: 0,
-  children: ""
+    visible: true,
+    mountNode: document.body,
+    time: 0,
+    children: '',
 };
 
-export default <P extends object, DP extends Partial<P> = Partial<P>>(
-  defaultProps: DP,
-  Cmp: SFC<P>
-) => {
-  type RequiredProps = Omit<P, keyof DP>;
-  type Props = Partial<DP> & Required<RequiredProps>;
-  Cmp.defaultProps = defaultProps;
-  return (Cmp as SFC<any>) as SFC<Props>;
+export default <P extends object, DP extends Partial<P> = Partial<P>>(defaultProps: DP, Cmp: SFC<P>) => {
+    type RequiredProps = Omit<P, keyof DP>;
+    type Props = Partial<DP> & Required<RequiredProps>;
+    Cmp.defaultProps = defaultProps;
+    return (Cmp as SFC<any>) as SFC<Props>;
 };

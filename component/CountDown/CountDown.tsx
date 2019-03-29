@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import { CountDownProps } from "./PropsType";
-import "./style.scss";
+import { CountDownProps } from './PropsType';
+import './style.scss';
 
 export default (props: CountDownProps) => {
-    const { _endDate = 0, _etype = 4, _eUnit = [":", ":", ":"], _eTimeUp = () => {} } = props;
+    const { _endDate = 0, _etype = 4, _eUnit = [':', ':', ':'], _eTimeUp = () => {} } = props;
 
-    const initialValue = ["0"];
+    const initialValue = ['0'];
 
     const [timeArray, setTimeArray] = useState(initialValue);
 
@@ -42,10 +42,10 @@ export default (props: CountDownProps) => {
                 second = Math.floor(t / 1000); // 剩余的秒
             }
             const arr = [];
-            type >= 4 && arr.push(String(day).padStart(2, "0"));
-            type >= 3 && arr.push(String(hour).padStart(2, "0"));
-            type >= 2 && arr.push(String(min).padStart(2, "0"));
-            arr.push(String(second).padStart(2, "0"));
+            type >= 4 && arr.push(String(day).padStart(2, '0'));
+            type >= 3 && arr.push(String(hour).padStart(2, '0'));
+            type >= 2 && arr.push(String(min).padStart(2, '0'));
+            arr.push(String(second).padStart(2, '0'));
 
             setTimeArray(arr);
 
@@ -63,7 +63,7 @@ export default (props: CountDownProps) => {
         <div>
             {timeArray.map((time, index) => (
                 <span>
-                    {time} {index <= _eUnit.length ? _eUnit[index] + " " : ""}
+                    {time} {index <= _eUnit.length ? _eUnit[index] + ' ' : ''}
                 </span>
             ))}
         </div>

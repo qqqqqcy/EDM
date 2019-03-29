@@ -1,16 +1,16 @@
-import webpack, { DefinePlugin } from "webpack";
-import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import StyleLintPluginfrom from "stylelint-webpack-plugin";
-import getStyleLoader from "./getStyleLoader";
+import webpack, { DefinePlugin } from 'webpack';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import StyleLintPluginfrom from 'stylelint-webpack-plugin';
+import getStyleLoader from './getStyleLoader';
 
-import { getProjectUrl } from "./until";
-const devMode: boolean = process.env.NODE_ENV !== "production";
-const tsconfig = getProjectUrl(`tsconfig${devMode ? "" : ".prod"}.json`);
+import { getProjectUrl } from './until';
+const devMode: boolean = process.env.NODE_ENV !== 'production';
+const tsconfig = getProjectUrl(`tsconfig${devMode ? '' : '.prod'}.json`);
 
 const config: webpack.Configuration = {
     resolve: {
-        extensions: [".ts", ".tsx", ".js", ".jsx", ".scss"]
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
     },
     module: {
         rules: [
@@ -18,27 +18,31 @@ const config: webpack.Configuration = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-env"]
-                    }
-                }
+                        presets: ['@babel/preset-env'],
+                    },
+                },
             },
             {
                 test: /\.tsx?$/,
-                loader: "ts-loader",
+                enforce: 'pre',
+                loader: 'eslint-loader',
                 options: {
-                    configFile: tsconfig
-                }
+                    configFile: getProjectUrl('.eslintrc.js'),
+                },
+                // use: [{ loader: "eslint-loader" }]
             },
             {
                 test: /\.tsx?$/,
-                enforce: "pre",
-                use: [{ loader: "tslint-loader" }]
+                loader: 'ts-loader',
+                options: {
+                    configFile: tsconfig,
+                },
             },
             {
                 test: /\.svg$/,
-                loader: "svg-sprite-loader"
+                loader: 'svg-sprite-loader',
             },
             // {
             //   test: /guui\.svg$/,
@@ -48,34 +52,34 @@ const config: webpack.Configuration = {
             //   test: /\.md$/,
             //   loader: 'text-loader',
             // },
-            getStyleLoader(devMode)
-        ]
+            getStyleLoader(devMode),
+        ],
     },
 
     plugins: [
         new DefinePlugin({
-            $PREFIX: JSON.stringify("edm")
+            $PREFIX: JSON.stringify('edm'),
         }),
         new StyleLintPluginfrom({
-            configFile: getProjectUrl(".stylelintrc.js"),
+            configFile: getProjectUrl('.stylelintrc.js'),
             context: getProjectUrl(),
-            files: ["**/*.scss", "**/*.sass"],
+            files: ['**/*.scss', '**/*.sass'],
             emitErrors: true,
-            lintDirtyModulesOnly: true
+            lintDirtyModulesOnly: true,
         }),
         // 检查代码中的类型错误
         new ForkTsCheckerWebpackPlugin({
-            tsconfig
+            tsconfig,
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: '[name].css',
+            chunkFilename: '[id].css',
             // filename: devMode ? "[name].css" : "[name].[hash].css",
             // chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
-        })
+        }),
     ],
     resolveLoader: {
-        modules: ["node_modules", getProjectUrl("loaders")]
-    }
+        modules: ['node_modules', getProjectUrl('loaders')],
+    },
 };
 export default config;

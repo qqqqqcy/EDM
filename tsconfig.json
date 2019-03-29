@@ -1,14 +1,14 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "sourceMap": true,
-    "paths": {
-      "@component*": ["component*"],
-      "@lib*": ["lib*"]
-    }
-  },
-  "files": ["examples/index.d.ts", "typings/index.d.ts"],
-  "include": ["component/**/*", "examples/**/*", "lib/**/*.ts"]
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "allowJs": true,
+        "sourceMap": true,
+        "paths": {
+            "@component*": ["component*"],
+            "@lib*": ["lib*"]
+        }
+    },
+    "files": ["examples/index.d.ts", "typings/index.d.ts"],
+    "include": ["component/**/*", "examples/**/*"],
+    "exclude": ["lib/**/*", "node_modules"]
 }
