@@ -7,3 +7,8 @@ declare module '!!raw-loader!*' {
     const contents: string;
     export = contents;
 }
+
+declare module '@tests/shared/demoTest' {
+    const demoTest: (componentName: string) => void;
+    export = demoTest;
+}

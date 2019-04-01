@@ -12,7 +12,16 @@ function getProjectUrl(...str: string[]) {
 }
 
 const cpInfo: CpInfo = { name: '', type: '' };
-const cp: CP = { index: '', PropsType: '', style: '', _demo: '', _index: '', _readme: '' };
+const cp: CP = {
+    index: '',
+    PropsType: '',
+    style: '',
+    demo_demo: '',
+    demo_index: '',
+    demo_readme: '',
+    test_index: '',
+    test_demo: '',
+};
 
 interface CpInfo {
     name: string;
@@ -22,9 +31,11 @@ interface CP {
     index: string;
     PropsType: string;
     style: string;
-    _demo: string;
-    _index: string;
-    _readme: string;
+    demo_demo: string;
+    demo_index: string;
+    demo_readme: string;
+    test_index: string;
+    test_demo: string;
 }
 async function userInput() {
     const typeListUrl = getProjectUrl('script', 'typeList.json');
@@ -77,6 +88,7 @@ function getTemplate() {
             const { name } = cpInfo;
             const cpUrl = ['script', 'template', 'NAME'];
             const DemoUrl = ['script', 'template', 'NAME', 'demo'];
+            const TestUrl = ['script', 'template', 'NAME', '__tests__'];
             cp.index = fs
                 .readFileSync(getProjectUrl(...cpUrl, 'index.tsx'), 'utf8')
                 .replace(/-NAME/g, `-${name.toLowerCase()}`)
@@ -85,9 +97,11 @@ function getTemplate() {
             cp.style = fs
                 .readFileSync(getProjectUrl(...cpUrl, 'style.scss'), 'utf8')
                 .replace(/NAME/g, name.toLowerCase());
-            cp._demo = fs.readFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), 'utf8').replace(/NAME/g, name);
-            cp._index = fs.readFileSync(getProjectUrl(...DemoUrl, 'index.ts'), 'utf8').replace(/NAME/g, name);
-            cp._readme = fs.readFileSync(getProjectUrl(...DemoUrl, 'readme.md'), 'utf8').replace(/NAME/g, name);
+            cp.demo_demo = fs.readFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), 'utf8').replace(/NAME/g, name);
+            cp.demo_index = fs.readFileSync(getProjectUrl(...DemoUrl, 'index.ts'), 'utf8').replace(/NAME/g, name);
+            cp.demo_readme = fs.readFileSync(getProjectUrl(...DemoUrl, 'readme.md'), 'utf8').replace(/NAME/g, name);
+            cp.test_demo = fs.readFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), 'utf8').replace(/NAME/g, name);
+            cp.test_index = fs.readFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), 'utf8').replace(/NAME/g, name);
             res();
         } catch (err) {
             rej(err);
@@ -101,14 +115,18 @@ function setTemplate() {
             const { name } = cpInfo;
             const NameUrl = ['component', name];
             const DemoUrl = ['component', name, 'demo'];
+            const TestUrl = ['component', name, '__tests__'];
             fs.mkdirSync(getProjectUrl(...NameUrl));
             fs.mkdirSync(getProjectUrl(...DemoUrl));
+            fs.mkdirSync(getProjectUrl(...TestUrl));
             fs.writeFileSync(getProjectUrl(...NameUrl, 'index.tsx'), cp.index, 'utf8');
             fs.writeFileSync(getProjectUrl(...NameUrl, 'PropsType.ts'), cp.PropsType, 'utf8');
             fs.writeFileSync(getProjectUrl(...NameUrl, 'style.scss'), cp.style, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), cp._demo, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'index.ts'), cp._index, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'readme.md'), cp._readme, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), cp.demo_demo, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'index.ts'), cp.demo_index, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'readme.md'), cp.demo_readme, 'utf8');
+            fs.writeFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), cp.test_demo, 'utf8');
+            fs.writeFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), cp.test_index, 'utf8');
             res();
         } catch (err) {
             console.log('setTemplate fail !');

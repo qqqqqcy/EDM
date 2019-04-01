@@ -1,11 +1,14 @@
 {
-    // "eslint.autoFixOnSave": false,
+    "files.associations": {
+        "*.ts.snap": "html"
+    },
     "editor.formatOnSave": true,
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        { "language": "typescript", "autoFix": true },
-        { "language": "typescriptreact", "autoFix": true }
-    ],
+    // "eslint.validate": [
+    //     "javascript",
+    //     "javascriptreact",
+    //     { "language": "typescript", "autoFix": true },
+    //     { "language": "typescriptreact", "autoFix": true }
+    // ],
     "prettier.stylelintIntegration": true
+    // "jest.showCoverageOnLoad": true
 }
