@@ -23,7 +23,6 @@ var config = {
         '^.+test\\.(js|jsx)$': 'babel-jest',
         '^.+\\.(ts|tsx)$': 'ts-jest',
     },
-
     testMatch: ['<rootDir>/component/**/__tests__/**/*.test.(js|jsx|ts|tsx)'],
 
     moduleNameMapper: {

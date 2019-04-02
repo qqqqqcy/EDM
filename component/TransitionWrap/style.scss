@@ -1,0 +1,5 @@
+$transitionwrap-prefix: $preifx + '-transitionwrap';
+
+.#{$transitionwrap-prefix} {
+    text-decoration: underline;
+}

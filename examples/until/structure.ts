@@ -1,7 +1,10 @@
 export const directoryStructure: DirectoryStructureItem[] = [
-    { name: 'Button', type: 'type1' },
-    { name: 'Icon', type: 'type1' },
-    { name: 'MessageBox', type: 'type2' },
+    { name: 'Icon', type: 'Data Display' },
+    { name: 'Button', type: 'Data Entry' },
+    { name: 'MessageBox', type: 'Feedback' },
+    { name: 'TouchFeedback', type: 'Depth' },
+    { name: 'Portal', type: 'Depth' },
+    { name: 'TransitionWrap', type: 'Depth' },
     // Anchor point
     /**
      * Do not delete !

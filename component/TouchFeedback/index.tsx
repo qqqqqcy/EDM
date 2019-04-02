@@ -1,13 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
-import { TouchFeedbackProps } from '../PropsType';
+import { TouchFeedbackPropsWithChildren } from './PropsType';
 
-interface TouchFeedbackPropsType extends TouchFeedbackProps {
-    children: React.ReactElement;
-}
-
-const TouchFeedback = (props: TouchFeedbackPropsType) => {
-    const { children, disabled = false, activeStyle = {}, activeClassName = '' } = props;
+const TouchFeedback = (props: TouchFeedbackPropsWithChildren) => {
+    const { children, _disabled = false, _activeStyle = {}, _activeClassName = '' } = props;
 
     const [active, setActive]: UseType<boolean> = React.useState(false);
 
@@ -50,7 +46,7 @@ const TouchFeedback = (props: TouchFeedbackPropsType) => {
         triggerEvent('MouseLeave', false, e);
     };
 
-    const events = disabled
+    const events = _disabled
         ? undefined
         : {
               onTouchStart,
@@ -63,13 +59,13 @@ const TouchFeedback = (props: TouchFeedbackPropsType) => {
           };
     const child = React.Children.only(children);
 
-    if (!disabled && active) {
+    if (!_disabled && active) {
         let { style, className } = child.props;
-        if (activeStyle !== false) {
-            if (activeStyle) {
-                style = { ...style, ...activeStyle };
+        if (_activeStyle !== false) {
+            if (_activeStyle) {
+                style = { ...style, ..._activeStyle };
             }
-            className = classnames(className, activeClassName);
+            className = classnames(className, _activeClassName);
         }
         return React.cloneElement(child, {
             className,

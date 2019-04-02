@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { ButtonProps } from './PropsType';
-import TouchFeedback from '../common/TouchFeedback';
+import { TouchFeedback } from '../index';
 const prefixCls = `${$PREFIX}-button`;
 
 const Button = (props: ButtonProps) => {
@@ -14,8 +14,8 @@ const Button = (props: ButtonProps) => {
         style,
         disabled,
         className,
-        activeStyle,
-        activeClassName,
+        _activeStyle,
+        _activeClassName,
         ...restProps
     } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}-${_size}`, `${prefixCls}-${_type}`, {
@@ -26,17 +26,17 @@ const Button = (props: ButtonProps) => {
     });
     return (
         <TouchFeedback
-            activeClassName={activeClassName || `${prefixCls}-active`}
-            activeStyle={activeStyle}
-            disabled={disabled}
+            _activeClassName={_activeClassName || `${prefixCls}-active`}
+            _activeStyle={_activeStyle}
+            _disabled={disabled}
         >
             <button
                 {...restProps}
                 role="button"
                 className={cls}
                 style={typeof _radius === 'string' ? { ...style, borderRadius: _radius } : style}
-                disabled={disabled}
                 aria-disabled={disabled}
+                disabled={disabled}
             />
         </TouchFeedback>
     );

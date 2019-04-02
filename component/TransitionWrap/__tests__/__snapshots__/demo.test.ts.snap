@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TransitionWrap correctly 1`] = `
+<div
+  class="TransitionWrap"
+>
+  <h1>
+    hello
+  </h1>
+</div>
+`;

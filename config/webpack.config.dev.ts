@@ -7,8 +7,8 @@ import { getProjectUrl } from './until';
 
 // 使用 awesome-typescript-loader 插件打包 tsx，文件无法生成类型文件
 // https://github.com/s-panferov/awesome-typescript-loader/issues/411
-import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
-// import TsConfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+// import { TsConfigPathsPlugin } from 'awesome-typescript-loader';
+import TsConfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
 import webpackMerge from 'webpack-merge';
 
@@ -30,7 +30,7 @@ const config: webpack.Configuration = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'eled-mobile',
+            title: 'EDM',
             template: 'index.html',
         }),
     ],

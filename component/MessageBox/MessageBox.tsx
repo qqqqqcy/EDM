@@ -1,14 +1,10 @@
 import React from 'react';
-// import { createPortal } from "react-dom";
 import { MessageBoxProps, MessageBoxState } from './PropsType';
-
-// import { CSSTransition } from "react-transition-group";
-import TransitionWrap from '../common/TransitionWrap';
-import Portal from '../common/Portal';
+import { Portal, TransitionWrap } from '../index';
 import './style.scss';
 
 export default class MessageBox extends React.PureComponent<MessageBoxProps, MessageBoxState> {
-    static defaultProps = {
+    public static defaultProps = {
         title: '',
         cover: true,
         className: '',
@@ -17,8 +13,8 @@ export default class MessageBox extends React.PureComponent<MessageBoxProps, Mes
         handleCloseClick: '',
     };
 
-    node: HTMLElement;
-    constructor(props: MessageBoxProps) {
+    public node: HTMLElement;
+    public constructor(props: MessageBoxProps) {
         super(props);
         const doc = window.document;
         this.node = doc.createElement('div');
@@ -28,7 +24,7 @@ export default class MessageBox extends React.PureComponent<MessageBoxProps, Mes
         };
     }
 
-    componentWillReceiveProps(nextProps: MessageBoxProps) {
+    public componentWillReceiveProps(nextProps: MessageBoxProps) {
         if ('visible' in nextProps && this.props.visible !== nextProps.visible) {
             this.setState({
                 visible: nextProps.visible,
@@ -36,7 +32,7 @@ export default class MessageBox extends React.PureComponent<MessageBoxProps, Mes
         }
     }
 
-    handleClickCover = (event: any) => {
+    public handleClickCover = (event: any) => {
         this.props.clear();
         // 防止事件穿透
         if (!event.target.className.includes('jui-MessageBox')) {
@@ -48,7 +44,7 @@ export default class MessageBox extends React.PureComponent<MessageBoxProps, Mes
         }
     };
 
-    render() {
+    public render() {
         const { visible } = this.state;
         const { cover, className, title, handleCloseClick } = this.props;
         return (
@@ -68,7 +64,6 @@ export default class MessageBox extends React.PureComponent<MessageBoxProps, Mes
                         </div>
                     </div>
                 </TransitionWrap>
-                ,
             </Portal>
         );
     }

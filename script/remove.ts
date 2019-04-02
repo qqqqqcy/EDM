@@ -11,40 +11,19 @@ interface CpInfo {
     name: string;
     confirm: boolean;
 }
-// const cp: CP = {
-//     index: '',
-//     PropsType: '',
-//     style: '',
-//     demo_demo: '',
-//     demo_index: '',
-//     demo_readme: '',
-//     test_index: '',
-//     test_demo: '',
-// };
 
-// interface CP {
-//     index: string;
-//     PropsType: string;
-//     style: string;
-//     demo_demo: string;
-//     demo_index: string;
-//     demo_readme: string;
-//     test_index: string;
-//     test_demo: string;
-// }
 async function userInput() {
     const structureUrl = getProjectUrl('examples', 'until', 'structure.ts');
     const structure = fs.readFileSync(structureUrl, 'utf8');
     const reg = new RegExp(/name: '(\w)*/gm);
     const cpList = (structure.match(reg) || []).map(item => item.replace("name: '", ''));
-    console.log(cpList);
     return inquirer
         .prompt([
             {
                 type: 'list',
                 name: 'name',
                 choices: cpList,
-                message: "Please input Component's name:",
+                message: "Please selecte Component's name:",
             },
             {
                 type: 'confirm',
@@ -69,10 +48,8 @@ function deleteFolderRecursive(path: string) {
         fs.readdirSync(path).forEach(function(file) {
             var curPath = path + '/' + file;
             if (fs.statSync(curPath).isDirectory()) {
-                // recurse
                 deleteFolderRecursive(curPath);
             } else {
-                // delete file
                 fs.unlinkSync(curPath);
             }
         });
@@ -127,7 +104,7 @@ function removeTemplateInCode() {
     try {
         await userInput();
         removeTemplateInCode();
-        await removeTemplate();
+        removeTemplate();
         console.log('> Congratulations, remove component success !!!');
     } catch (err) {
         console.log(err);

@@ -1,0 +1,5 @@
+$portal-prefix: $preifx + '-portal';
+
+.#{$portal-prefix} {
+    text-decoration: underline;
+}

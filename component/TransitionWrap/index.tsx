@@ -1,15 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import { TransitionWrapProps, TransitionStatus } from '../PropsType';
-import setDefaultProps, { transitionWrapProps } from '../setDefaultProps';
-
-interface TransitionWrapPropsWithChildren extends TransitionWrapProps {
-    children: React.ReactElement | React.ReactElement[];
-}
-
-const defaultProps: GetNullableType<TransitionWrapPropsWithChildren> = {
-    ...transitionWrapProps,
-};
+import { TransitionWrapPropsWithChildren, TransitionStatus } from './PropsType';
 
 const statusCase: { [propName: string]: TransitionStatus } = {
     entry: 'entry',
@@ -20,8 +11,17 @@ const statusCase: { [propName: string]: TransitionStatus } = {
     exitDone: 'exit-done',
 };
 
-export default setDefaultProps(defaultProps, (props: Required<TransitionWrapPropsWithChildren>) => {
-    const { time, visible, children, onEntry, onExitDone, onEntryDone, unmountOnExit, transitionClassName } = props;
+const TransitionWrap = (props: TransitionWrapPropsWithChildren) => {
+    const {
+        children,
+        time = 250,
+        visible = true,
+        unmountOnExit = true,
+        transitionClassName = '',
+        onEntry = () => {},
+        onExitDone = () => {},
+        onEntryDone = () => {},
+    } = props;
     const [status, setStatus]: UseType<TransitionStatus> = React.useState(visible ? statusCase.entry : statusCase.exit);
     const [show, setShow]: UseType<boolean> = React.useState(visible);
     const [timer, useTimer]: UseType<number> = React.useState(0);
@@ -86,4 +86,6 @@ export default setDefaultProps(defaultProps, (props: Required<TransitionWrapProp
     } else {
         return null;
     }
-});
+};
+
+export default TransitionWrap;

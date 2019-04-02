@@ -3,8 +3,8 @@ import { NAME } from '@component/index';
 const Demo = () => {
     return (
         <div className="NAME">
-            <NAME />
-            <NAME _prop={'Hello World'} />
+            <NAME>children</NAME>
+            <NAME _prop={'Hello World'}>children</NAME>
         </div>
     );
 };

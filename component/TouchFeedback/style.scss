@@ -1,0 +1,5 @@
+$touchfeedback-prefix: $preifx + '-touchfeedback';
+
+.#{$touchfeedback-prefix} {
+    text-decoration: underline;
+}
