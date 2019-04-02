@@ -8,7 +8,7 @@ const prefixCls = `${$PREFIX}-cdown`;
 const STORAGE = window.localStorage || {};
 const CDOWN_KEY = 'EDM_CDOWN_KEY';
 
-function CountDown(props: CountDownProps) {
+export const CountDown = (props: CountDownProps) => {
     const { _endDate = 0, _etype = 1, _eUnit = [''], _eTimeUp = () => {}, className, id = 'edm' } = props;
     const cls = classnames(prefixCls, className);
 
@@ -60,14 +60,11 @@ function CountDown(props: CountDownProps) {
 
     // 存储倒计时的key
     const key = `${id}_${CDOWN_KEY}`;
-    let time = STORAGE.getItem(key);
-    console.log(time);
-    let storageCountDown: any;
     let intervalId: any;
 
-    // this.storageCountDown = Number(STORAGE.getItem(key)); // 获取localStorage当前倒计时时间
+    let storageCountDown = Number(STORAGE.getItem(key)); // 获取localStorage当前倒计时时间
 
-    if (!time) {
+    if (!storageCountDown) {
         storageCountDown = endTime;
         STORAGE.setItem(key, storageCountDown + '');
     } else {
@@ -78,59 +75,22 @@ function CountDown(props: CountDownProps) {
     const initialValue = getTimeData(storageCountDown - currentTime);
     const [timeArray, setTimeArray] = useState(initialValue);
 
-    // function useInterval(callback: any, delay: any) {
-    //     const savedCallback = useRef();
-
-    //     // 保存新回调
-    //     useEffect(() => {
-    //         savedCallback.current = callback;
-    //     });
-
-    //     // 建立 interval
-    //     useEffect(() => {
-    //         function tick() {
-    //             let testFun: any = savedCallback.current;
-    //             if (testFun) {
-    //                 testFun();
-    //             }
-    //         }
-    //         if (delay !== null) {
-    //             intervalId = setInterval(tick, delay);
-    //             return () => clearInterval(intervalId);
-    //         }
-    //     }, [delay]);
-    // }
-
-    const start = () => {
-        const currentTime: number = Math.floor(new Date().getTime() / 1000);
-        let t = storageCountDown - currentTime; // 剩余的毫秒数
-        let tempArr = getTimeData(t);
-        setTimeArray(tempArr);
-    };
-
     useEffect(() => {
-        intervalId = setInterval(() => {
+        function tick() {
             const currentTime: number = Math.floor(new Date().getTime() / 1000);
             if (storageCountDown >= currentTime) {
-                start();
+                let t = storageCountDown - currentTime; // 剩余的毫秒数
+                let tempArr = getTimeData(t);
+                setTimeArray(tempArr);
             } else {
                 clearInterval(intervalId);
                 STORAGE.removeItem(key);
                 _eTimeUp();
             }
-        }, 1000);
-    });
-
-    // useInterval(() => {
-    //     const currentTime: number = Math.floor(new Date().getTime() / 1000);
-    //     if (storageCountDown >= currentTime) {
-    //         start();
-    //     } else {
-    //         clearInterval(intervalId);
-    //         STORAGE.removeItem(key);
-    //         _eTimeUp();
-    //     }
-    // }, 1000);
+        }
+        intervalId = setInterval(tick, 1000);
+        return () => clearInterval(intervalId);
+    }, []);
 
     return (
         <div className={cls}>
@@ -141,6 +101,4 @@ function CountDown(props: CountDownProps) {
             ))}
         </div>
     );
-}
-
-export default CountDown;
+};
