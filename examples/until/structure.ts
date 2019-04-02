@@ -3,6 +3,11 @@ export const directoryStructure: DirectoryStructureItem[] = [
     { name: 'Icon', type: 'type1' },
     { name: 'MessageBox', type: 'type2' },
     { name: 'CountDown', type: 'type2' },
+    // Anchor point
+    /**
+     * Do not delete !
+     * anchor positioning is required when creating components
+     */
 ];
 
 export const sortStructure = (structure: DirectoryStructureItem[]) => {

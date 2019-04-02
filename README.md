@@ -2,27 +2,69 @@
 
 A configurable Mobile UI
 
-## 目录结构
+## 快速开发
+
+安装依赖
+
+```bash
+yarn install
+```
+
+开发模式
 
 ```
-├── bak                         此目录与开发无任何关联，可以完全忽略。仅仅用来备份一些开发过程中的配置。
-├── config                      用于 webpack 配置的文件
-├── component                   用来存放所有组件源码
-    ├── [cpName]                    单个组件
-        ├── demo                        用以在 example 中展示的 demo 和组件 API 说明
-    ├── common                      公用方法，底层组件
-        ├── [cpName]                    单个底层组件
-    ├── style                       组件样式
-    ├── index.ts                    入口文件
-├── examples                    组件库的展示页
-    ├── document                    组件库的说明文档页
-        ├── component                   说明文档页用的组件
-        ├── markdown                    纯 markdown 页面
-    ├── instance                    移动端的组件展示页
-    ├── style                       样式
-    ├── until                       公共方法
-├── lib                         组件库打包生成
-├── typings                     类型文件
+yarn dev
+```
+
+新增组件
+
+```
+yarn new
+
+? Please input Component's name:
+> 输入组件名，建议大小开头，例：Button
+
+? Please choic Component's type: (Use arrow keys)
+> type1
+  type2
+  Create a new type
+> 选择类型，选择最后一项可以创建新的类型，例：type3
+```
+
+组件打包
+
+```
+yarn build
+```
+
+## 目录结构
+
+[查看完整文件结构](./docs/docsMap.md)
+
+```js
+Project
+│
+├── component            //  组件源码
+│   ├── [component]      //  单个组件
+│   │   └── demo         //  用以展示的 demo
+│   ├── common           //  底层公共组件和方法
+│   │   └── [component]  //  底层组件，结构同上
+│   └── style            //  样式
+│
+├── example              //  展示页源码
+│   ├── document         //  文档页（用以电脑访问）
+│   ├── instance         //  实例（用以手机访问）
+│   ├── style            //  样式
+│   └── until            //  通用方法
+│
+├── script               //  脚本
+│   └── template         //  组件模板
+├── config               //  配置文件
+├── lib                  //  组件打包目录
+├── docs                 //  项目文档
+├── typings              //  类型文件
+└── bak                  //  无用。请忽略
+    ...
 ```
 
 ## 项目特性
