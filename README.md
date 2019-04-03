@@ -14,43 +14,10 @@ YARN
 
 `yarn add`
 
-开发模式
+## 使用
 
-```
-yarn dev
-```
-
-新增组件
-
-```
-yarn new
-
-? Please input Component's name:
-> 输入组件名，建议大小开头，例：Button
-
-? Please choic Component's type: (Use arrow keys)
-> type1
-  type2
-  Create a new type
-> 选择类型，选择最后一项可以创建新的类型，例：type3
-```
-
-删除组件
-
-```
-yarn rm
-? Please selecte Component's name:
-> 选择需要删除的组件
-
-? Are you sure you want to delete it?
-> 输入 y 确认删除
-```
-
-组件打包
-
-```
-yarn build
-```
+-   [我是开发者](./docs/develop.md)
+-   [我是使用者](./docs/client.md)
 
 ## 目录结构
 
