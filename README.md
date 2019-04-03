@@ -31,6 +31,17 @@ yarn new
 > 选择类型，选择最后一项可以创建新的类型，例：type3
 ```
 
+删除组件
+
+```
+yarn run remove
+? Please selecte Component's name:
+> 选择需要删除的组件
+
+? Are you sure you want to delete it?
+> 输入 y 确认删除
+```
+
 组件打包
 
 ```

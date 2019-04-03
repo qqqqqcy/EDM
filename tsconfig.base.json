@@ -9,8 +9,7 @@
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "strictNullChecks": true,
-        "esModuleInterop": true,
-        "baseUrl": "."
+        "esModuleInterop": true
     }
     // "typeRoots": ["node_modules/@types", "typings/**/*"],
     // "exclude": ["node_modules"]

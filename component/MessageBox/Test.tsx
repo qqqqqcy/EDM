@@ -34,14 +34,14 @@ interface MessageBoxProps {
 }
 
 export default class MessageBoxWrap extends React.PureComponent<MessageBoxProps, { v: boolean; content: any }> {
-    constructor(props: any) {
+    private constructor(props: any) {
         super(props);
         this.state = {
             v: props.v,
             content: props.content,
         };
     }
-    static create = (props: MessageBoxProps) => {
+    public static create = (props: MessageBoxProps) => {
         div = document.createElement('div');
         document.body.appendChild(div);
         const message: any = ReactDOM.render(<MessageBoxWrap {...props} />, div);
@@ -56,7 +56,7 @@ export default class MessageBoxWrap extends React.PureComponent<MessageBoxProps,
         };
     };
 
-    clear = () => {
+    public clear = () => {
         const { time } = this.props;
         // this.setState({ v: false });
         return new Promise((res, rej) => {
@@ -68,7 +68,7 @@ export default class MessageBoxWrap extends React.PureComponent<MessageBoxProps,
         });
     };
 
-    show = async (obj: any) => {
+    public show = async (obj: any) => {
         await this.clear();
         this.setState({
             content: obj.children,
@@ -76,7 +76,7 @@ export default class MessageBoxWrap extends React.PureComponent<MessageBoxProps,
         });
     };
 
-    render() {
+    public render() {
         const { v, content } = this.state;
         return (
             <MessageBox clear={this.clear} visible={v}>

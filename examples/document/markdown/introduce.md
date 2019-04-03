@@ -37,3 +37,7 @@ import 'edm/css/index.css';
 
 ReactDOM.render(<Button />, mountNode);
 ```
+
+## 测试
+
+[测试报告](../../../coverage/lcov-report/index.html)

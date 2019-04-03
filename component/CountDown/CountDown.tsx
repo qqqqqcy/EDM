@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { CountDownProps } from './PropsType';
 import classnames from 'classnames';
-import './style.scss';
 
-const prefixCls = `${$PREFIX}-cdown`;
+const prefixCls = `${$PREFIX}-countdown`;
 const STORAGE = window.localStorage || {};
 const CDOWN_KEY = 'EDM_CDOWN_KEY';
 

@@ -1,4 +1,4 @@
-import { TouchFeedbackProps } from '../common/PropsType';
+import { TouchFeedbackProps } from '../TouchFeedback/PropsType';
 
 export interface ButtonProps
     extends TouchFeedbackProps,

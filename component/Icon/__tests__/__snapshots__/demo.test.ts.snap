@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Icon correctly 1`] = `
+<div>
+  <div>
+    <svg
+      aria-hidden="true"
+      class="edm-icon edm-icon-large"
+      fill="red"
+      type=""
+    >
+      <use
+        href="#alipay"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="edm-icon edm-icon-large"
+      fill="blue"
+      type=""
+    >
+      <use
+        href="#alipay"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="edm-icon edm-icon-large"
+      fill="#ccc"
+      type=""
+    >
+      <use
+        href="#alipay"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="edm-icon edm-icon-large"
+      fill="#ccc"
+      type=""
+    >
+      <use
+        href="#wechat"
+      />
+    </svg>
+  </div>
+</div>
+`;
