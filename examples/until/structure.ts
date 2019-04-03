@@ -6,6 +6,7 @@ export const directoryStructure: DirectoryStructureItem[] = [
     { name: 'Portal', type: 'Depth' },
     { name: 'TransitionWrap', type: 'Depth' },
     { name: 'CountDown', type: 'Data Display' },
+    { name: 'Popover', type: 'Data Display' },
     // Anchor point
     /**
      * Do not delete !

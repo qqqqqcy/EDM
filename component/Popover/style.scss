@@ -1,0 +1,5 @@
+$popover-prefix: $preifx + '-popover';
+
+.#{$popover-prefix} {
+    text-decoration: underline;
+}
