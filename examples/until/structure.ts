@@ -1,18 +1,6 @@
-export const directoryStructure: DirectoryStructureItem[] = [
-    { name: 'Icon', type: 'Data Display' },
-    { name: 'Button', type: 'Data Entry' },
-    { name: 'MessageBox', type: 'Feedback' },
-    { name: 'TouchFeedback', type: 'Depth' },
-    { name: 'Portal', type: 'Depth' },
-    { name: 'TransitionWrap', type: 'Depth' },
-    { name: 'CountDown', type: 'Data Display' },
-    { name: 'Popover', type: 'Data Display' },
-    // Anchor point
-    /**
-     * Do not delete !
-     * anchor positioning is required when creating components
-     */
-];
+import components from './components';
+
+export const directoryStructure: DirectoryStructureItem[] = components;
 
 export const sortStructure = (structure: DirectoryStructureItem[]) => {
     const newStructure: { [propName: string]: DirectoryStructureItem[] } = {};

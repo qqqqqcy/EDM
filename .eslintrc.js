@@ -21,5 +21,15 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 'off',
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': 'warn',
+        // 'prettier/prettier': [
+        //     'error',
+        //     {
+        //         semi: true,
+        //         trailingComma: 'all',
+        //         singleQuote: true,
+        //         printWidth: 120,
+        //         tabWidth: 4,
+        //     },
+        // ],
     },
 };

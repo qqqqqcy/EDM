@@ -2,6 +2,7 @@ import { platform } from 'os';
 const EOL = platform() === 'win32' ? '\r\n' : '\n';
 import fs from 'fs';
 import path from 'path';
+import components from '../examples/until/components';
 /**
  * A collection of common interactive command line user interfaces.
  * @ref https://github.com/SBoudrias/Inquirer.js
@@ -40,11 +41,14 @@ interface CP {
     testDemo: string;
 }
 async function userInput() {
-    const typeListUrl = getProjectUrl('script', 'typeList.json');
-    const typeListSource = fs.readFileSync(typeListUrl, 'utf8');
-    const typeList = JSON.parse(typeListSource);
+    // const typeList = JSON.parse(typeListSource);
+    const typeObject: {
+        [key: string]: boolean;
+    } = {};
+    components.map((item: { name: string; type: string }) => (typeObject[item.type] = true));
     // cnt: Create a new type
-    const cnt = [...typeList].pop();
+    const cnt = 'Create a new type';
+    const typeList = [...Object.keys(typeObject), cnt];
     return inquirer
         .prompt([
             {
@@ -75,10 +79,8 @@ async function userInput() {
                 );
                 throw 'fail !';
             }
-            if (typeList.indexOf(type) === -1) {
-                fs.writeFileSync(typeListUrl, typeListSource.replace(`"${cnt}"`, `"${type}", "${cnt}"`), 'utf8');
-            }
             name = name[0].toUpperCase() + name.slice(1, 9999);
+            components.push({ name, type });
             cpInfo.name = name;
             cpInfo.type = type;
         });
@@ -138,25 +140,21 @@ function setTemplate() {
 }
 
 function addTemplateInCode() {
-    const { name, type } = cpInfo;
+    const { name } = cpInfo;
+
     const indexUrl = getProjectUrl('component', 'index.tsx');
     const styleUrl = getProjectUrl('component', 'style', 'index.scss');
-    const structureUrl = getProjectUrl('examples', 'until', 'structure.ts');
+    const typeListUrl = getProjectUrl('examples', 'until', 'components.ts');
 
     const componentIndex = fs.readFileSync(indexUrl, 'utf8');
     const componentStyle = fs.readFileSync(styleUrl, 'utf8');
-    const structure = fs.readFileSync(structureUrl, 'utf8');
 
     const newIndex = componentIndex + `export { default as ${name} } from './${name}';` + EOL;
     const newStyle = componentStyle + `@import '../${name}/style.scss';` + EOL;
-    const newStructure = structure.replace(
-        '// Anchor point',
-        `{ name: '${name}', type: '${type}' },` + EOL + '    // Anchor point',
-    );
 
     fs.writeFileSync(indexUrl, newIndex, 'utf8');
     fs.writeFileSync(styleUrl, newStyle, 'utf8');
-    fs.writeFileSync(structureUrl, newStructure, 'utf8');
+    fs.writeFileSync(typeListUrl, `export default ${JSON.stringify(components)}`, 'utf8');
 }
 
 /**

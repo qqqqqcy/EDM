@@ -1,5 +1,6 @@
 import { platform } from 'os';
 const EOL = platform() === 'win32' ? '\r\n' : '\n';
+import components from '../examples/until/components';
 import fs from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
@@ -15,10 +16,9 @@ interface CpInfo {
 }
 
 async function userInput() {
-    const structureUrl = getProjectUrl('examples', 'until', 'structure.ts');
-    const structure = fs.readFileSync(structureUrl, 'utf8');
-    const reg = new RegExp(/name: '(\w)*/gm);
-    const cpList = (structure.match(reg) || []).map(item => item.replace("name: '", ''));
+    const cpList: string[] = [];
+    components.map(item => cpList.push(item.name));
+
     return inquirer
         .prompt([
             {
@@ -36,7 +36,7 @@ async function userInput() {
         ])
         .then(({ name, confirm }: CpInfo) => {
             if (confirm) {
-                console.log('删！');
+                console.log('...Removing');
                 console.log(name);
             } else {
                 throw '> Canceled';
@@ -84,19 +84,21 @@ function removeTemplateInCode() {
     const { name } = cpInfo;
     const indexUrl = getProjectUrl('component', 'index.tsx');
     const styleUrl = getProjectUrl('component', 'style', 'index.scss');
-    const structureUrl = getProjectUrl('examples', 'until', 'structure.ts');
+    const typeListUrl = getProjectUrl('examples', 'until', 'components.ts');
 
     const componentIndex = fs.readFileSync(indexUrl, 'utf8');
     const componentStyle = fs.readFileSync(styleUrl, 'utf8');
-    const structure = fs.readFileSync(structureUrl, 'utf8');
 
     const newIndex = deleteCode(name, componentIndex);
     const newStyle = deleteCode(name, componentStyle);
-    const newStructure = deleteCode(name, structure);
 
     fs.writeFileSync(indexUrl, newIndex, 'utf8');
     fs.writeFileSync(styleUrl, newStyle, 'utf8');
-    fs.writeFileSync(structureUrl, newStructure, 'utf8');
+    fs.writeFileSync(
+        typeListUrl,
+        `export default ${JSON.stringify(components.filter(item => item.name !== name))}`,
+        'utf8',
+    );
 }
 
 /**
