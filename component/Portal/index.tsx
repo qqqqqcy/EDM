@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { PortalPropsWithChildren } from './PropsType';
@@ -19,6 +20,7 @@ const Portal = (props: PortalPropsWithChildren) => {
             console.log('useShow');
             useShow(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_visible]);
     let legalMountNode: Element;
     if (!_mountNode) {

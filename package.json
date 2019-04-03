@@ -5,7 +5,7 @@
     "main": "lib/index.js",
     "types": "lib/index",
     "scripts": {
-        "remove": "ts-node script/remove.ts",
+        "rm": "ts-node script/remove.ts",
         "new": "ts-node script/new.ts",
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.dev.ts",
         "build": "cross-env NODE_ENV=production webpack -p --config ./config/webpack.config.prod.ts",
@@ -67,6 +67,7 @@
         "eslint-config-prettier": "^4.1.0",
         "eslint-loader": "^2.1.2",
         "eslint-plugin-prettier": "^3.0.1",
+        "eslint-plugin-react-hooks": "^1.6.0",
         "fork-ts-checker-webpack-plugin": "^1.0.0",
         "html-webpack-plugin": "^3.2.0",
         "inquirer": "^6.2.2",

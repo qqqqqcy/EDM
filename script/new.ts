@@ -1,3 +1,5 @@
+import { platform } from 'os';
+const EOL = platform() === 'win32' ? '\r\n' : '\n';
 import fs from 'fs';
 import path from 'path';
 /**
@@ -16,11 +18,11 @@ const cp: CP = {
     index: '',
     PropsType: '',
     style: '',
-    demo_demo: '',
-    demo_index: '',
-    demo_readme: '',
-    test_index: '',
-    test_demo: '',
+    demoDemo: '',
+    demoIndex: '',
+    demoReadme: '',
+    testIndex: '',
+    testDemo: '',
 };
 
 interface CpInfo {
@@ -31,11 +33,11 @@ interface CP {
     index: string;
     PropsType: string;
     style: string;
-    demo_demo: string;
-    demo_index: string;
-    demo_readme: string;
-    test_index: string;
-    test_demo: string;
+    demoDemo: string;
+    demoIndex: string;
+    demoReadme: string;
+    testIndex: string;
+    testDemo: string;
 }
 async function userInput() {
     const typeListUrl = getProjectUrl('script', 'typeList.json');
@@ -97,11 +99,11 @@ function getTemplate() {
             cp.style = fs
                 .readFileSync(getProjectUrl(...cpUrl, 'style.scss'), 'utf8')
                 .replace(/NAME/g, name.toLowerCase());
-            cp.demo_demo = fs.readFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), 'utf8').replace(/NAME/g, name);
-            cp.demo_index = fs.readFileSync(getProjectUrl(...DemoUrl, 'index.ts'), 'utf8').replace(/NAME/g, name);
-            cp.demo_readme = fs.readFileSync(getProjectUrl(...DemoUrl, 'readme.md'), 'utf8').replace(/NAME/g, name);
-            cp.test_demo = fs.readFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), 'utf8').replace(/NAME/g, name);
-            cp.test_index = fs.readFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), 'utf8').replace(/NAME/g, name);
+            cp.demoDemo = fs.readFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), 'utf8').replace(/NAME/g, name);
+            cp.demoIndex = fs.readFileSync(getProjectUrl(...DemoUrl, 'index.ts'), 'utf8').replace(/NAME/g, name);
+            cp.demoReadme = fs.readFileSync(getProjectUrl(...DemoUrl, 'readme.md'), 'utf8').replace(/NAME/g, name);
+            cp.testDemo = fs.readFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), 'utf8').replace(/NAME/g, name);
+            cp.testIndex = fs.readFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), 'utf8').replace(/NAME/g, name);
             res();
         } catch (err) {
             rej(err);
@@ -122,11 +124,11 @@ function setTemplate() {
             fs.writeFileSync(getProjectUrl(...NameUrl, 'index.tsx'), cp.index, 'utf8');
             fs.writeFileSync(getProjectUrl(...NameUrl, 'PropsType.ts'), cp.PropsType, 'utf8');
             fs.writeFileSync(getProjectUrl(...NameUrl, 'style.scss'), cp.style, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), cp.demo_demo, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'index.ts'), cp.demo_index, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'readme.md'), cp.demo_readme, 'utf8');
-            fs.writeFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), cp.test_demo, 'utf8');
-            fs.writeFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), cp.test_index, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), cp.demoDemo, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'index.ts'), cp.demoIndex, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'readme.md'), cp.demoReadme, 'utf8');
+            fs.writeFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), cp.testDemo, 'utf8');
+            fs.writeFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), cp.testIndex, 'utf8');
             res();
         } catch (err) {
             console.log('setTemplate fail !');
@@ -145,11 +147,11 @@ function addTemplateInCode() {
     const componentStyle = fs.readFileSync(styleUrl, 'utf8');
     const structure = fs.readFileSync(structureUrl, 'utf8');
 
-    const newIndex = componentIndex + `export { default as ${name} } from './${name}';` + '\n';
-    const newStyle = componentStyle + `@import '../${name}/style.scss';` + '\n';
+    const newIndex = componentIndex + `export { default as ${name} } from './${name}';` + EOL;
+    const newStyle = componentStyle + `@import '../${name}/style.scss';` + EOL;
     const newStructure = structure.replace(
         '// Anchor point',
-        `{ name: '${name}', type: '${type}' },` + '\r\n' + '    // Anchor point',
+        `{ name: '${name}', type: '${type}' },` + EOL + '    // Anchor point',
     );
 
     fs.writeFileSync(indexUrl, newIndex, 'utf8');

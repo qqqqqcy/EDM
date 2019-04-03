@@ -1,3 +1,5 @@
+import { platform } from 'os';
+const EOL = platform() === 'win32' ? '\r\n' : '\n';
 import fs from 'fs';
 import path from 'path';
 import inquirer from 'inquirer';
@@ -73,9 +75,9 @@ function removeTemplate() {
 
 function deleteCode(name: string, content: string): string {
     return content
-        .split('\n')
+        .split(EOL)
         .filter(item => !(item.includes(`'./${name}'`) || item.includes(`./${name}/`) || item.includes(`'${name}',`)))
-        .join('\n');
+        .join(EOL);
 }
 
 function removeTemplateInCode() {
