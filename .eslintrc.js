@@ -9,7 +9,7 @@ module.exports = {
         'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
         'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     ],
-    // plugins: ['@typescript-eslint'],
+    plugins: ['react-hooks'],
     parserOptions: {
         ecmaVersion: 2018, // Alows for the parsing of modern ECMAScript features
         sourceType: 'module', // Allows for the use of imports
@@ -19,5 +19,7 @@ module.exports = {
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-unused-vars': 'off',
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
     },
 };

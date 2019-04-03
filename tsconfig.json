@@ -9,7 +9,7 @@
             "@tests*": ["tests*"]
         }
     },
-    "files": ["examples/index.d.ts", "typings/index.d.ts"],
-    "include": ["component/**/*", "examples/**/*"],
-    "exclude": ["lib/**/*", "node_modules"]
+    // "files": ["examples", "typings/index.d.ts"],
+    "include": ["component", "examples", "typings"],
+    "exclude": ["node_modules"]
 }

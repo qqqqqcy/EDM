@@ -6,9 +6,13 @@ A configurable Mobile UI
 
 安装依赖
 
-```bash
-yarn install
-```
+NPM
+
+`npm install`
+
+YARN
+
+`yarn add`
 
 开发模式
 
@@ -34,7 +38,7 @@ yarn new
 删除组件
 
 ```
-yarn run remove
+yarn rm
 ? Please selecte Component's name:
 > 选择需要删除的组件
 
