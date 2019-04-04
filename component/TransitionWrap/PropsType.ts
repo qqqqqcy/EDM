@@ -3,8 +3,6 @@ export interface TransitionWrapProps {
     time?: number;
     transitionClassName?: string;
     unmountOnExit?: boolean;
-    onEntry?: () => void;
-    onEntryDone?: () => void;
     onExitDone?: () => void;
 }
 

@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import classnames from 'classnames';
-import { TransitionWrapPropsWithChildren, TransitionStatus } from './PropsType';
+import { TransitionStatus, TransitionWrapPropsWithChildren } from './PropsType';
 
 const statusCase: { [propName: string]: TransitionStatus } = {
     entry: 'entry',
@@ -15,64 +14,55 @@ const statusCase: { [propName: string]: TransitionStatus } = {
 const TransitionWrap = (props: TransitionWrapPropsWithChildren) => {
     const {
         children,
-        time = 250,
+        time = 0,
         visible = true,
         unmountOnExit = true,
-        transitionClassName = '',
-        onEntry = () => {},
+        transitionClassName = 'transition',
         onExitDone = () => {},
-        onEntryDone = () => {},
     } = props;
-    const [status, setStatus]: UseType<TransitionStatus> = React.useState(visible ? statusCase.entry : statusCase.exit);
-    const [show, setShow]: UseType<boolean> = React.useState(visible);
+    const [status, setStatus] = React.useState(visible ? statusCase.entryDone : statusCase.exitDone);
+    const [show, setShow] = React.useState(visible);
 
-    const [timer, useTimer]: UseType<number> = React.useState(0);
-    React.useEffect(() => {
-        if (!children) {
-            return;
-        }
+    useLayoutEffect(() => {
+        let id = 0;
         if (visible) {
-            if (status !== statusCase.entry && status !== statusCase.entryActive && status !== statusCase.entryDone) {
-                window.clearTimeout(timer);
-                setStatus(statusCase.entry);
-                if (!show && unmountOnExit) {
+            switch (status) {
+                case statusCase.entry:
+                    id = window.setTimeout(() => setStatus(statusCase.entryActive), 0);
+                    break;
+                case statusCase.entryActive:
+                    id = window.setTimeout(() => setStatus(statusCase.entryDone), time);
+                    setStatus(statusCase.entryActive);
+                    break;
+                case statusCase.entryDone:
+                    break;
+                default:
+                    setStatus(statusCase.entry);
                     setShow(true);
-                }
-            } else if (status === statusCase.entry) {
-                onEntry();
-                useTimer(window.setTimeout(() => setStatus(statusCase.entryActive), 0));
-            } else if (status === statusCase.entryActive) {
-                useTimer(window.setTimeout(() => setStatus(statusCase.entryDone), time));
-            } else if (status === statusCase.entryDone) {
-                onEntryDone();
+                    break;
             }
         } else {
-            if (status !== statusCase.exit && status !== statusCase.exitActive && status !== statusCase.exitDone) {
-                window.clearTimeout(timer);
-                setStatus(statusCase.exit);
-            }
-            if (status === statusCase.exit) {
-                setStatus(statusCase.exitActive);
-            } else if (status === statusCase.exitActive) {
-                useTimer(window.setTimeout(() => setStatus(statusCase.exitDone), time));
-            } else if (status === statusCase.exitDone) {
-                onExitDone();
-
-                if (show && unmountOnExit) {
+            switch (status) {
+                case statusCase.exit:
+                    id = window.setTimeout(() => setStatus(statusCase.exitActive), 0);
+                    break;
+                case statusCase.exitActive:
+                    id = window.setTimeout(() => setStatus(statusCase.exitDone), time);
+                    setStatus(statusCase.exitActive);
+                    break;
+                case statusCase.exitDone:
+                    if (show) {
+                        onExitDone();
+                    }
                     setShow(false);
-                }
+                    break;
+                default:
+                    setStatus(statusCase.exit);
+                    break;
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [visible, status]);
-
-    React.useEffect(() => {
-        return () => {
-            window.clearTimeout(timer);
-            onExitDone();
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        return () => clearInterval(id);
+    }, [visible, time, status, show, onExitDone]);
 
     if (children && (show || !unmountOnExit)) {
         return (
