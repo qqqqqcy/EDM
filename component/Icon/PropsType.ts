@@ -1,4 +1,6 @@
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
-    _name: 'wechat' | 'alipay';
-    _size?: 'small' | 'middle' | 'large';
+    /** 图标名称 */
+    value: 'wechat' | 'alipay';
+    /** 尺寸 */
+    size?: 'small' | 'middle' | 'large';
 }

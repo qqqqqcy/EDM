@@ -1,7 +1,7 @@
 export interface TouchFeedbackProps {
-    _disabled?: boolean;
-    _activeClassName?: string;
-    _activeStyle?: React.CSSProperties;
+    disabled?: boolean;
+    activeClassName?: string;
+    activeStyle?: React.CSSProperties;
 }
 
 export interface TouchFeedbackPropsWithChildren extends TouchFeedbackProps {

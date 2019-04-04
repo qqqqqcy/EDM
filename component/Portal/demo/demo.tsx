@@ -9,6 +9,7 @@ const Demo = () => {
                     <h1>Portal</h1>
                 </Fragment>
             </Portal>
+            <Portal>{null}</Portal>
         </div>
     );
 };

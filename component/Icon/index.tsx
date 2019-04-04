@@ -5,11 +5,11 @@ import classnames from 'classnames';
 const prefixCls = `${$PREFIX}-icon`;
 
 const Icon = (props: IconProps) => {
-    const { _name, _size = 'middle', className, ...restProps } = props;
-    const cls = classnames(prefixCls, className, `${prefixCls}-${_size}`);
+    const { value, size = 'middle', className, ...restProps } = props;
+    const cls = classnames(prefixCls, className, `${prefixCls}-${size}`);
     return (
-        <svg type="" {...restProps} aria-hidden="true" className={cls}>
-            <use xlinkHref={`#${_name}`} />
+        <svg {...restProps} aria-hidden="true" className={cls}>
+            <use xlinkHref={`#${value}`} />
         </svg>
     );
 };

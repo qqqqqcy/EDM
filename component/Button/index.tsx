@@ -6,35 +6,35 @@ const prefixCls = `${$PREFIX}-button`;
 
 const Button = (props: ButtonProps) => {
     const {
-        _size = 'middle',
-        _type = 'default',
-        _ghost = false,
-        _radius = true,
-        _inline = false,
+        size = 'middle',
+        theme = 'default',
+        ghost = false,
+        radius = true,
+        inline = false,
         style,
         disabled,
         className,
-        _activeStyle,
-        _activeClassName,
+        activeStyle,
+        activeClassName,
         ...restProps
     } = props;
-    const cls = classnames(prefixCls, className, `${prefixCls}-${_size}`, `${prefixCls}-${_type}`, {
-        [`${prefixCls}-radius`]: _radius === true,
+    const cls = classnames(prefixCls, className, `${prefixCls}-${size}`, `${prefixCls}-${theme}`, {
+        [`${prefixCls}-radius`]: radius === true,
         [`${prefixCls}-disabled`]: disabled,
-        [`${prefixCls}-ghost`]: _ghost,
-        [`${prefixCls}-inline`]: _inline,
+        [`${prefixCls}-ghost`]: ghost,
+        [`${prefixCls}-inline`]: inline,
     });
     return (
         <TouchFeedback
-            _activeClassName={_activeClassName || `${prefixCls}-active`}
-            _activeStyle={_activeStyle}
-            _disabled={disabled}
+            activeClassName={activeClassName || `${prefixCls}-active`}
+            activeStyle={activeStyle}
+            disabled={disabled}
         >
             <button
                 {...restProps}
                 role="button"
                 className={cls}
-                style={typeof _radius === 'string' ? { ...style, borderRadius: _radius } : style}
+                style={typeof radius === 'string' ? { ...style, borderRadius: radius } : style}
                 aria-disabled={disabled}
                 disabled={disabled}
             />

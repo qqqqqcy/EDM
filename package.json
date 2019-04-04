@@ -5,8 +5,9 @@
     "main": "lib/index.js",
     "types": "lib/index",
     "scripts": {
-        "rm": "ts-node script/remove.ts && eslint ./examples/until/components.ts --fix &&",
-        "new": "ts-node script/new.ts && eslint ./examples/until/components.ts --fix &&",
+        "rm": "ts-node script/remove.ts && eslint ./examples/until/components.ts --fix",
+        "api": "ts-node script/api.ts",
+        "new": "ts-node script/new.ts && eslint ./examples/until/components.ts --fix",
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.dev.ts",
         "build": "cross-env NODE_ENV=build webpack -p --config ./config/webpack.config.build.ts",
         "prod": "cross-env NODE_ENV=production webpack -p --config ./config/webpack.config.prod.ts",
