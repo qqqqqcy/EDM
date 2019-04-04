@@ -1,12 +1,12 @@
 # EDM（Elephant Design Mobile）
 
+A configurable Mobile UI
+
 ## 效果预览
 
 -   [电脑访问](https://xiajunqcy.github.io/EDM/build/)
 
 -   [手机访问](https://xiajunqcy.github.io/EDM/build/#/instance)
-
-A configurable Mobile UI
 
 ## 快速开发
 
