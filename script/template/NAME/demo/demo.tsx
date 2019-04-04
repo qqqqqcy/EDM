@@ -4,7 +4,7 @@ const Demo = () => {
     return (
         <div className="NAME">
             <NAME>children</NAME>
-            <NAME _prop={'Hello World'}>children</NAME>
+            <NAME prop={'Hello World'}>children</NAME>
         </div>
     );
 };

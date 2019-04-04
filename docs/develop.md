@@ -70,6 +70,30 @@ Project
             style.scss    //  样式
 ```
 
+## Api
+
+删除组件
+
+```
+yarn api
+```
+
+```
+? Please selecte Component's name:
+> Icon
+  Button
+  MessageBox
+  TouchFeedback
+  Portal
+  TransitionWrap
+> 选择需要生成 api 说明的组件
+
+? Are you sure you want to generator it?
+> 输入 y 确认生成
+```
+
+此命令执行后会自动生成对应组件的 api 说明在 `[component]/demo/readme.md` 文档尾部。
+
 ## Remove
 
 删除组件
