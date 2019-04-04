@@ -16,7 +16,7 @@
             "@lib*": ["lib*"],
             "@tests*": ["tests*"]
         }
-    }
+    },
+    "exclude": ["node_modules", "build"]
     // "typeRoots": ["node_modules/@types", "typings/**/*"],
-    // "exclude": ["node_modules"]
 }

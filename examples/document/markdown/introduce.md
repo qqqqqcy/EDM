@@ -1,8 +1,8 @@
 # introduce
 
-`EDM` ( elephant desgin mobile) 是京东集团-泰国合资公司-前端研发部 M 端 UI 规范的 React 实现，提供了一整套基础的 UI 组件以及一些常用的业务组件。
+`EDM` ( elephant desgin mobile) 是 xx 集团-xx 合资公司-前端研发部 M 端 UI 规范的 React 实现，提供了一整套基础的 UI 组件以及一些常用的业务组件。
 
-目前我们有 50+ 组件，这些组件都已经在京东的各类 M 业务中使用，我们会在此基础上，持续开发一些新组件。
+目前我们有 num + 组件，这些组件都已经在 xx 的各类 M 业务中使用，我们会在此基础上，持续开发一些新组件。
 
 我们的目标是让 React 项目开发更快、更简单。
 
@@ -13,7 +13,7 @@
 -   支持定制主题
 -   代码/样式按需加载
 -   yarn + webpack + babel + postcss + prettier + stylelint
--   一套京东设计师绘制的图标库
+-   一套 xx 设计师绘制的图标库
 -   单测覆盖率在 90% 以上
 
 ## 支持环境
@@ -40,4 +40,4 @@ ReactDOM.render(<Button />, mountNode);
 
 ## 测试
 
-[测试报告](../../../coverage/lcov-report/index.html)
+[测试报告](../../../coverage/lcov-report/index.html)（仅支持本地查看）
