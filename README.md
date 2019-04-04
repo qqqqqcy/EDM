@@ -4,9 +4,9 @@ A configurable Mobile UI
 
 ## 效果预览
 
--   [电脑访问](https://xiajunqcy.github.io/EDM/build/)
+-   [电脑访问](https://qqqqqcy.github.io/EDM/build/)
 
--   [手机访问](https://xiajunqcy.github.io/EDM/build/#/instance)
+-   [手机访问](https://qqqqqcy.github.io/EDM/build/#/instance)
 
 ## 快速开发
 
