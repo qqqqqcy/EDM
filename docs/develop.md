@@ -4,11 +4,11 @@
 
 ## Lint
 
-为了规范开发，代码试用了严格的 `eslint` 、`prettier` 和 `stylelint`。推荐使用辅助插件，达到保存文件时自动格式化代码的效果。
+为了规范开发，代码使用了严格的 `eslint` 、`prettier` 和 `stylelint`。推荐使用辅助插件，达到保存文件时自动格式化代码的效果。
 
 以 vscode 为例
 
-1. 安装并启用扩展 `Eslint` 、`Prettier - Code formatter` 、`stylelint`（工作区启用，防止影响其他项目）
+1. 安装并启用扩展 `Eslint` 、`Prettier - Code formatter` 、`stylelint`（选择工作区启用，防止影响其他项目）
 
 2. 基于 vscode，相关配置已经同步到的了 `.vscode/settings.json` 中
 

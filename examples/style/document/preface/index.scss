@@ -9,7 +9,16 @@
         height: 400px;
     }
     &-btn {
-        width: 200px !important;
+        width: 200px;
         margin: 20px;
+        cursor: pointer;
+    }
+    &-star {
+        height: 22px;
+        // padding: 0px 12px 2px;
+        margin-left: 10px;
+        color: #444;
+        vertical-align: text-bottom;
+        cursor: pointer;
     }
 }
