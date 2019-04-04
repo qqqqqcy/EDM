@@ -9,7 +9,13 @@
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "strictNullChecks": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@component*": ["component*"],
+            "@lib*": ["lib*"],
+            "@tests*": ["tests*"]
+        }
     }
     // "typeRoots": ["node_modules/@types", "typings/**/*"],
     // "exclude": ["node_modules"]

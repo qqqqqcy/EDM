@@ -5,8 +5,19 @@ import StyleLintPluginfrom from 'stylelint-webpack-plugin';
 import getStyleLoader from './getStyleLoader';
 
 import { getProjectUrl } from './until';
-const devMode: boolean = process.env.NODE_ENV !== 'production';
-const tsconfig = getProjectUrl(`tsconfig${devMode ? '' : '.prod'}.json`);
+interface EnvMap {
+    build: string;
+    production: string;
+    development: string;
+    [key: string]: string;
+}
+const devMode: boolean = (process.env.NODE_ENV as keyof EnvMap) === 'development';
+const envMap: EnvMap = {
+    build: '.build',
+    production: '.prod',
+    development: '',
+};
+const tsconfig = getProjectUrl(`tsconfig${envMap[process.env.NODE_ENV || 'development']}.json`);
 
 const config: webpack.Configuration = {
     resolve: {
@@ -31,7 +42,6 @@ const config: webpack.Configuration = {
                 options: {
                     configFile: getProjectUrl('.eslintrc.js'),
                 },
-                // use: [{ loader: "eslint-loader" }]
             },
             {
                 test: /\.tsx?$/,
@@ -44,14 +54,6 @@ const config: webpack.Configuration = {
                 test: /\.svg$/,
                 loader: 'svg-sprite-loader',
             },
-            // {
-            //   test: /guui\.svg$/,
-            //   loader: 'file-loader',
-            // },
-            // {
-            //   test: /\.md$/,
-            //   loader: 'text-loader',
-            // },
             getStyleLoader(devMode),
         ],
     },

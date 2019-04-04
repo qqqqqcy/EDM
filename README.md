@@ -8,11 +8,15 @@ A configurable Mobile UI
 
 NPM
 
-`npm install`
+```bash
+npm install
+```
 
-YARN
+YARN（推荐）
 
-`yarn add`
+```bash
+yarn install
+```
 
 ## 使用
 
@@ -28,6 +32,7 @@ Project
 │
 ├── component            //  组件源码
 │   ├── [component]      //  单个组件
+│   │   ├── __tests__    //  测试文件
 │   │   └── demo         //  用以展示的 demo
 │   ├── common           //  底层公共组件和方法
 │   │   └── [component]  //  底层组件，结构同上
@@ -42,6 +47,7 @@ Project
 ├── script               //  脚本
 │   └── template         //  组件模板
 ├── config               //  配置文件
+├── tests                //  通用测试配置
 ├── lib                  //  组件打包目录
 ├── docs                 //  项目文档
 ├── typings              //  类型文件
