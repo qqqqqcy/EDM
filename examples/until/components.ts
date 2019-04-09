@@ -5,4 +5,5 @@ export default [
     { name: 'TouchFeedback', type: 'Depth' },
     { name: 'Portal', type: 'Depth' },
     { name: 'TransitionWrap', type: 'Depth' },
+    { name: 'CountDown', type: 'Data Display' },
 ];
