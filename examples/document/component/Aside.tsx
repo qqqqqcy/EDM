@@ -19,9 +19,9 @@ const Aside = (props: AsideProps) => {
                         <Link to={`/document/${item.name}`} key={item.name}>
                             <Button
                                 className="document-aside-btn"
-                                _ghost={true}
-                                _radius={false}
-                                _size="large"
+                                ghost={true}
+                                radius={false}
+                                size="large"
                                 onClick={() => onClick(item.name)}
                             >
                                 {item.name}

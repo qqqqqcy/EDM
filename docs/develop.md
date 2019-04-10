@@ -4,11 +4,11 @@
 
 ## Lint
 
-为了规范开发，代码试用了严格的 `eslint` 、`prettier` 和 `stylelint`。推荐使用辅助插件，达到保存文件时自动格式化代码的效果。
+为了规范开发，代码使用了严格的 `eslint` 、`prettier` 和 `stylelint`。推荐使用辅助插件，达到保存文件时自动格式化代码的效果。
 
 以 vscode 为例
 
-1. 安装并启用扩展 `Eslint` 、`Prettier - Code formatter` 、`stylelint`（工作区启用，防止影响其他项目）
+1. 安装并启用扩展 `Eslint` 、`Prettier - Code formatter` 、`stylelint`（选择工作区启用，防止影响其他项目）
 
 2. 基于 vscode，相关配置已经同步到的了 `.vscode/settings.json` 中
 
@@ -70,6 +70,30 @@ Project
             style.scss    //  样式
 ```
 
+## API
+
+自动生成组件 API 说明
+
+```
+yarn api
+```
+
+```
+? Please selecte Component's name:
+> Icon
+  Button
+  MessageBox
+  TouchFeedback
+  Portal
+  TransitionWrap
+> 选择需要生成 api 说明的组件
+
+? Are you sure you want to generator it?
+> 输入 y 确认生成
+```
+
+此命令执行后会自动生成对应组件的 api 说明在 `[component]/demo/readme.md` 文档尾部。
+
 ## Remove
 
 删除组件
@@ -106,12 +130,22 @@ yarn test
 
 如果有新的，确认无误的改动，运行 `yarn test -u` 覆盖之前测试快照
 
-## Build
+## Prod
 
 组件打包
+
+```
+yarn prod
+```
+
+执行成功后，将生成最终代码到 `lib` 文件夹中。
+
+## Build
+
+展示页打包
 
 ```
 yarn build
 ```
 
-执行成功后，将生成最终代码到 `lib` 文件夹中。
+执行成功后，将生成最终代码到 `build` 文件夹中。

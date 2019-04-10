@@ -1,12 +1,22 @@
-import React from 'react';
-import { TransitionWrap } from '@component/index';
+import React, { useState } from 'react';
+import { TransitionWrap, Button } from '@component/index';
+import './style.scss';
 const Demo = () => {
+    const [visible, setvisible] = useState(false);
     return (
         <div className="TransitionWrap">
-            <TransitionWrap>
-                <h1>hello</h1>
+            <Button onClick={() => setvisible(!visible)}>click to {visible ? 'hide' : 'show'} text</Button>
+            <TransitionWrap
+                onExitDone={() => console.log('hello')}
+                transitionClassName="hello"
+                visible={visible}
+                time={500}
+            >
+                <h1 className="hello">hello</h1>
             </TransitionWrap>
-            {/* <TransitionWrap _prop={'Hello World'} /> */}
+            <TransitionWrap transitionClassName="world" unmountOnExit={false} visible={visible} time={500}>
+                <h1 className="world">world</h1>
+            </TransitionWrap>
         </div>
     );
 };

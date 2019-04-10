@@ -15,7 +15,7 @@ const Home = (props: HomeProps) => {
                     <p>{key}</p>
                     {structure[key].map(item => (
                         <Link to={`/instance/${item.name}`} key={item.name}>
-                            <Button _radius={false} _ghost={true}>
+                            <Button radius={false} ghost={true}>
                                 {item.name}
                             </Button>
                             <br />

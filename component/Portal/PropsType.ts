@@ -1,9 +1,9 @@
 export interface PortalProps {
-    _visible?: boolean;
-    _mountNode?: Element;
-    _time?: number;
+    /** 被挂载的父元素 */
+    mountNode?: Element;
 }
 
 export interface PortalPropsWithChildren extends PortalProps {
-    children: React.ReactElement;
+    /** 被包裹的唯一子节点 */
+    children: React.ReactNode;
 }

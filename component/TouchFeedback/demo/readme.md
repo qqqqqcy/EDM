@@ -16,9 +16,9 @@
 
 ## API
 
-| 属性              | 说明         | 类型                | 默认值 | 必选  |
-| ----------------- | ------------ | ------------------- | ------ | ----- |
-| \_activeStyle     | 点击时的样式 | React.CSSProperties |        | false |
-| \_activeClassName | 点击时的属性 | string              |        | false |
-| \_disabled        | 禁用         | boolean             | false  | false |
-| children          | 子元素       | React.ReactElement  |        | true  |
+| 属性            | 说明               | 类型                  | 默认值  | 必填    |
+| --------------- | ------------------ | --------------------- | ------- | ------- |
+| disabled        | 禁用               | `boolean`             | `false` | `false` |
+| activeClassName | 点击时的属性名     | `string`              | `''`    | `false` |
+| activeStyle     | 点击时的样式       | `React.CSSProperties` | `{}`    | `false` |
+| children        | 被包裹的唯一子组件 | `React.ReactElement`  | -       | `true`  |

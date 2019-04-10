@@ -6,42 +6,41 @@ function onClick() {
 const Demo = () => {
     return (
         <div className="Button">
-            <Button _size="large" _type="primary" onClick={onClick}>
-                <Icon _size="large" fill="#fff" _name="alipay" /> primary
+            <Button size="large" theme="primary" onClick={onClick}>
+                <Icon size="large" fill="#fff" value="alipay" /> primary
             </Button>
             <br />
-            <Button disabled _size="large" _type="primary" onClick={onClick}>
-                <Icon _size="large" fill="#fff" _name="alipay" />
+            <Button disabled size="large" theme="primary" onClick={onClick}>
+                <Icon size="large" fill="#fff" value="alipay" />
                 primary
             </Button>
             <br />
             <br />
-            <Button _size="large" disabled>
+            <Button size="large" disabled>
                 default
             </Button>
             <br />
             <div>
-                <Button _inline _ghost onClick={onClick}>
+                <Button inline ghost onClick={onClick}>
                     default|ghost
                 </Button>
-                <Button _inline _type="secondary" onClick={onClick}>
+                <Button inline theme="secondary" onClick={onClick}>
                     secondary
-                    <Icon fill="red" _name="alipay" />
+                    <Icon fill="red" value="alipay" />
                 </Button>
-                <Button _inline _size="large" _radius={false} _type="secondary" onClick={onClick}>
-                    <Icon _size="large" fill="red" _name="alipay" />
+                <Button inline size="large" radius={false} theme="secondary" onClick={onClick}>
+                    <Icon size="large" fill="red" value="alipay" />
                     secondary
                 </Button>
             </div>
             <br />
-            <Button _ghost disabled _type="secondary" onClick={onClick}>
+            <Button ghost disabled theme="secondary" onClick={onClick}>
                 secondary|ghost
             </Button>
             <br />
-            <Button style={{ color: 'rgb(100,200,50)' }} _radius="10px" _ghost onClick={onClick}>
+            <Button style={{ color: 'rgb(100,200,50)' }} radius="10px" ghost onClick={onClick}>
                 default|ghost
             </Button>
-            <Icon _name="alipay" />
         </div>
     );
 };

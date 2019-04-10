@@ -1,0 +1,8 @@
+{
+    "extends": "./tsconfig.base.json",
+    // "exclude": ["**/*.*"],
+    "include": ["component/**/*", "typings/*", "examples/**/*"],
+    // "files": ["typings/index.d.ts"],
+    // 组件打包不包括 demo
+    "exclude": ["component/**/__tests__", "node_modules"]
+}

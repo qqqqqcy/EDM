@@ -5,16 +5,16 @@ import { base16AteliersulphurpoolLight } from 'react-syntax-highlighter/dist/sty
 
 import { getComponent } from '../until/structure';
 
+function splitReadme(readme: string = '') {
+    return [...readme.split('## Demo')];
+}
 interface ContainerProps {
     item: DirectoryStructureItem;
 }
 
 const Article = (props: ContainerProps) => {
     const { item } = props;
-    const { demoSource, readme } = getComponent(item);
-    function splitReadme(readme: string = '') {
-        return readme.split('## Demo');
-    }
+    const { demoSource, propsSource, readme } = getComponent(item);
 
     const [demoBefore, demoAfter] = splitReadme(readme);
 
@@ -28,6 +28,7 @@ const Article = (props: ContainerProps) => {
                             {demoSource}
                         </SyntaxHighlighter>
                         <ReactMarkdown source={demoAfter} />
+                        {propsSource}
                     </Fragment>
                 ) : null}
             </div>
