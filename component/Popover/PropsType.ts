@@ -5,8 +5,8 @@ export interface PopoverPropsType
     extends PortalProps,
         TransitionWrapProps,
         React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    _onClose?: () => void;
-    _arrow?: boolean;
+    onClose?: () => void;
+    arrow?: boolean;
 }
 
 import { TouchFeedbackProps } from '../TouchFeedback/PropsType';

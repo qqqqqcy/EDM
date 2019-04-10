@@ -16,9 +16,9 @@ const Demo = () => {
                     test
                 </Button>
             </div>
-            <Popover _visible={isShow} _onClose={hidePopover}>
+            <Popover _visible={isShow} onClose={hidePopover}>
                 {['red', 'yellow', 'blue'].map((v, i) => (
-                    <p>v</p>
+                    <p>{v}</p>
                 ))}
             </Popover>
         </div>
