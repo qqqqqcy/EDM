@@ -7,7 +7,6 @@ exports[`renders Icon correctly 1`] = `
       aria-hidden="true"
       class="edm-icon edm-icon-large"
       fill="red"
-      type=""
     >
       <use
         href="#alipay"
@@ -17,7 +16,6 @@ exports[`renders Icon correctly 1`] = `
       aria-hidden="true"
       class="edm-icon edm-icon-large"
       fill="blue"
-      type=""
     >
       <use
         href="#alipay"
@@ -27,7 +25,6 @@ exports[`renders Icon correctly 1`] = `
       aria-hidden="true"
       class="edm-icon edm-icon-large"
       fill="#ccc"
-      type=""
     >
       <use
         href="#alipay"
@@ -37,7 +34,6 @@ exports[`renders Icon correctly 1`] = `
       aria-hidden="true"
       class="edm-icon edm-icon-large"
       fill="#ccc"
-      type=""
     >
       <use
         href="#wechat"

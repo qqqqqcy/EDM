@@ -70,9 +70,9 @@ Project
             style.scss    //  样式
 ```
 
-## Api
+## API
 
-删除组件
+自动生成组件 API 说明
 
 ```
 yarn api

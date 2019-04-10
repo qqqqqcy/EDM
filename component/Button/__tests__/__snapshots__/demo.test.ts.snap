@@ -12,7 +12,6 @@ exports[`renders Button correctly 1`] = `
       aria-hidden="true"
       class="edm-icon edm-icon-large"
       fill="#fff"
-      type=""
     >
       <use
         href="#alipay"
@@ -31,7 +30,6 @@ exports[`renders Button correctly 1`] = `
       aria-hidden="true"
       class="edm-icon edm-icon-large"
       fill="#fff"
-      type=""
     >
       <use
         href="#alipay"
@@ -66,7 +64,6 @@ exports[`renders Button correctly 1`] = `
         aria-hidden="true"
         class="edm-icon edm-icon-middle"
         fill="red"
-        type=""
       >
         <use
           href="#alipay"
@@ -81,7 +78,6 @@ exports[`renders Button correctly 1`] = `
         aria-hidden="true"
         class="edm-icon edm-icon-large"
         fill="red"
-        type=""
       >
         <use
           href="#alipay"
@@ -107,14 +103,5 @@ exports[`renders Button correctly 1`] = `
   >
     default|ghost
   </button>
-  <svg
-    aria-hidden="true"
-    class="edm-icon edm-icon-middle"
-    type=""
-  >
-    <use
-      href="#alipay"
-    />
-  </svg>
 </div>
 `;

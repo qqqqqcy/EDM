@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { TouchFeedbackPropsWithChildren } from './PropsType';
 
 const TouchFeedback = (props: TouchFeedbackPropsWithChildren) => {
-    const { children, disabled = false, activeStyle = {}, activeClassName: activeClassName = '' } = props;
+    const { children, disabled = false, activeStyle = {}, activeClassName = '' } = props;
 
     const [active, setActive]: UseType<boolean> = React.useState(false);
 

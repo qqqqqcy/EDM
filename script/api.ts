@@ -74,6 +74,17 @@ interface PorpItem {
     default: string;
     needed: boolean;
 }
+
+function getDefaultVal(str: string): string {
+    if (str === void 0) {
+        return '-';
+    }
+    if (str === '') {
+        str = "''";
+    }
+    return '`' + str + '`';
+}
+
 function mapPropsToTable(propStr: string, indexStr: string) {
     const Propsreg = new RegExp(/(\w+)(\?)*:(\s)*(.*)(?=;)/g),
         expReg = new RegExp(/(?<=\/\*\*)(\s|.)*?(?=\*\/)/g),
@@ -85,22 +96,21 @@ function mapPropsToTable(propStr: string, indexStr: string) {
     const tableMd = [`|属性|说明|类型|默认值|必填|`, `| - | - | - | - | - |`];
     (propStr.match(Propsreg) || []).map((item, index) => {
         const [, r1 = 'find key fail', r2 = false, , r4 = 'find type fail'] = item.match(valReg) || [];
-        const defaultReg = new RegExp(`(${r1}) = (.+?),`);
+        const defaultReg = new RegExp(`(${r1}) = (.+?)(,| })`);
         const tableItem: PorpItem = {
             key: r1,
             exp: (exp[index] || '').replace(/(^\s|\s$)*/g, ''),
             type: r4,
             needed: !r2,
-            default: ((defaultSec || '').match(defaultReg) || [])[2] || '',
+            default: ((defaultSec || '').match(defaultReg) || [])[2],
         };
         table.push(tableItem);
         tableMd.push(
-            `|${tableItem.key}|${tableItem.exp}|${tableItem.type.replace(/\|/g, '\\|')}|${tableItem.default}|${
+            `|${tableItem.key}|${tableItem.exp}|\`${tableItem.type}\`|${getDefaultVal(tableItem.default)}|\`${
                 tableItem.needed
-            }|`,
+            }\`|`,
         );
     });
-    // .replace(/(^'|'$)/g, '')
     const readmeUrl = getProjectUrl('component', cpInfo.name, 'demo', 'readme.md');
     const readme = fs.readFileSync(readmeUrl, 'utf8');
     fs.writeFileSync(readmeUrl, readme + EOL + tableMd.join(EOL), 'utf8');

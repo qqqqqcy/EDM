@@ -1,12 +1,18 @@
 export interface TransitionWrapProps {
+    /** 是否展示 */
     visible?: boolean;
+    /** active 动画持续时长 */
     time?: number;
+    /** 动画的属性名 */
     transitionClassName?: string;
+    /** visible 为 false 时删除节点 */
     unmountOnExit?: boolean;
+    /** 动画完成时的回调函数 */
     onExitDone?: () => void;
 }
 
 export interface TransitionWrapPropsWithChildren extends TransitionWrapProps {
+    /** 子组件，可以包含多个 */
     children: React.ReactElement | React.ReactElement[];
 }
 

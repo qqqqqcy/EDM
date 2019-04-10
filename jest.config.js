@@ -1,6 +1,6 @@
 var config = {
     collectCoverage: true,
-    collectCoverageFrom: ['component/**/*.{ts,tsx}', '!component/**/demo/index.ts'],
+    collectCoverageFrom: ['component/**/*.{ts,tsx}', '!component/**/demo/index.ts', '!component/**/*.d.ts'],
     coverageDirectory: 'coverage',
     coverageReporters: ['text', 'lcov'],
     setupFiles: ['./tests/setup.js'],

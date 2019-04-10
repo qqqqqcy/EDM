@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { TransitionStatus, TransitionWrapPropsWithChildren } from './PropsType';
 
@@ -23,7 +23,7 @@ const TransitionWrap = (props: TransitionWrapPropsWithChildren) => {
     const [status, setStatus] = React.useState(visible ? statusCase.entryDone : statusCase.exitDone);
     const [show, setShow] = React.useState(visible);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         let id = 0;
         if (visible) {
             switch (status) {
