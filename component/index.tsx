@@ -5,3 +5,4 @@ export { default as TouchFeedback } from './TouchFeedback';
 export { default as Portal } from './Portal';
 export { default as TransitionWrap } from './TransitionWrap';
 export { default as CountDown } from './CountDown';
+export { default as Popover } from './Popover';

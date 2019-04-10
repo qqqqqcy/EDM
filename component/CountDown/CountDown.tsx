@@ -8,7 +8,7 @@ const STORAGE = window.localStorage || {};
 const CDOWN_KEY = 'EDM_CDOWN_KEY';
 
 export const CountDown = (props: CountDownProps) => {
-    const { _endDate = 0, _etype = 1, _eUnit = [''], _eTimeUp = () => {}, className, id = 'edm' } = props;
+    const { endDate = 0, etype = 1, eUnit = [''], eTimeUp = () => {}, className, id = 'edm_coundow' } = props;
     const cls = classnames(prefixCls, className);
 
     // 秒转换为时、分、秒
@@ -17,7 +17,7 @@ export const CountDown = (props: CountDownProps) => {
         let hour = 0; // 剩余的小时
         let min = 0; // 剩余的分钟
         let second = 0; // 剩余的秒
-        const type = _etype; // 时间类型
+        const type = etype; // 时间类型
 
         switch (type) {
             case 4:
@@ -55,7 +55,7 @@ export const CountDown = (props: CountDownProps) => {
     const currentTime: number = Math.floor(new Date().getTime() / 1000);
 
     // 最终的时间 = 当前时间 + 倒计时时间
-    const endTime: any = _endDate instanceof Date ? _endDate.getTime() / 1000 : currentTime + _endDate;
+    const endTime: any = endDate instanceof Date ? endDate.getTime() / 1000 : currentTime + endDate;
 
     // 存储倒计时的key
     const key = `${id}_${CDOWN_KEY}`;
@@ -84,7 +84,7 @@ export const CountDown = (props: CountDownProps) => {
             } else {
                 clearInterval(intervalId);
                 STORAGE.removeItem(key);
-                _eTimeUp();
+                eTimeUp();
             }
         }
         intervalId = setInterval(tick, 1000);
@@ -95,7 +95,7 @@ export const CountDown = (props: CountDownProps) => {
         <div className={cls}>
             {timeArray.map((time, index) => (
                 <span key={index}>
-                    {time} {index < _eUnit.length ? _eUnit[index] + ' ' : ''}
+                    {time} {index < eUnit.length ? eUnit[index] + ' ' : ''}
                 </span>
             ))}
         </div>

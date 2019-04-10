@@ -6,4 +6,5 @@ export default [
     { name: 'Portal', type: 'Depth' },
     { name: 'TransitionWrap', type: 'Depth' },
     { name: 'CountDown', type: 'Data Display' },
+    { name: 'Popover', type: 'Data Display' },
 ];
