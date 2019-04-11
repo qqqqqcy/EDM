@@ -4,9 +4,7 @@
         "outDir": "./lib",
         "declaration": true
     },
-    // "exclude": ["**/*.*"],
     "include": ["component/**/*", "typings/*"],
-    // "files": ["typings/index.d.ts"],
     // 组件打包不包括 demo
     "exclude": ["component/**/demo", "component/**/__tests__", "node_modules"]
 }

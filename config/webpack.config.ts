@@ -22,33 +22,33 @@ const tsconfig = getProjectUrl(`tsconfig${envMap[process.env.NODE_ENV || 'develo
 const config: webpack.Configuration = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
+        alias: {
+            '@component': getProjectUrl('component'),
+            '@lib': getProjectUrl('lib'),
+            '@tests': getProjectUrl('tests'),
+        },
     },
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(j|t)sx?$/,
                 exclude: /(node_modules)/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env'],
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        // options: {
+                        //     // configFile: tsconfig,
+                        //     // // disable type checker - we will use it in fork plugin
+                        //     // transpileOnly: true,
+                        // },
                     },
-                },
-            },
-            {
-                test: /\.tsx?$/,
-                enforce: 'pre',
-                loader: 'eslint-loader',
-                options: {
-                    configFile: getProjectUrl('.eslintrc.js'),
-                },
-            },
-            {
-                test: /\.tsx?$/,
-                loader: 'ts-loader',
-                options: {
-                    configFile: tsconfig,
-                },
+                    {
+                        loader: 'eslint-loader',
+                        options: {
+                            configFile: getProjectUrl('.eslintrc.js'),
+                        },
+                    },
+                ],
             },
             {
                 test: /\.svg$/,

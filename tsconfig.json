@@ -3,7 +3,6 @@
     "compilerOptions": {
         "allowJs": true
     },
-    // "files": ["examples", "typings/index.d.ts"],
     "include": ["component", "examples", "typings"],
     "exclude": ["node_modules"]
 }

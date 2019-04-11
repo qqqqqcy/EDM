@@ -90,9 +90,9 @@ function getTemplate() {
     return new Promise((res, rej) => {
         try {
             const { name } = cpInfo;
-            const cpUrl = ['script', 'template', 'NAME'];
-            const DemoUrl = ['script', 'template', 'NAME', 'demo'];
-            const TestUrl = ['script', 'template', 'NAME', '__tests__'];
+            const cpUrl = ['scripts', 'template', 'NAME'];
+            const DemoUrl = ['scripts', 'template', 'NAME', 'demo'];
+            const TestUrl = ['scripts', 'template', 'NAME', '__tests__'];
             cp.index = fs
                 .readFileSync(getProjectUrl(...cpUrl, 'index.tsx'), 'utf8')
                 .replace(/-NAME/g, `-${name.toLowerCase()}`)
