@@ -37,9 +37,9 @@ const config: webpack.Configuration = {
                     {
                         loader: 'babel-loader',
                         // options: {
-                        //     // configFile: tsconfig,
-                        //     // // disable type checker - we will use it in fork plugin
-                        //     // transpileOnly: true,
+                        // configFile: tsconfig,
+                        // disable type checker - we will use it in fork plugin
+                        // transpileOnly: true,
                         // },
                     },
                     {

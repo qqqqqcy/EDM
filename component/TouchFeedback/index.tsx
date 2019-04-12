@@ -5,7 +5,7 @@ import { TouchFeedbackPropsWithChildren } from './PropsType';
 const TouchFeedback = (props: TouchFeedbackPropsWithChildren) => {
     const { children, disabled = false, activeStyle = {}, activeClassName = '' } = props;
 
-    const [active, setActive]: UseType<boolean> = React.useState(false);
+    const [active, setActive] = React.useState(false);
 
     const triggerEvent = (
         type: string,

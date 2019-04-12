@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import { NAMEProps } from './PropsType';
-const prefixCls = `${$PREFIX}-NAME`;
+const prefixCls = `edm-NAME`;
 
 const NAME = (props: NAMEProps) => {
     const { prop = 'default', className, children, ...restProps } = props;

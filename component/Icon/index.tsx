@@ -2,7 +2,7 @@ import React from 'react';
 import { IconProps } from './PropsType';
 import './importAll';
 import classnames from 'classnames';
-const prefixCls = `${$PREFIX}-icon`;
+const prefixCls = `edm-icon`;
 
 const Icon = (props: IconProps) => {
     const { value, size = 'middle', className, ...restProps } = props;

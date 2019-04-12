@@ -1,9 +1,17 @@
 {
     "name": "eled-mobile",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "",
-    "main": "lib/index.js",
-    "types": "lib/index",
+    "directories": {
+        "lib": "lib"
+    },
+    "main": "lib",
+    "module": "es",
+    "files": [
+        "dist",
+        "lib",
+        "es"
+    ],
     "scripts": {
         "rm": "ts-node scripts/remove.ts && eslint ./examples/until/components.ts --fix",
         "api": "ts-node scripts/api.ts",
@@ -11,7 +19,7 @@
         "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.dev.ts",
         "build": "cross-env NODE_ENV=build webpack -p --config ./config/webpack.config.build.ts",
         "prod": "cross-env NODE_ENV=production webpack -p --config ./config/webpack.config.prod.ts",
-        "dist": "tsc component tsconfig.prod.json --emitDeclarationOnly",
+        "compile": "edm-tools compile",
         "test": "cross-env NODE_ENV=test jest --config=./jest.config.js --runInBand"
     },
     "repository": {
@@ -29,7 +37,9 @@
         "url": "https://github.com/xiajunqcy/elephant-ui/issues"
     },
     "homepage": "https://github.com/xiajunqcy/elephant-ui#readme",
-    "dependencies": {},
+    "dependencies": {
+        "@babel/runtime": "^7.4.3"
+    },
     "devDependencies": {
         "@babel/core": "^7.3.4",
         "@babel/plugin-proposal-class-properties": "^7.4.0",
@@ -73,6 +83,7 @@
         "cross-env": "^5.2.0",
         "css-loader": "^2.1.0",
         "cssnano": "^4.1.10",
+        "edm-tools": "D:\\PROJECT\\other\\edm-tools",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.11.2",
         "enzyme-to-json": "^3.3.5",
