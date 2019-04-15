@@ -1,4 +1,4 @@
-declare var $PREFIX: string;
+declare var prefix: string;
 declare module '@component/index' {
     export const NAME: any;
 }

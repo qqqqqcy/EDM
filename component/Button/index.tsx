@@ -2,7 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import { ButtonProps } from './PropsType';
 import TouchFeedback from '../TouchFeedback';
-const prefixCls = `edm-button`;
+import prefix from '../_util/prefix';
+const prefixCls = `${prefix}-button`;
 
 const Button = (props: ButtonProps) => {
     const {

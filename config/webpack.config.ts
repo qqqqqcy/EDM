@@ -1,4 +1,4 @@
-import webpack, { DefinePlugin } from 'webpack';
+import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StyleLintPluginfrom from 'stylelint-webpack-plugin';
@@ -59,9 +59,9 @@ const config: webpack.Configuration = {
     },
 
     plugins: [
-        new DefinePlugin({
-            $PREFIX: JSON.stringify('edm'),
-        }),
+        // new DefinePlugin({
+        //     $PREFIX: JSON.stringify('edm'),
+        // }),
         new StyleLintPluginfrom({
             configFile: getProjectUrl('.stylelintrc.js'),
             context: getProjectUrl(),

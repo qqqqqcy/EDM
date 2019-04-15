@@ -1,7 +1,7 @@
 {
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "allowJs": true
+        "allowJs": false
     },
     "include": ["component", "examples", "typings"],
     "exclude": ["node_modules"]
