@@ -1,6 +1,6 @@
 $hd: 1px;
 
-$preifx: "edm";
+$preifx: 'edm';
 // 主题色
 $color-default: #f0250f;
 $color-secondary: rgb(255, 181, 6);
@@ -34,8 +34,7 @@ $button-color-tap: rgba($color-dark, 0.1);
 $button-color-light: $color-light;
 $button-radius: $radius-size-big;
 // -------------------------------------------------
-$fontFamily: roboto, helvetica neue light, helvetica neue, helvetica, arial,
-  lucida grande, sans-serif;
+$fontFamily: roboto, helvetica neue light, helvetica neue, helvetica, arial, lucida grande, sans-serif;
 
 /* prettier-ignore */
 @function px($px) {

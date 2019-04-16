@@ -1,0 +1,6 @@
+# Valid
+scripts/**/*.js
+
+# dist
+es
+lib

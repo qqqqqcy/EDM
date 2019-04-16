@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { CountDownProps } from './PropsType';
 import classnames from 'classnames';
-
-const prefixCls = `${$PREFIX}-countdown`;
+import prefix from '../_util/prefix';
+const prefixCls = `${prefix}-countdown`;
 const STORAGE = window.localStorage || {};
 const CDOWN_KEY = 'EDM_CDOWN_KEY';
 
@@ -59,7 +59,6 @@ export const CountDown = (props: CountDownProps) => {
 
     // 存储倒计时的key
     const key = `${id}_${CDOWN_KEY}`;
-    let intervalId: any;
 
     let storageCountDown = Number(STORAGE.getItem(key)); // 获取localStorage当前倒计时时间
 
@@ -75,6 +74,7 @@ export const CountDown = (props: CountDownProps) => {
     const [timeArray, setTimeArray] = useState(initialValue);
 
     useEffect(() => {
+        let intervalId: any;
         function tick() {
             const currentTime: number = Math.floor(new Date().getTime() / 1000);
             if (storageCountDown >= currentTime) {
@@ -89,7 +89,7 @@ export const CountDown = (props: CountDownProps) => {
         }
         intervalId = setInterval(tick, 1000);
         return () => clearInterval(intervalId);
-    }, []);
+    });
 
     return (
         <div className={cls}>

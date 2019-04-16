@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageBoxProps, MessageBoxState } from './PropsType';
-import { Portal, TransitionWrap } from '../index';
+import Portal from '../Portal';
+import TransitionWrap from '../TransitionWrap';
 import './style.scss';
 
 export default class MessageBox extends React.PureComponent<MessageBoxProps, MessageBoxState> {

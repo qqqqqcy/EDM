@@ -4,11 +4,13 @@ import { Icon } from '@component/index';
 const Demo = () => {
     return (
         <div>
-            <div>
-                <Icon size="large" fill="red" value="alipay" />
-                <Icon size="large" fill="blue" value="alipay" />
-                <Icon size="large" fill="#ccc" value="alipay" />
-                <Icon size="large" fill="#ccc" value="wechat" />
+            <div style={{ background: 'gainsboro' }}>
+                <Icon fill="red" value="alipay" />
+                <Icon fill="blue" value="wechat" />
+                <Icon fill="blue" value="check" />
+                <Icon fill="blue" value="ellipsis" />
+                <Icon fill="blue" value="test" />
+                <Icon fill="blue" value="test1" />
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Popover, Button } from '@component/index';
+import React, { useRef, useState } from 'react';
+import { Button, Popover } from '@component/index';
 const Demo = () => {
-    const [isShow, setIsShow] = useState(true);
-
+    const [isShow, setIsShow] = useState(false);
+    const testBtn = useRef(null);
     const showPopover = () => {
         setIsShow(true);
     };
@@ -10,18 +10,26 @@ const Demo = () => {
     const hidePopover = () => setIsShow(false);
 
     return (
-        <div className="Popover">
-            <div style={{ width: '50%' }}>
-                <Button _size={'small'} _type={'default'} onClick={showPopover}>
+        <>
+            <div ref={testBtn}>
+                <Button size={'small'} onClick={showPopover}>
                     test
                 </Button>
             </div>
-            <Popover _visible={isShow} onClose={hidePopover}>
+            <Popover
+                visible={isShow}
+                onClose={hidePopover}
+                anchorEl={testBtn.current}
+                dir={'bottom-center'}
+                hasArrow={true}
+            >
                 {['red', 'yellow', 'blue'].map((v, i) => (
-                    <p>{v}</p>
+                    <p key={i} style={{ padding: 0, margin: 0 }}>
+                        {v}
+                    </p>
                 ))}
             </Popover>
-        </div>
+        </>
     );
 };
 

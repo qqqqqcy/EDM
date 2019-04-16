@@ -1,9 +1,8 @@
 {
     "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "allowJs": true
+        "allowJs": false
     },
-    // "files": ["examples", "typings/index.d.ts"],
     "include": ["component", "examples", "typings"],
     "exclude": ["node_modules"]
 }
