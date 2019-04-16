@@ -1,7 +1,22 @@
 {
-    "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "allowJs": false
+        "allowJs": false,
+        "target": "es5",
+        "lib": ["es6", "dom"],
+        "jsx": "react",
+        "moduleResolution": "node",
+        "keyofStringsOnly": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@component*": ["component*"],
+            "@lib*": ["lib*"],
+            "@tests*": ["tests*"]
+        }
     },
     "include": ["component", "examples", "typings"],
     "exclude": ["node_modules"]

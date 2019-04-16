@@ -13,8 +13,10 @@ interface EnvMap {
 }
 const devMode: boolean = (process.env.NODE_ENV as keyof EnvMap) === 'development';
 const envMap: EnvMap = {
-    build: '.build',
-    dist: '.dist',
+    // build: '.build',
+    build: '',
+    // dist: '.dist',
+    dist: '',
     development: '',
 };
 const tsconfig = getProjectUrl(`tsconfig${envMap[process.env.NODE_ENV || 'development']}.json`);
