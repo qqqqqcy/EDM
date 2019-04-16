@@ -5,12 +5,12 @@ const Demo = () => {
     return (
         <div>
             <div style={{ background: 'gainsboro' }}>
-                <Icon fill="red" value="alipay" />
-                <Icon fill="blue" value="wechat" />
-                <Icon fill="blue" value="check" />
-                <Icon fill="blue" value="ellipsis" />
-                <Icon fill="blue" value="test" />
-                <Icon fill="blue" value="test1" />
+                <Icon fill="red" value="addcart" />
+                <Icon fill="blue" value="addcart" />
+                <Icon fill="green" value="addcart" />
+                <Icon fill="red" value="close" />
+                <Icon fill="blue" value="remind" />
+                <Icon fill="green" value="selected" />
             </div>
         </div>
     );

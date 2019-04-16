@@ -1,45 +1,8 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["es6", "dom"],
-    "sourceMap": true,
-    "jsx": "react",
-    "declaration": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "outDir": "lib",
-    "rootDirs": ["lib", "config", "example"],
-    "baseUrl": ".",
-    "paths": {
-      "@component*": ["component*"]
-    }
-    // "noImplicitAny": true,
-    // "noUnusedParameters": true,
-    // "strictNullChecks": true,
-    // "experimentalDecorators": true,
-    // "files": ["component/index.tsx"]
-    // "include": ["component/*"]
-    // "forceConsistentCasingInFileNames": true,
-    // "noImplicitReturns": true,
-    // "noImplicitThis": true,
-    // "importHelpers": true,
-    // "module": "esnext",
-    // "suppressImplicitAnyIndexErrors": true,
-    // https://github.com/Microsoft/TypeScript/issues/28762#issuecomment-443406607
-    // "noUnusedLocals": true
-  },
-  "typeRoots": ["node_modules/@types"],
-  "exclude": [
-    "node_modules",
-    "lib"
-    // "node_modules/**/*",
-    // "build",
-    // "dist",
-    // "scripts",
-    // "acceptance-tests",
-    // "webpack",
-    // "jest",
-    // "src/setupTests.ts",
-    // "*.js"
-  ]
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "allowJs": false
+    },
+    "include": ["component", "examples", "typings"],
+    "exclude": ["node_modules"]
 }

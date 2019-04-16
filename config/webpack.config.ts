@@ -7,14 +7,16 @@ import getStyleLoader from './getStyleLoader';
 import { getProjectUrl } from './until';
 interface EnvMap {
     build: string;
-    production: string;
+    dist: string;
     development: string;
     [key: string]: string;
 }
 const devMode: boolean = (process.env.NODE_ENV as keyof EnvMap) === 'development';
 const envMap: EnvMap = {
-    build: '.build',
-    production: '.prod',
+    // build: '.build',
+    build: '',
+    // dist: '.dist',
+    dist: '',
     development: '',
 };
 const tsconfig = getProjectUrl(`tsconfig${envMap[process.env.NODE_ENV || 'development']}.json`);

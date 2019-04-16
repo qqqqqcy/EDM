@@ -4,3 +4,4 @@ scripts/**/*.js
 # dist
 es
 lib
+dist

@@ -26,21 +26,18 @@ $button-prefix: $preifx + '-button';
     height: $button-height;
     padding: 0 $v-spacing-md;
     font-size: $font-size;
-    line-height: $button-height;
 }
 
 .#{$button-prefix}-small {
     height: $button-height-sm;
     padding: 0 $v-spacing-sm;
     font-size: $font-size-sm;
-    line-height: $button-height-sm;
 }
 
 .#{$button-prefix}-large {
     height: $button-height-lg;
     padding: 0 $v-spacing-lg;
     font-size: $font-size-lg;
-    line-height: $button-height-lg;
 }
 
 .#{$button-prefix}-radius {

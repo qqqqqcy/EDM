@@ -1,7 +1,22 @@
 {
-    "extends": "./tsconfig.base.json",
     "compilerOptions": {
-        "allowJs": false
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": false,
+        "lib": ["es6", "dom"],
+        "keyofStringsOnly": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        "baseUrl": ".",
+        "paths": {
+            "@component*": ["component*"],
+            "@lib*": ["lib*"],
+            "@tests*": ["tests*"]
+        }
     },
     "include": ["component", "examples", "typings"],
     "exclude": ["node_modules"]

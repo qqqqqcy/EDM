@@ -26,7 +26,9 @@ const Document: React.SFC<RouteComponentProps> = props => {
         return markdownOnly.find(item => item.name === name);
     }
 
-    function onClick(key: string) {}
+    function onClick(key: string) {
+        console.log(key);
+    }
 
     return (
         <div>

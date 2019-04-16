@@ -1,13 +1,8 @@
-import { platform } from 'os';
-const EOL = platform() === 'win32' ? '\r\n' : '\n';
 import components from '../examples/until/components';
 import fs from 'fs';
-import path from 'path';
 import inquirer from 'inquirer';
 
-function getProjectUrl(...str: string[]) {
-    return path.join(__dirname, '../', ...str);
-}
+import { getProjectUrl, EOL } from './helpers';
 
 interface CpInfo {
     name: string;
