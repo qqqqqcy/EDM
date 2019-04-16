@@ -1,7 +1,4 @@
-import { platform } from 'os';
-const EOL = platform() === 'win32' ? '\r\n' : '\n';
 import fs from 'fs';
-import path from 'path';
 import components from '../examples/until/components';
 /**
  * A collection of common interactive command line user interfaces.
@@ -10,9 +7,7 @@ import components from '../examples/until/components';
  */
 import inquirer from 'inquirer';
 
-function getProjectUrl(...str: string[]) {
-    return path.join(__dirname, '../', ...str);
-}
+import { getProjectUrl, EOL } from './helpers';
 
 const cpInfo: CpInfo = { name: '', type: '' };
 const cp: CP = {

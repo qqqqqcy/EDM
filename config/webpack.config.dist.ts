@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
     },
     mode: 'production',
     output: {
-        path: getProjectUrl('lib'),
+        path: getProjectUrl('dist'),
         library: 'eled-mobile',
         libraryTarget: 'umd',
     },

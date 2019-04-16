@@ -1303,6 +1303,11 @@
   dependencies:
     "@types/webpack" "*"
 
+"@types/svgo@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/svgo/-/svgo-1.0.1.tgz#6095fc0119febcf5920ed9cdacdcc0a0d026e4a5"
+  integrity sha512-tV+xgQS8v4McSQqk+tGDCwTT1Bo/QLqgRPS1M9UgNZHK2cTf6CdwzxcMG7YAQwd/ZPUNgfgvN7tfe4OUv077Lw==
+
 "@types/tapable@*":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.4.tgz#b4ffc7dc97b498c969b360a41eee247f82616370"
@@ -10294,6 +10299,26 @@ svgo@^1.0.0:
     css-url-regex "^1.1.0"
     csso "^3.5.1"
     js-yaml "^3.12.0"
+    mkdirp "~0.5.1"
+    object.values "^1.1.0"
+    sax "~1.2.4"
+    stable "^0.1.8"
+    unquote "~1.1.1"
+    util.promisify "~1.0.0"
+
+svgo@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/svgo/-/svgo-1.2.1.tgz#3fedde75a4016193e1c2608b5fdef6f3e4a9fd99"
+  integrity sha512-Y1+LyT4/y1ms4/0yxPMSlvx6dIbgklE9w8CIOnfeoFGB74MEkq8inSfEr6NhocTaFbyYp0a1dvNgRKGRmEBlzA==
+  dependencies:
+    chalk "^2.4.1"
+    coa "^2.0.2"
+    css-select "^2.0.0"
+    css-select-base-adapter "^0.1.1"
+    css-tree "1.0.0-alpha.28"
+    css-url-regex "^1.1.0"
+    csso "^3.5.1"
+    js-yaml "^3.13.0"
     mkdirp "~0.5.1"
     object.values "^1.1.0"
     sax "~1.2.4"
