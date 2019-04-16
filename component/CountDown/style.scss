@@ -1,0 +1,8 @@
+$countdown-prefix: $preifx + '-countdown';
+
+.#{$countdown-prefix} {
+    span {
+        font-size: 16PX;
+        color: rgba(0, 0, 0, 0.25);
+    }
+}
