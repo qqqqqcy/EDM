@@ -1,15 +1,15 @@
 {
     "compilerOptions": {
-        "allowJs": false,
-        "target": "es5",
-        "lib": ["es6", "dom"],
-        "jsx": "react",
-        "moduleResolution": "node",
-        "keyofStringsOnly": true,
-        "allowSyntheticDefaultImports": true,
-        "noImplicitAny": true,
+        "noUnusedParameters": true,
         "noUnusedLocals": true,
         "strictNullChecks": true,
+        "jsx": "preserve",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": false,
+        "lib": ["es6", "dom"],
+        "keyofStringsOnly": true,
+        "noImplicitAny": true,
         "esModuleInterop": true,
         "baseUrl": ".",
         "paths": {

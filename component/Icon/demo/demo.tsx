@@ -6,11 +6,11 @@ const Demo = () => {
         <div>
             <div style={{ background: 'gainsboro' }}>
                 <Icon fill="red" value="addcart" />
-                <Icon fill="blue" value="alipay" />
-                <Icon fill="yellow" value="close" />
-                <Icon fill="gray" value="remind" />
-                <Icon fill="white" value="addcart" />
-                <Icon value="addcart" />
+                <Icon fill="blue" value="addcart" />
+                <Icon fill="green" value="addcart" />
+                <Icon fill="red" value="close" />
+                <Icon fill="blue" value="remind" />
+                <Icon fill="green" value="selected" />
             </div>
         </div>
     );

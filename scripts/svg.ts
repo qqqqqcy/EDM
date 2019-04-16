@@ -5,8 +5,12 @@ import { getProjectUrl, EOL } from './helpers';
 
 const dirList = ['component', 'Icon', 'icons'];
 const dirPath = getProjectUrl(...dirList),
+    // https://github.com/svg/svgo
     svgo = new SVGO({
         plugins: [
+            {
+                removeStyleElement: true,
+            },
             {
                 removeXMLNS: true,
             },
