@@ -2,41 +2,61 @@
 
 exports[`renders Icon correctly 1`] = `
 <div>
-  <div>
+  <div
+    style="background:gainsboro"
+  >
     <svg
       aria-hidden="true"
-      class="edm-icon edm-icon-large"
+      class="edm-icon edm-icon-middle"
       fill="red"
     >
       <use
-        href="#alipay"
+        href="#addcart"
       />
     </svg>
     <svg
       aria-hidden="true"
-      class="edm-icon edm-icon-large"
+      class="edm-icon edm-icon-middle"
       fill="blue"
     >
       <use
-        href="#alipay"
+        href="#addcart"
       />
     </svg>
     <svg
       aria-hidden="true"
-      class="edm-icon edm-icon-large"
-      fill="#ccc"
+      class="edm-icon edm-icon-middle"
+      fill="green"
     >
       <use
-        href="#alipay"
+        href="#addcart"
       />
     </svg>
     <svg
       aria-hidden="true"
-      class="edm-icon edm-icon-large"
-      fill="#ccc"
+      class="edm-icon edm-icon-middle"
+      fill="red"
     >
       <use
-        href="#wechat"
+        href="#close"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="edm-icon edm-icon-middle"
+      fill="blue"
+    >
+      <use
+        href="#remind"
+      />
+    </svg>
+    <svg
+      aria-hidden="true"
+      class="edm-icon edm-icon-middle"
+      fill="green"
+    >
+      <use
+        href="#selected"
       />
     </svg>
   </div>

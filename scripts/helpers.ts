@@ -6,3 +6,4 @@ export function getProjectUrl(...str: string[]) {
 }
 
 export const EOL = platform() === 'win32' ? '\r\n' : '\n';
+export const pkg = import(getProjectUrl('package.json'));

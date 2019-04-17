@@ -13,6 +13,7 @@ const Icon = (props: IconProps) => {
         loadSprite();
         return () => {};
     }, []);
+
     return (
         <svg {...restProps} aria-hidden="true" className={cls}>
             <use xlinkHref={`#${value}`} />

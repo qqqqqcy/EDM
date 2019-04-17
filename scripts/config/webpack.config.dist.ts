@@ -2,7 +2,7 @@ import webpack from 'webpack';
 
 import base from './webpack.config';
 import webpackMerge from 'webpack-merge';
-import { getProjectUrl } from './until';
+import { getProjectUrl } from '../helpers';
 
 const config: webpack.Configuration = {
     entry: {
@@ -10,7 +10,7 @@ const config: webpack.Configuration = {
     },
     mode: 'production',
     output: {
-        path: getProjectUrl('dist'),
+        path: getProjectUrl('packaged', 'dist'),
         library: 'eled-mobile',
         libraryTarget: 'umd',
     },

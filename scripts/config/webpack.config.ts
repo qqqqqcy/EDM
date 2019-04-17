@@ -3,8 +3,9 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StyleLintPluginfrom from 'stylelint-webpack-plugin';
 import getStyleLoader from './getStyleLoader';
+import babelrc from '../babelrc';
 
-import { getProjectUrl } from './until';
+import { getProjectUrl } from '../helpers';
 interface EnvMap {
     build: string;
     dist: string;
@@ -26,8 +27,7 @@ const config: webpack.Configuration = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
         alias: {
             '@component': getProjectUrl('component'),
-            '@lib': getProjectUrl('lib'),
-            '@tests': getProjectUrl('tests'),
+            '@tests': getProjectUrl('scripts', 'tests'),
         },
     },
     module: {
@@ -38,6 +38,9 @@ const config: webpack.Configuration = {
                 use: [
                     {
                         loader: 'babel-loader',
+                        options: {
+                            ...babelrc(),
+                        },
                         // options: {
                         // configFile: tsconfig,
                         // disable type checker - we will use it in fork plugin

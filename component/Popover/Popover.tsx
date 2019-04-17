@@ -1,8 +1,8 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import classnames from 'classnames';
-import Portal from '@component/Portal';
-import TransitionWrap from '@component/TransitionWrap';
+import Portal from '../Portal';
+import TransitionWrap from '../TransitionWrap';
 import { PopoverPropsType } from './PropsType';
 import prefix from '../_util/prefix';
 const prefixCls = `${prefix}-popover`;

@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "noUnusedParameters": true,
+        "noUnusedLocals": true,
+        "strictNullChecks": true,
+        "jsx": "preserve",
+        "target": "ESNext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": false,
+        "lib": ["es6", "dom"],
+        "keyofStringsOnly": true,
+        "noImplicitAny": true,
+        "esModuleInterop": true,
+        // "baseUrl": ".",
+        // "outDir": "./test",
+        "declarationDir": "./packaged/es",
+        "declaration": true
+        // "paths": {
+        //     "@component*": ["component*"],
+        //     "@tests*": ["scripts/tests*"]
+        // }
+    },
+    "include": ["component"],
+    "exclude": ["**/demo", "**/__tests__", "node_modules"]
+}

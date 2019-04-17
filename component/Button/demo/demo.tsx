@@ -1,5 +1,8 @@
 import React from 'react';
 import { Button, Icon } from '@component/index';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+// const { Button, Icon } = require('@component/index');
+
 function onClick() {
     alert('onClick');
 }

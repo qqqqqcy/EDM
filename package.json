@@ -1,23 +1,25 @@
 {
     "name": "eled-mobile",
+    "keywords": [
+        "react",
+        "ui",
+        "mobile"
+    ],
     "version": "0.0.1",
     "description": "",
-    "directories": {
-        "lib": "lib"
-    },
-    "main": "lib",
-    "module": "es",
+    "main": "packaged/lib",
+    "module": "packaged/es",
     "files": [
-        "dist",
-        "lib",
-        "es"
+        "packaged/lib",
+        "packaged/es",
+        "packaged/dist"
     ],
     "scripts": {
-        "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.config.dev.ts",
-        "build": "cross-env NODE_ENV=build webpack -p --config ./config/webpack.config.build.ts",
-        "dist": "cross-env NODE_ENV=dist webpack -p --config ./config/webpack.config.dist.ts",
+        "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./scripts/config/webpack.config.dev.ts",
+        "build": "cross-env NODE_ENV=build webpack -p --config ./scripts/config/webpack.config.build.ts",
+        "dist": "cross-env NODE_ENV=dist webpack -p --config ./scripts/config/webpack.config.dist.ts",
         "compile": "edm-tools compile",
-        "watch-tsc": "edm-tools watch-tsc",
+        "gu": "gulp -f ./scripts/gulp/gulpfile.ts",
         "test": "cross-env NODE_ENV=test jest --config=./jest.config.js --runInBand",
         "rm": "ts-node scripts/remove.ts && eslint ./examples/until/components.ts --fix",
         "api": "ts-node scripts/api.ts",
@@ -28,11 +30,6 @@
         "type": "git",
         "url": "git+https://github.com/xiajunqcy/elephant-ui.git"
     },
-    "keywords": [
-        "react",
-        "ui",
-        "mobile"
-    ],
     "author": "qqqqqcy",
     "license": "MIT",
     "bugs": {
@@ -87,7 +84,6 @@
         "cross-env": "^5.2.0",
         "css-loader": "^2.1.0",
         "cssnano": "^4.1.10",
-        "edm-tools": "D:\\PROJECT\\other\\edm-tools",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.11.2",
         "enzyme-to-json": "^3.3.5",
