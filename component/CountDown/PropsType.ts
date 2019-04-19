@@ -5,8 +5,8 @@ export interface CountDownProps extends React.DetailedHTMLProps<React.HTMLAttrib
     etype?: number | string;
     /** 时间单位，显示在空隙之间的文字，比如：['天','时','分','秒'] 或 [':',':',':'] 默认值：【】*/
     eUnit?: string[];
-    /**当倒计时走到0时会触发一次，表示时间到了 */
+    /** 当倒计时走到0时会触发一次，表示时间到了 */
     eTimeUp?: (() => void) | undefined;
-
+    /** 必填 */
     id: string;
 }

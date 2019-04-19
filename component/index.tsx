@@ -22,3 +22,5 @@ export { default as TransitionWrap } from './TransitionWrap';
 export { default as CountDown } from './CountDown';
 export { default as Popover } from './Popover';
 export { default as FixTop } from './FixTop';
+export { default as Badge } from './Badge';
+export { default as Tabs } from './Tabs';

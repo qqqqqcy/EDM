@@ -6,7 +6,7 @@ const Demo = () => {
         <div>
             <div style={{ background: 'gainsboro' }}>
                 <Icon fill="red" value="addcart" />
-                <Icon fill="blue" value="addcart" />
+                <Icon fill="blue" value="addcart2" />
                 <Icon fill="green" value="addcart" />
                 <Icon fill="red" value="close" />
                 <Icon fill="blue" value="remind" />

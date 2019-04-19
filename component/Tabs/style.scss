@@ -1,0 +1,5 @@
+$tabs-prefix: $preifx + '-tabs';
+
+.#{$tabs-prefix} {
+    text-decoration: underline;
+}

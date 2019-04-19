@@ -8,7 +8,15 @@ const STORAGE = window.localStorage || {};
 const CDOWN_KEY = 'EDM_CDOWN_KEY';
 
 export const CountDown = (props: CountDownProps) => {
-    const { endDate = 0, etype = 1, eUnit = [''], eTimeUp = () => {}, className, id = 'edm_coundow' } = props;
+    const {
+        endDate = 0,
+        etype = 1,
+        eUnit = [''],
+        eTimeUp = () => {},
+        className,
+        id = 'edm_coundow',
+        ...restProps
+    } = props;
     const cls = classnames(prefixCls, className);
 
     // 秒转换为时、分、秒
@@ -72,7 +80,6 @@ export const CountDown = (props: CountDownProps) => {
 
     const initialValue = getTimeData(storageCountDown - currentTime);
     const [timeArray, setTimeArray] = useState(initialValue);
-
     useEffect(() => {
         let intervalId: any;
         function tick() {
@@ -92,7 +99,7 @@ export const CountDown = (props: CountDownProps) => {
     });
 
     return (
-        <div className={cls}>
+        <div className={cls} {...restProps}>
             {timeArray.map((time, index) => (
                 <span key={index}>
                     {time} {index < eUnit.length ? eUnit[index] + ' ' : ''}
