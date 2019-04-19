@@ -1,9 +1,9 @@
 'use strict';
 import fs from 'fs';
 import SVGO from 'svgo';
-import { getProjectUrl, EOL } from './helpers';
+import { getProjectUrl, EOL } from '../helpers';
 
-const dirList = ['component', 'Icon', 'icons'];
+const dirList = ['component', 'Icon', 'svgs'];
 const dirPath = getProjectUrl(...dirList),
     // https://github.com/svg/svgo
     svgo = new SVGO({
@@ -122,7 +122,7 @@ const dirPath = getProjectUrl(...dirList),
 let svgList: string[] = fs.readdirSync(dirPath);
 const svgName: string[] = [];
 
-let str = `const icons = {`;
+let str = `const svgs = {`;
 
 async function watiSvgo(key: string, data: string, filePath: string): Promise<void> {
     const result = await svgo.optimize(data, { path: filePath });
@@ -140,11 +140,11 @@ Promise.all(
     }),
 )
     .then(() => {
-        str += '};export default icons;';
+        str += '};export default svgs;';
         fs.writeFileSync(getProjectUrl(...dirList, '../', 'svgs.tsx'), str, 'utf8');
     })
     .then(() => {
-        let propType = fs.readFileSync(getProjectUrl(...dirList, '../', 'PropsType.ts'), 'utf8');
+        let propType = fs.readFileSync(getProjectUrl(...dirList, '../', 'PropsType.tsx'), 'utf8');
         // svgName.push('string');
         const str = propType
             .split(EOL)
@@ -152,5 +152,6 @@ Promise.all(
                 return item.replace(/value: .*;/, `value: '${svgName.join("' | '")}' | string;`);
             })
             .join(EOL);
-        fs.writeFileSync(getProjectUrl(...dirList, '../', 'PropsType.ts'), str, 'utf8');
+        fs.writeFileSync(getProjectUrl(...dirList, '../', 'PropsType.tsx'), str, 'utf8');
+        console.log('> Congratulations, generator svgs success !!!');
     });

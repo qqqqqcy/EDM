@@ -1,8 +1,8 @@
-import components from '../examples/until/components';
+import components from '../../examples/until/components';
 import fs from 'fs';
 import inquirer from 'inquirer';
 
-import { getProjectUrl, EOL } from './helpers';
+import { getProjectUrl, EOL } from '../helpers';
 
 const cpInfo: Pick<CpInfo, 'name'> = { name: '' };
 interface CpInfo {
@@ -68,27 +68,27 @@ function removeTemplate() {
     });
 }
 
-function deleteCode(name: string, content: string): string {
+function deleteCode(reg: string, content: string): string {
     return content
         .split(EOL)
-        .filter(item => !(item.includes(`'./${name}'`) || item.includes(`./${name}/`) || item.includes(`'${name}',`)))
+        .filter(item => !item.includes(reg))
         .join(EOL);
 }
 
 function removeTemplateInCode() {
     const { name } = cpInfo;
+
     const indexUrl = getProjectUrl('component', 'index.tsx');
-    const styleUrl = getProjectUrl('component', 'style', 'index.scss');
-    const typeListUrl = getProjectUrl('examples', 'until', 'components.ts');
-
     const componentIndex = fs.readFileSync(indexUrl, 'utf8');
-    const componentStyle = fs.readFileSync(styleUrl, 'utf8');
-
-    const newIndex = deleteCode(name, componentIndex);
-    const newStyle = deleteCode(name, componentStyle);
-
+    const newIndex = deleteCode(`'./${name}'`, componentIndex);
     fs.writeFileSync(indexUrl, newIndex, 'utf8');
+
+    const styleUrl = getProjectUrl('component', 'scss.tsx');
+    const componentStyle = fs.readFileSync(styleUrl, 'utf8');
+    const newStyle = deleteCode(`'./${name}/style'`, componentStyle);
     fs.writeFileSync(styleUrl, newStyle, 'utf8');
+
+    const typeListUrl = getProjectUrl('examples', 'until', 'components.tsx');
     fs.writeFileSync(
         typeListUrl,
         `export default ${JSON.stringify(components.filter(item => item.name !== name))}`,

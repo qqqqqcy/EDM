@@ -30,16 +30,15 @@ function swallowError(error: any) {
 
 const source = [
     getProjectUrl('component/*/*.tsx'),
-    getProjectUrl('component/*/*.ts'),
     getProjectUrl('component/*/style/*.tsx'),
     // getProjectUrl('component/*.tsx'),
     // getProjectUrl('typings/**/*.ts'),
 ];
 function convertTstoJs(output: string, modules?: boolean) {
-    const title = modules === false ? 'ts -> es' : 'ts -> lib';
+    const title = modules !== false ? 'ts -> lib' : 'ts -> es';
     return new Promise((res, rej) => {
         src([getProjectUrl('component/index.tsx')])
-            // .pipe(replace())
+            .pipe(replace(/false &&/g, modules !== false ? '' : 'false &&'))
             .pipe(src(source))
             .pipe(debug({ title }))
             .pipe(babel(babelrc(modules)))
@@ -79,24 +78,24 @@ function copyDts() {
 
 const scssSource = [getProjectUrl('component/**/style/*.scss')];
 function copyScss(modules?: boolean) {
-    const title = modules === false ? 'scss -> es' : 'scss -> lib';
+    const title = modules !== false ? 'scss -> lib' : 'scss -> es';
     return new Promise((res, rej) => {
         src(scssSource)
             .pipe(debug({ title }))
             .on('error', rej)
-            .pipe(dest(modules === false ? esDir : libDir))
+            .pipe(dest(modules !== false ? libDir : esDir))
             .on('end', res);
     });
 }
 
 function convertScssToCss(modules?: boolean) {
-    const title = modules === false ? 'css -> es' : 'css -> lib';
+    const title = modules !== false ? 'css -> lib' : 'css -> es';
     return new Promise((res, rej) => {
         src(scssSource)
             .pipe(debug({ title }))
             .pipe(scss())
             .on('error', rej)
-            .pipe(dest(modules === false ? esDir : libDir))
+            .pipe(dest(modules !== false ? libDir : esDir))
             .on('end', res);
     });
 }
@@ -114,14 +113,14 @@ function buildCssJs(modules?: boolean) {
                 }),
             )
             .on('error', rej)
-            .pipe(dest(modules === false ? esDir : libDir))
+            .pipe(dest(modules !== false ? libDir : esDir))
             .on('end', res);
     });
 }
 
 function compile(modules?: boolean) {
     clean(modules !== false ? libDir : esDir);
-    const dir = modules === false ? esDir : libDir;
+    const dir = modules !== false ? libDir : esDir;
     return Promise.all([
         copyScss(modules),
         convertScssToCss(modules),

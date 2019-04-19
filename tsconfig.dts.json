@@ -12,14 +12,8 @@
         "keyofStringsOnly": true,
         "noImplicitAny": true,
         "esModuleInterop": true,
-        // "baseUrl": ".",
-        // "outDir": "./test",
         "declarationDir": "./compiled/es",
         "declaration": true
-        // "paths": {
-        //     "@component*": ["component*"],
-        //     "@tests*": ["scripts/tests*"]
-        // }
     },
     "include": ["component"],
     "exclude": ["**/demo", "**/__tests__", "node_modules", "component/scss.tsx"]

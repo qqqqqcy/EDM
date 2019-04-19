@@ -1,5 +1,5 @@
 import fs from 'fs';
-import components from '../examples/until/components';
+import components from '../../examples/until/components';
 /**
  * A collection of common interactive command line user interfaces.
  * @ref https://github.com/SBoudrias/Inquirer.js
@@ -7,13 +7,14 @@ import components from '../examples/until/components';
  */
 import inquirer from 'inquirer';
 
-import { getProjectUrl, EOL } from './helpers';
+import { getProjectUrl, EOL } from '../helpers';
 
 const cpInfo: CpInfo = { name: '', type: '' };
 const cp: CP = {
     index: '',
     PropsType: '',
-    style: '',
+    styleScss: '',
+    styleTsx: '',
     demoDemo: '',
     demoIndex: '',
     demoReadme: '',
@@ -28,7 +29,8 @@ interface CpInfo {
 interface CP {
     index: string;
     PropsType: string;
-    style: string;
+    styleScss: string;
+    styleTsx: string;
     demoDemo: string;
     demoIndex: string;
     demoReadme: string;
@@ -85,21 +87,27 @@ function getTemplate() {
     return new Promise((res, rej) => {
         try {
             const { name } = cpInfo;
+
             const cpUrl = ['scripts', 'template', 'NAME'];
-            const DemoUrl = ['scripts', 'template', 'NAME', 'demo'];
-            const TestUrl = ['scripts', 'template', 'NAME', '__tests__'];
             cp.index = fs
                 .readFileSync(getProjectUrl(...cpUrl, 'index.tsx'), 'utf8')
                 .replace(/-NAME/g, `-${name.toLowerCase()}`)
                 .replace(/NAME/g, name);
-            cp.PropsType = fs.readFileSync(getProjectUrl(...cpUrl, 'PropsType.ts'), 'utf8').replace(/NAME/g, name);
-            cp.style = fs
-                .readFileSync(getProjectUrl(...cpUrl, 'style.scss'), 'utf8')
+            cp.PropsType = fs.readFileSync(getProjectUrl(...cpUrl, 'PropsType.tsx'), 'utf8').replace(/NAME/g, name);
+
+            const StyleUrl = ['scripts', 'template', 'NAME', 'style'];
+            cp.styleScss = fs
+                .readFileSync(getProjectUrl(...StyleUrl, 'index.scss'), 'utf8')
                 .replace(/NAME/g, name.toLowerCase());
+            cp.styleTsx = fs.readFileSync(getProjectUrl(...StyleUrl, 'index.tsx'), 'utf8');
+
+            const DemoUrl = ['scripts', 'template', 'NAME', 'demo'];
             cp.demoDemo = fs.readFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), 'utf8').replace(/NAME/g, name);
-            cp.demoIndex = fs.readFileSync(getProjectUrl(...DemoUrl, 'index.ts'), 'utf8').replace(/NAME/g, name);
+            cp.demoIndex = fs.readFileSync(getProjectUrl(...DemoUrl, 'index.tsx'), 'utf8').replace(/NAME/g, name);
             cp.demoReadme = fs.readFileSync(getProjectUrl(...DemoUrl, 'readme.md'), 'utf8').replace(/NAME/g, name);
-            cp.testDemo = fs.readFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), 'utf8').replace(/NAME/g, name);
+
+            const TestUrl = ['scripts', 'template', 'NAME', '__tests__'];
+            cp.testDemo = fs.readFileSync(getProjectUrl(...TestUrl, 'demo.test.tsx'), 'utf8').replace(/NAME/g, name);
             cp.testIndex = fs.readFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), 'utf8').replace(/NAME/g, name);
             res();
         } catch (err) {
@@ -112,20 +120,28 @@ function setTemplate() {
     return new Promise((res, rej) => {
         try {
             const { name } = cpInfo;
+
             const NameUrl = ['component', name];
-            const DemoUrl = ['component', name, 'demo'];
-            const TestUrl = ['component', name, '__tests__'];
             fs.mkdirSync(getProjectUrl(...NameUrl));
-            fs.mkdirSync(getProjectUrl(...DemoUrl));
-            fs.mkdirSync(getProjectUrl(...TestUrl));
             fs.writeFileSync(getProjectUrl(...NameUrl, 'index.tsx'), cp.index, 'utf8');
-            fs.writeFileSync(getProjectUrl(...NameUrl, 'PropsType.ts'), cp.PropsType, 'utf8');
-            fs.writeFileSync(getProjectUrl(...NameUrl, 'style.scss'), cp.style, 'utf8');
+            fs.writeFileSync(getProjectUrl(...NameUrl, 'PropsType.tsx'), cp.PropsType, 'utf8');
+
+            const StyleUrl = ['component', name, 'style'];
+            fs.mkdirSync(getProjectUrl(...StyleUrl));
+            fs.writeFileSync(getProjectUrl(...StyleUrl, 'index.scss'), cp.styleScss, 'utf8');
+            fs.writeFileSync(getProjectUrl(...StyleUrl, 'index.tsx'), cp.styleTsx, 'utf8');
+
+            const DemoUrl = ['component', name, 'demo'];
+            fs.mkdirSync(getProjectUrl(...DemoUrl));
             fs.writeFileSync(getProjectUrl(...DemoUrl, 'demo.tsx'), cp.demoDemo, 'utf8');
-            fs.writeFileSync(getProjectUrl(...DemoUrl, 'index.ts'), cp.demoIndex, 'utf8');
+            fs.writeFileSync(getProjectUrl(...DemoUrl, 'index.tsx'), cp.demoIndex, 'utf8');
             fs.writeFileSync(getProjectUrl(...DemoUrl, 'readme.md'), cp.demoReadme, 'utf8');
-            fs.writeFileSync(getProjectUrl(...TestUrl, 'demo.test.ts'), cp.testDemo, 'utf8');
+
+            const TestUrl = ['component', name, '__tests__'];
+            fs.mkdirSync(getProjectUrl(...TestUrl));
+            fs.writeFileSync(getProjectUrl(...TestUrl, 'demo.test.tsx'), cp.testDemo, 'utf8');
             fs.writeFileSync(getProjectUrl(...TestUrl, 'index.test.tsx'), cp.testIndex, 'utf8');
+
             res();
         } catch (err) {
             console.log('setTemplate fail !');
@@ -138,17 +154,16 @@ function addTemplateInCode() {
     const { name } = cpInfo;
 
     const indexUrl = getProjectUrl('component', 'index.tsx');
-    const styleUrl = getProjectUrl('component', 'style', 'index.scss');
-    const typeListUrl = getProjectUrl('examples', 'until', 'components.ts');
-
     const componentIndex = fs.readFileSync(indexUrl, 'utf8');
-    const componentStyle = fs.readFileSync(styleUrl, 'utf8');
-
     const newIndex = componentIndex + `export { default as ${name} } from './${name}';` + EOL;
-    const newStyle = componentStyle + `@import '../${name}/style.scss';` + EOL;
-
     fs.writeFileSync(indexUrl, newIndex, 'utf8');
+
+    const styleUrl = getProjectUrl('component', 'scss.tsx');
+    const componentStyle = fs.readFileSync(styleUrl, 'utf8');
+    const newStyle = componentStyle + `import './${name}/style';` + EOL;
     fs.writeFileSync(styleUrl, newStyle, 'utf8');
+
+    const typeListUrl = getProjectUrl('examples', 'until', 'components.tsx');
     fs.writeFileSync(typeListUrl, `export default ${JSON.stringify(components)}`, 'utf8');
 }
 

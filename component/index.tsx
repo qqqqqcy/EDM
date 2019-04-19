@@ -1,6 +1,7 @@
-// todo delete this in es dir
 const ENV = process.env.NODE_ENV;
 if (
+    // gulpfile.ts will delete 'false &&' when modules === undefined
+    false &&
     ENV !== 'production' &&
     ENV !== 'test' &&
     typeof console !== 'undefined' &&

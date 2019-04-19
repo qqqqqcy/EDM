@@ -18,5 +18,5 @@
         }
     },
     "include": ["component", "examples", "typings"],
-    "exclude": ["node_modules", ".bak"]
+    "exclude": ["node_modules", ".bak", "scripts/template"]
 }

@@ -1,8 +1,8 @@
-import components from '../examples/until/components';
+import components from '../../examples/until/components';
 import fs from 'fs';
 import inquirer from 'inquirer';
 
-import { getProjectUrl, EOL } from './helpers';
+import { getProjectUrl, EOL } from '../helpers';
 
 interface CpInfo {
     name: string;
@@ -39,8 +39,7 @@ async function userInput() {
         ])
         .then(({ name, confirm }: CpInfo) => {
             if (confirm) {
-                console.log('...Removing');
-                console.log(name);
+                console.log(`...${name}'s Api Generating`);
             } else {
                 throw '> Loading';
             }
@@ -54,7 +53,7 @@ function getTemplate() {
             const { name } = cpInfo;
             const cpUrl = ['component', name];
             cp.index = fs.readFileSync(getProjectUrl(...cpUrl, 'index.tsx'), 'utf8');
-            cp.PropsType = fs.readFileSync(getProjectUrl(...cpUrl, 'PropsType.ts'), 'utf8').replace(/NAME/g, name);
+            cp.PropsType = fs.readFileSync(getProjectUrl(...cpUrl, 'PropsType.tsx'), 'utf8').replace(/NAME/g, name);
             res();
         } catch (err) {
             rej(err);
