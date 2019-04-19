@@ -1,0 +1,79 @@
+@import '../../style/mixin';
+$button-prefix: $preifx + '-button';
+
+.#{$button-prefix} {
+    display: block;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    white-space: nowrap;
+    background-color: currentColor;
+    border: 0 solid;
+    outline: 0 none;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.#{$button-prefix}-inline {
+    display: inline-block;
+    width: auto;
+}
+
+// 尺寸$font-size: 14 * $hd;
+.#{$button-prefix}-middle {
+    height: $button-height;
+    padding: 0 $v-spacing-md;
+    font-size: $font-size;
+}
+
+.#{$button-prefix}-small {
+    height: $button-height-sm;
+    padding: 0 $v-spacing-sm;
+    font-size: $font-size-sm;
+}
+
+.#{$button-prefix}-large {
+    height: $button-height-lg;
+    padding: 0 $v-spacing-lg;
+    font-size: $font-size-lg;
+}
+
+.#{$button-prefix}-radius {
+    border-radius: $button-radius;
+}
+// 颜色
+.#{$button-prefix}-default {
+    color: $color-default;
+}
+
+.#{$button-prefix}-primary {
+    color: $color-default;
+    background-image: linear-gradient(to right, $color-default-gradient-light, $color-default-gradient-dark);
+}
+
+.#{$button-prefix}-secondary {
+    color: $color-secondary;
+}
+// 虚实
+.#{$button-prefix}-ghost {
+    background-color: $color-light;
+    background-image: none;
+    border: solid px(1);
+}
+
+// 反馈效果
+.#{$button-prefix}-active {
+    background-image: linear-gradient($button-color-tap, $button-color-tap);
+}
+
+.#{$button-prefix}:not(.#{$button-prefix}-ghost)::first-line {
+    color: $color-light;
+}
+
+// 禁用
+.#{$button-prefix}-disabled {
+    opacity: 0.4;
+}

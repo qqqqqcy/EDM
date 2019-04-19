@@ -1,7 +1,8 @@
 # Valid
 scripts/**/*.js
 
+
 # dist
-es
-lib
+compiled
 dist
+gulp

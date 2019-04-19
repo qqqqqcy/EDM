@@ -1,6 +1,6 @@
 // inspried by https://github.com/kisenka/svg-sprite-loader/blob/master/runtime/browser-sprite.js
 // Much simplified, do make sure run this after document ready
-import icons from './svgs';
+import svgs from './svgs';
 
 const svgSprite = (contents: string) => `
   <svg
@@ -18,9 +18,9 @@ const svgSprite = (contents: string) => `
 // both minified by https://github.com/svg/svgo
 
 const renderSvgSprite = () => {
-    const symbols = Object.keys(icons)
+    const symbols = Object.keys(svgs)
         .map(iconName => {
-            const svgContent = (icons as { [key: string]: string })[iconName].split('svg')[1];
+            const svgContent = (svgs as { [key: string]: string })[iconName].split('svg')[1];
             return `<symbol id=${iconName}${svgContent}symbol>`;
         })
         .join('');

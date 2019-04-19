@@ -1,6 +1,7 @@
-// todo delete this in es dir
 const ENV = process.env.NODE_ENV;
 if (
+    // gulpfile.ts will delete 'false &&' when modules === undefined
+    false &&
     ENV !== 'production' &&
     ENV !== 'test' &&
     typeof console !== 'undefined' &&
@@ -12,7 +13,6 @@ if (
             'please use https://www.npmjs.com/package/babel-plugin-import to reduce app bundle size.',
     );
 }
-
 export { default as Button } from './Button';
 export { default as Icon } from './Icon';
 // export { default as MessageBox } from './MessageBox';

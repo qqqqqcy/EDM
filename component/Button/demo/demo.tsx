@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, Icon } from '@component/index';
-function onClick() {
-    alert('onClick');
-}
 const Demo = () => {
+    function onClick() {
+        alert('onClick');
+    }
     return (
         <div className="Button">
             <Button size="large" theme="primary" onClick={onClick}>

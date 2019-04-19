@@ -24,7 +24,5 @@ yarn-error.log*
 
 .vscode
 .awcache
-lib
-es
-
-.awcache
+.bak
+compiled

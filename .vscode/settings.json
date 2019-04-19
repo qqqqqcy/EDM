@@ -9,6 +9,7 @@
         { "language": "typescript", "autoFix": true },
         { "language": "typescriptreact", "autoFix": true }
     ],
-    "prettier.stylelintIntegration": true
+    "prettier.stylelintIntegration": true,
+    "commentTranslate.targetLanguage": "zh-CN"
     // "jest.showCoverageOnLoad": true
 }

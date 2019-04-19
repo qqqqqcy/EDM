@@ -1,9 +1,18 @@
 var config = {
     collectCoverage: true,
-    collectCoverageFrom: ['component/**/*.{ts,tsx}', '!component/**/demo/index.ts', '!component/**/*.d.ts'],
+    collectCoverageFrom: [
+        'component/*/*.tsx',
+        'component/index.tsx',
+        '!component/style/*.tsx',
+        // 'component/**/*.tsx',
+        // '!component/**/demo/index.tsx',
+        // '!component/**/*.d.ts',
+        // '!component/*/style/*.tsx',
+        // '!component/scss.tsx',
+    ],
     coverageDirectory: 'coverage',
     coverageReporters: ['text', 'lcov'],
-    setupFiles: ['./tests/setup.js'],
+    setupFiles: ['./scripts/tests/setup.js'],
     reporters: ['default'],
 
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
@@ -27,11 +36,10 @@ var config = {
 
     moduleNameMapper: {
         '@component/(.*)$': '<rootDir>/component/$1',
-        '@lib/(.*)$': '<rootDir>/lib/$1',
-        '@tests/(.*)$': '<rootDir>/tests/$1',
+        '@tests/(.*)$': '<rootDir>/scripts/tests/$1',
         '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
-            '<rootDir>/tests/__mocks__/file-mock.js',
-        '\\.(css|less|sass|scss)$': '<rootDir>/tests/__mocks__/object-mock.js',
+            '<rootDir>/scripts/tests/__mocks__/file-mock.js',
+        '\\.(css|less|sass|scss)$': '<rootDir>/scripts/tests/__mocks__/object-mock.js',
     },
 };
 module.exports = config;
