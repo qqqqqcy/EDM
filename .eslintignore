@@ -3,6 +3,6 @@ scripts/**/*.js
 
 
 # dist
-packaged
+compiled
 dist
 gulp

@@ -25,5 +25,4 @@ yarn-error.log*
 .vscode
 .awcache
 test
-packaged
-!packaged/build
+compiled

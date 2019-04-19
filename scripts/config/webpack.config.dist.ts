@@ -6,13 +6,14 @@ import { getProjectUrl } from '../helpers';
 
 const config: webpack.Configuration = {
     entry: {
-        index: './component/index.tsx',
+        index: ['./component/index.tsx', './component/scss.tsx'],
     },
     mode: 'production',
     output: {
-        path: getProjectUrl('packaged', 'dist'),
+        path: getProjectUrl('compiled', 'dist'),
         library: 'eled-mobile',
         libraryTarget: 'umd',
+        globalObject: 'this',
     },
     externals: {
         react: {

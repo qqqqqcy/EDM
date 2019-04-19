@@ -1,6 +1,5 @@
 import webpack from 'webpack';
 import base from './webpack.config';
-
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 // import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import { getProjectUrl } from '../helpers';

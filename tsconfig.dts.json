@@ -14,7 +14,7 @@
         "esModuleInterop": true,
         // "baseUrl": ".",
         // "outDir": "./test",
-        "declarationDir": "./packaged/es",
+        "declarationDir": "./compiled/es",
         "declaration": true
         // "paths": {
         //     "@component*": ["component*"],
@@ -22,5 +22,5 @@
         // }
     },
     "include": ["component"],
-    "exclude": ["**/demo", "**/__tests__", "node_modules"]
+    "exclude": ["**/demo", "**/__tests__", "node_modules", "component/scss.tsx"]
 }
