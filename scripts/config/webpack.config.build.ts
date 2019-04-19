@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'EDM',
-            template: 'index.html',
+            template: getProjectUrl('examples', 'index.html'),
         }),
     ],
 };
