@@ -19,25 +19,18 @@ export const Tabs = (props: TabsProps) => {
         activeIndex = 0,
         centerMode,
         scrollable = false,
-        onChange,
+        onClick,
         ...restProps
     } = props;
     const styleClass = classnames(prefixCls, `${prefixCls}-${position}`, className);
-    // const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
+    const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
-
     console.log(y);
-
     let tabNode: any;
     let dragging: boolean;
     let touches: any = {};
     let isMobile: boolean = 'ontouchstart' in document;
-
-    function handleChange(activeIndex: any) {
-        // setActiveIndexCopy(activeIndex);
-        onChange && onChange(activeIndex);
-    }
 
     const getLineOffset = () => {
         const index = activeIndex!;
@@ -46,7 +39,7 @@ export const Tabs = (props: TabsProps) => {
             left = 0,
             top = 0;
         if (tabNode) {
-            const tabs = tabNode.querySelectorAll('.elm-Tab');
+            const tabs = tabNode.querySelectorAll('.edm-tab');
             for (let i = 0; i < tabs.length; i++) {
                 if (i < index) {
                     left += tabs[i].offsetWidth;
@@ -123,21 +116,6 @@ export const Tabs = (props: TabsProps) => {
         }
     };
 
-    let childIndex = -1;
-    const childrenClone = React.Children.map(children, (child: React.ReactElement<any>) => {
-        if (!React.isValidElement(child)) {
-            return null;
-        }
-        childIndex += 1;
-        const props: any = { ...child.props };
-        return React.cloneElement(child as React.ReactElement<any>, {
-            index: childIndex,
-            disabled: props.disabled,
-            onChange: handleChange,
-            activeIndex: activeIndex!,
-        });
-    });
-
     const wrapperStyle = {
         transform: `translate3d(${x}px, 0, 0)`,
     };
@@ -156,6 +134,7 @@ export const Tabs = (props: TabsProps) => {
     }
 
     useEffect(() => {
+        console.log(centerMode);
         if (centerMode) {
             const { width, height, left, top } = getLineOffset();
             const wrapperNode = tabNode.firstElementChild;
@@ -184,6 +163,7 @@ export const Tabs = (props: TabsProps) => {
                     diffWidth = 0;
                 }
                 setX(-diffWidth);
+                console.log(x);
             }
         }
 
@@ -196,6 +176,26 @@ export const Tabs = (props: TabsProps) => {
         };
     });
 
+    function handleChange(activeIndex: any) {
+        setActiveIndexCopy(activeIndex);
+        onClick && onClick(activeIndex);
+    }
+
+    let childIndex = -1;
+    let childrenCopy: any = children;
+    const childrenClone = React.Children.map(childrenCopy, (child: React.ReactElement<any>) => {
+        if (!React.isValidElement(child)) {
+            return null;
+        }
+        childIndex += 1;
+        const props: any = { ...child.props };
+        return React.cloneElement(child as React.ReactElement<any>, {
+            index: childIndex,
+            disabled: props.disabled,
+            onClick: handleChange,
+            activeIndex: activeIndexCopy!,
+        });
+    });
     return (
         <div className={styleClass} {...restProps}>
             <div

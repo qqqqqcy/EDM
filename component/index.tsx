@@ -21,12 +21,8 @@ export { default as Portal } from './Portal';
 export { default as TransitionWrap } from './TransitionWrap';
 export { default as CountDown } from './CountDown';
 export { default as Popover } from './Popover';
-<<<<<<< HEAD
 export { default as FixTop } from './FixTop';
 export { default as Badge } from './Badge';
-export { default as Tabs } from './Tabs';
-=======
-
 // import Button from './Button';
 // import Icon from './Icon';
 // import TouchFeedback from './TouchFeedback';
@@ -36,4 +32,3 @@ export { default as Tabs } from './Tabs';
 // import Popover from './Popover';
 
 // export { Button, Icon, TouchFeedback, Portal, TransitionWrap, CountDown, Popover };
->>>>>>> 9bb52f0ed4fc293bfe89a36300b95ab104e83d7c

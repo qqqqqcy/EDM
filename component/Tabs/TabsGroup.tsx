@@ -37,10 +37,11 @@ export const TabsGroup = (props: TabsGroupProps) => {
     let num = 0;
     React.Children.forEach(children, (child: any, index: number) => {
         const type: any = child.type;
-        const fnName = type.fnName;
+        const fnName = type.name;
         const props: any = { ...child.props };
         props.key = index;
         if (fnName === 'Tabs') {
+            console.log(centerMode);
             props.activeIndex = activeIndex;
             props.onChange = handleChange;
             props.position = position;
@@ -56,6 +57,8 @@ export const TabsGroup = (props: TabsGroupProps) => {
             otherChild.push(React.cloneElement(child, props));
         }
     });
+
+    console.log(centerMode);
     const x = wrapper ? -(wrapper as any).offsetWidth * activeIndex! : 0;
     const y = wrapper ? -(wrapper as any).offsetHeight * activeIndex! : 0;
     const horizontal = position === 'left' || position === 'right';
