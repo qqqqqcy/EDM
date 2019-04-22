@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tab, Tabs, TabsGroup } from '../index';
-import { Icon } from '@component/index';
+import { Icon } from '@src/index';
 
 const Demo = () => {
     return (
@@ -8,7 +8,7 @@ const Demo = () => {
             <TabsGroup centerMode={true}>
                 <Tabs>
                     <Tab>
-                        <Icon fill="#F00" value="alipay" className="edm-tab-icon" />
+                        <Icon fill="currentColor" value="alipay" className="edm-tab-icon" />
                         Home
                     </Tab>
                     <Tab>Home2</Tab>

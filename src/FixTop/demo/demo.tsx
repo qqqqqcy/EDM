@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FixTop, Icon } from '@component/index';
+import { FixTop, Icon } from '@src/index';
 const Demo = () => {
     const [visible, setVisible] = useState(true);
     const clickFun = () => {

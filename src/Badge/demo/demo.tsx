@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge } from '@component/index';
+import { Badge } from '@src/index';
 import './demo.scss';
 const Demo = () => {
     return (
