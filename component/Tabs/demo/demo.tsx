@@ -1,14 +1,14 @@
 import React from 'react';
-import { Tabs, Tab } from '../index';
+import { Tabs, Tab, TabContainer } from '../index';
 
 const Demo = () => {
     return (
-        <div className="Tabs">
+        <TabContainer>
             <Tabs>
                 <Tab>Home</Tab>
                 <Tab>Home</Tab>
             </Tabs>
-        </div>
+        </TabContainer>
     );
 };
 

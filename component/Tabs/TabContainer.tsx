@@ -1,46 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { TabContainerProps, TabContainerState } from './PropsType';
+import { TabContainerProps } from './PropsType';
 
-export default class TabContainer extends React.PureComponent<TabContainerProps, TabContainerState> {
-    static fnName: string = 'TabContainer';
+import prefix from '../_util/prefix';
+const prefixCls = `${prefix}-tab-container`;
 
-    static defaultProps: TabContainerProps = {
-        prefixCls: 'bm-TabContainer',
-    };
+export const TabContainer = (props: TabContainerProps) => {
+    const { children, className, index, activeIndex, ...restProps } = props;
+    const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
+    const styleClass = classNames(
+        {
+            [`${prefixCls}-active`]: index === activeIndexCopy,
+        },
+        className,
+    );
 
-    state: TabContainerProps = {
-        activeIndex: 0,
-    };
+    useEffect(() => {
+        setActiveIndexCopy(activeIndex);
+    }, [activeIndex]);
 
-    componentDidMount() {
-        const { activeIndex }: any = this.props;
-        if (activeIndex > 0) {
-            this.setState({ activeIndex });
-        }
-    }
-
-    componentWillReceiveProps(nextProps: TabContainerProps) {
-        if ('activeIndex' in nextProps && this.props.activeIndex !== nextProps.activeIndex) {
-            this.setState({
-                activeIndex: nextProps.activeIndex!,
-            });
-        }
-    }
-
-    render() {
-        const { children, className, index, activeIndex, prefixCls, ...other } = this.props;
-        const styleClass = classNames(
-            prefixCls,
-            {
-                [`${prefixCls}-active`]: index === activeIndex,
-            },
-            className,
-        );
-        return (
-            <div className={styleClass} {...other}>
-                {children}
-            </div>
-        );
-    }
-}
+    return (
+        <div className={styleClass} {...restProps}>
+            {children}
+        </div>
+    );
+};

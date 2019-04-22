@@ -1,3 +1,4 @@
 import { Tabs } from './Tabs';
 import { Tab } from './Tab';
-export { Tabs, Tab };
+import { TabContainer } from './TabContainer';
+export { Tabs, Tab, TabContainer };

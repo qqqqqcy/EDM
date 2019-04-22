@@ -68,11 +68,13 @@ const config: webpack.Configuration = {
         //     $PREFIX: JSON.stringify('edm'),
         // }),
         new StyleLintPluginfrom({
-            configFile: getProjectUrl('.stylelintrc.js'),
+            configFile: getProjectUrl('stylelint.config.js'),
             context: getProjectUrl(),
-            files: ['**/*.scss', '**/*.sass'],
+            files: ['**/*.scss'],
+            failOnError: false,
             emitErrors: true,
-            lintDirtyModulesOnly: true,
+            syntax: 'scss',
+            quiet: false,
         }),
         // 检查代码中的类型错误
         new ForkTsCheckerWebpackPlugin({

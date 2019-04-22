@@ -18,5 +18,13 @@ export interface TabsProps extends React.DetailedHTMLProps<React.HTMLAttributes<
 export interface TabContainerProps
     extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     index?: number;
+    activeIndex?: any;
+}
+
+export interface TabsGroupProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    animated?: boolean;
     activeIndex?: number;
+    centerMode?: boolean;
+    position?: 'top' | 'right' | 'bottom' | 'left';
+    scrollable?: boolean;
 }
