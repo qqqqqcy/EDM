@@ -16,8 +16,8 @@ const Document: React.SFC<RouteComponentProps> = props => {
     /**
      * 添加纯文本页面
      * @type 类型必须为 markdownOnly
-     * @name 请创建 [name].md 在对应文件夹中 examples\document\markdown
-     * 在 examples\document\markdown\index.ts 中创建对应的 import 和 export
+     * @name 请创建 [name].md 在对应文件夹中 site\document\markdown
+     * 在 site\document\markdown\index.ts 中创建对应的 import 和 export
      */
     const markdownOnly: DirectoryStructureItem[] = [{ name: 'introduce', type: 'markdownOnly' }];
     const newDirectoryStructure = markdownOnly.concat(directoryStructure);
