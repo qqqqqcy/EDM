@@ -28,7 +28,7 @@ const config: webpack.Configuration = {
         // historyApiFallback: true
     },
     entry: {
-        example: getProjectUrl('examples', 'index.tsx'),
+        example: getProjectUrl('site', 'index.tsx'),
     },
     devtool: 'source-map',
     // resolve: {
@@ -37,7 +37,7 @@ const config: webpack.Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'EDM',
-            template: getProjectUrl('examples', 'index.html'),
+            template: getProjectUrl('site', 'index.html'),
         }),
     ],
 };

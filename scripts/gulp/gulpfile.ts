@@ -29,15 +29,15 @@ function swallowError(error: any) {
 }
 
 const source = [
-    getProjectUrl('component/*/*.tsx'),
-    getProjectUrl('component/*/style/*.tsx'),
-    // getProjectUrl('component/*.tsx'),
+    getProjectUrl('src/*/*.tsx'),
+    getProjectUrl('src/*/style/*.tsx'),
+    // getProjectUrl('src/*.tsx'),
     // getProjectUrl('typings/**/*.ts'),
 ];
 function convertTstoJs(output: string, modules?: boolean) {
     const title = modules !== false ? 'ts -> lib' : 'ts -> es';
     return new Promise((res, rej) => {
-        src([getProjectUrl('component/index.tsx')])
+        src([getProjectUrl('src/index.tsx')])
             .pipe(replace(/false &&/g, modules !== false ? '' : 'false &&'))
             .pipe(src(source))
             .pipe(debug({ title }))
@@ -76,7 +76,7 @@ function copyDts() {
     });
 }
 
-const scssSource = [getProjectUrl('component/**/style/*.scss')];
+const scssSource = [getProjectUrl('src/**/style/*.scss')];
 function copyScss(modules?: boolean) {
     const title = modules !== false ? 'scss -> lib' : 'scss -> es';
     return new Promise((res, rej) => {
@@ -100,7 +100,7 @@ function convertScssToCss(modules?: boolean) {
     });
 }
 
-const styleIndexSource = [getProjectUrl('component/**/style/index.tsx')];
+const styleIndexSource = [getProjectUrl('src/**/style/index.tsx')];
 function buildCssJs(modules?: boolean) {
     return new Promise((res, rej) => {
         src(styleIndexSource)

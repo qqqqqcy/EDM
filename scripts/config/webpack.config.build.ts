@@ -8,7 +8,7 @@ import { getProjectUrl } from '../helpers';
 
 const config: webpack.Configuration = {
     entry: {
-        example: getProjectUrl('examples', 'index.tsx'),
+        example: getProjectUrl('site', 'index.tsx'),
     },
     // resolve: {
     //     plugins: [new TsConfigPathsPlugin({})],
@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'EDM',
-            template: getProjectUrl('examples', 'index.html'),
+            template: getProjectUrl('site', 'index.html'),
         }),
     ],
 };

@@ -26,7 +26,7 @@ const config: webpack.Configuration = {
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.scss'],
         alias: {
-            '@component': getProjectUrl('component'),
+            '@src': getProjectUrl('src'),
             '@tests': getProjectUrl('scripts', 'tests'),
         },
     },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NAME } from '@component/index';
+import { NAME } from '@src/index';
 const Demo = () => {
     return (
         <div className="NAME">

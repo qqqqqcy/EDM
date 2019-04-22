@@ -36,7 +36,7 @@ yarn install
 ```js
 Project
 │
-├── component            //  组件源码
+├── src            //  组件源码
 │   ├── [component]      //  单个组件
 │   │   ├── __tests__    //  测试文件
 │   │   └── demo         //  用以展示的 demo

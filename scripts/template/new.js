@@ -1,16 +1,16 @@
-import fs from 'fs';
-import components from '../../site/until/components';
+const fs = require('fs');
+const components = require('../../site/until/components').default;
 /**
  * A collection of common interactive command line user interfaces.
  * @ref https://github.com/SBoudrias/Inquirer.js
  * @doc_zh https://juejin.im/entry/5937c73cac502e0068cf1171
  */
-import inquirer from 'inquirer';
+const inquirer = require('inquirer');
 
-import { getProjectUrl, EOL } from '../helpers';
+const { getProjectUrl, EOL } = require('../helpers');
 
-const cpInfo: CpInfo = { name: '', type: '' };
-const cp: CP = {
+const cpInfo = {};
+const cp = {
     index: '',
     PropsType: '',
     styleScss: '',
@@ -22,27 +22,10 @@ const cp: CP = {
     testDemo: '',
 };
 
-interface CpInfo {
-    name: string;
-    type: string;
-}
-interface CP {
-    index: string;
-    PropsType: string;
-    styleScss: string;
-    styleTsx: string;
-    demoDemo: string;
-    demoIndex: string;
-    demoReadme: string;
-    testIndex: string;
-    testDemo: string;
-}
 async function userInput() {
     // const typeList = JSON.parse(typeListSource);
-    const typeObject: {
-        [key: string]: boolean;
-    } = {};
-    components.map((item: { name: string; type: string }) => (typeObject[item.type] = true));
+    const typeObject = {};
+    components.map(item => (typeObject[item.type] = true));
     // cnt: Create a new type
     const cnt = 'Create a new type';
     const typeList = [...Object.keys(typeObject), cnt];
@@ -69,7 +52,7 @@ async function userInput() {
                 default: 'NewType',
             },
         ])
-        .then(({ name, type }: CpInfo) => {
+        .then(({ name, type }) => {
             if (fs.existsSync(getProjectUrl('src', name))) {
                 console.log('The src already exists. Please rename the src or delete the existing component.');
                 throw 'fail !';
