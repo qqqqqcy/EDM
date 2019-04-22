@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Button, Popover } from '@component/index';
+import { Button, Popover } from '@src/index';
 const Demo = () => {
     const [isShow, setIsShow] = useState(false);
     const testBtn = useRef(null);

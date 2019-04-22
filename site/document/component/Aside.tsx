@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Button } from '@component/index';
+import { Button } from '@src/index';
 import { Link } from 'react-router-dom';
 
 interface AsideProps {

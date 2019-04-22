@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon } from '@component/index';
+import { Button, Icon } from '@src/index';
 const Demo = () => {
     function onClick() {
         alert('onClick');

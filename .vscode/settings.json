@@ -10,6 +10,7 @@
         { "language": "typescriptreact", "autoFix": true }
     ],
     "prettier.stylelintIntegration": true,
-    "commentTranslate.targetLanguage": "zh-CN"
+    "commentTranslate.targetLanguage": "zh-CN",
+    "search.usePCRE2": true
     // "jest.showCoverageOnLoad": true
 }

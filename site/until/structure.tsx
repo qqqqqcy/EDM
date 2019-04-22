@@ -22,7 +22,7 @@ export const getComponent = (item: DirectoryStructureItem) => {
                 readme: require('../document/markdown/index')[item.name],
             };
         } else {
-            temp = require(`../../component/${item.name}/demo/index`);
+            temp = require(`../../src/${item.name}/demo/index`);
         }
     } catch (e) {
         temp = '';

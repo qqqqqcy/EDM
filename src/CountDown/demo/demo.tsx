@@ -1,5 +1,5 @@
 import React from 'react';
-import { CountDown } from '@component/index';
+import { CountDown } from '@src/index';
 const Demo = () => {
     const endData = new Date(new Date().getTime() + 1 * 24 * 60 * 60 * 1000);
     const cFun = () => {

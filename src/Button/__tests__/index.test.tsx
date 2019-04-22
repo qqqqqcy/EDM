@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { Button } from '@component/index';
+import { Button } from '@src/index';
 import React from 'react';
 
 describe('Button', () => {

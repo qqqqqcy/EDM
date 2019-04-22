@@ -6,7 +6,7 @@ import { getProjectUrl } from '../helpers';
 
 const config: webpack.Configuration = {
     entry: {
-        index: ['./component/index.tsx', './component/scss.tsx'],
+        index: ['./src/index.tsx', './src/scss.tsx'],
     },
     mode: 'production',
     output: {

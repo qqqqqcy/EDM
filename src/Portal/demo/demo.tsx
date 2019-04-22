@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Portal } from '@component/index';
+import { Portal } from '@src/index';
 const Demo = () => {
     return (
         <div className="Portal">

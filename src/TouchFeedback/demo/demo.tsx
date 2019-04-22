@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchFeedback } from '@component/index';
+import { TouchFeedback } from '@src/index';
 const Demo = () => {
     return (
         <div className="TouchFeedback">
