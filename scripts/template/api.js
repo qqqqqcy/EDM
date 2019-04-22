@@ -1,56 +1,42 @@
-import components from '../../site/until/components';
-import fs from 'fs';
-import inquirer from 'inquirer';
+const components = require('../../site/until/components').default;
+const fs = require('fs');
+const inquirer = require('inquirer');
 
-import { getProjectUrl, EOL } from '../helpers';
+const { getProjectUrl, EOL } = require('../helpers.ts');
 
-interface CpInfo {
-    name: string;
-    confirm: boolean;
-}
-interface CP {
-    index: string;
-    PropsType: string;
-}
-const cp: CP = {
+const cp = {
     index: '',
     PropsType: '',
 };
-const cpInfo: Pick<CpInfo, 'name'> = { name: '' };
+const cpInfo = { name: '' };
 
 async function userInput() {
-    const cpList: string[] = [];
+    const cpList = [];
     components.map(item => cpList.push(item.name));
 
-    return new Promise((res, rej) => {
-        inquirer
-            .prompt([
-                {
-                    type: 'list',
-                    name: 'name',
-                    choices: cpList,
-                    message: "Please selecte Component's name:",
-                },
-                {
-                    type: 'confirm',
-                    name: 'confirm',
-                    message: 'Are you sure you want to get API?',
-                    default: false,
-                },
-            ])
-            .then(({ name, confirm }: CpInfo) => {
-                if (confirm) {
-                    console.log(`...${name}'s Api Generating`);
-                } else {
-                    throw '> Loading';
-                }
-                cpInfo.name = name;
-                res();
-            })
-            .catch(() => {
-                rej();
-            });
-    });
+    return inquirer
+        .prompt([
+            {
+                type: 'list',
+                name: 'name',
+                choices: cpList,
+                message: "Please selecte Component's name:",
+            },
+            {
+                type: 'confirm',
+                name: 'confirm',
+                message: 'Are you sure you want to get API?',
+                default: false,
+            },
+        ])
+        .then(({ name, confirm }) => {
+            if (confirm) {
+                console.log(`...${name}'s Api Generating`);
+            } else {
+                throw '> Loading';
+            }
+            cpInfo.name = name;
+        });
 }
 
 function getTemplate() {
@@ -67,15 +53,7 @@ function getTemplate() {
     });
 }
 
-interface PorpItem {
-    key: string;
-    exp: string;
-    type: string;
-    default: string;
-    needed: boolean;
-}
-
-function getDefaultVal(str: string): string {
+function getDefaultVal(str) {
     if (str === void 0) {
         return '-';
     }
@@ -85,19 +63,19 @@ function getDefaultVal(str: string): string {
     return '`' + str + '`';
 }
 
-function mapPropsToTable(propStr: string, indexStr: string) {
+function mapPropsToTable(propStr, indexStr) {
     const Propsreg = new RegExp(/(\w+)(\?)*:(\s)*(.*)(?=;)/g),
         expReg = new RegExp(/(?<=\/\*\*)(\s|.)*?(?=\*\/)/g),
         valReg = new RegExp(/(^\w+)(\?)*(:|\s)*(.*$)/),
         defaultSecReg = new RegExp(/(?<=const {)(.|\s)*?(?=} = props)/);
-    const table: PorpItem[] = [];
+    const table = [];
     const exp = propStr.match(expReg) || [];
     const defaultSec = (indexStr.match(defaultSecReg) || [])[0];
     const tableMd = [`|属性|说明|类型|默认值|必填|`, `| - | - | - | - | - |`];
     (propStr.match(Propsreg) || []).map((item, index) => {
         const [, r1 = 'find key fail', r2 = false, , r4 = 'find type fail'] = item.match(valReg) || [];
         const defaultReg = new RegExp(`(${r1}) = (.+?)(,| })`);
-        const tableItem: PorpItem = {
+        const tableItem = {
             key: r1,
             exp: (exp[index] || '').replace(/(^\s|\s$)*/g, ''),
             type: r4,

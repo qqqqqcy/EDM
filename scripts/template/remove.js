@@ -1,17 +1,13 @@
-import components from '../../site/until/components';
-import fs from 'fs';
-import inquirer from 'inquirer';
+const components = require('../../site/until/components').default;
+const fs = require('fs');
+const inquirer = require('inquirer');
 
-import { getProjectUrl, EOL } from '../helpers';
+const { getProjectUrl, EOL } = require('../helpers');
 
-const cpInfo: Pick<CpInfo, 'name'> = { name: '' };
-interface CpInfo {
-    name: string;
-    confirm: boolean;
-}
+const cpInfo = { name: '' };
 
 async function userInput() {
-    const cpList: string[] = [];
+    const cpList = [];
     components.map(item => cpList.push(item.name));
 
     return inquirer
@@ -29,7 +25,7 @@ async function userInput() {
                 default: false,
             },
         ])
-        .then(({ name, confirm }: CpInfo) => {
+        .then(({ name, confirm }) => {
             if (confirm) {
                 console.log('...Removing');
                 console.log(name);
@@ -40,7 +36,7 @@ async function userInput() {
         });
 }
 
-function deleteFolderRecursive(path: string) {
+function deleteFolderRecursive(path) {
     if (fs.existsSync(path)) {
         fs.readdirSync(path).forEach(function(file) {
             var curPath = path + '/' + file;
@@ -68,7 +64,7 @@ function removeTemplate() {
     });
 }
 
-function deleteCode(reg: string, content: string): string {
+function deleteCode(reg, content) {
     return content
         .split(EOL)
         .filter(item => !item.includes(reg))

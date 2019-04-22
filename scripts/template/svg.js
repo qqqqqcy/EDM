@@ -1,7 +1,7 @@
 'use strict';
-import fs from 'fs';
-import SVGO from 'svgo';
-import { getProjectUrl, EOL } from '../helpers';
+const fs = require('fs');
+const SVGO = require('svgo');
+const { getProjectUrl, EOL } = require('../helpers');
 
 const dirList = ['src', 'Icon', 'svgs'];
 const dirPath = getProjectUrl(...dirList),
@@ -119,12 +119,12 @@ const dirPath = getProjectUrl(...dirList),
         ],
     });
 
-let svgList: string[] = fs.readdirSync(dirPath);
-const svgName: string[] = [];
+let svgList = fs.readdirSync(dirPath);
+const svgName = [];
 
 let str = `const svgs = {`;
 
-async function watiSvgo(key: string, data: string, filePath: string): Promise<void> {
+async function watiSvgo(key, data, filePath) {
     const result = await svgo.optimize(data, { path: filePath });
     if (key.split('.')[0]) {
         svgName.push(key.split('.')[0]);
