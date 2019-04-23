@@ -6,10 +6,8 @@ $icon-prefix: $preifx + '-icon';
 }
 
 .#{$icon-prefix}-middle {
-    // width: $font-size;
-    // height: $font-size;
-    width: 100px;
-    height: 100px;
+    width: $font-size;
+    height: $font-size;
 }
 
 .#{$icon-prefix}-small {

@@ -2,10 +2,11 @@ import webpack from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import StyleLintPluginfrom from 'stylelint-webpack-plugin';
+
 import getStyleLoader from './getStyleLoader';
 import babelrc from '../babelrc';
-
 import { getProjectUrl } from '../helpers';
+
 interface EnvMap {
     build: string;
     dist: string;
@@ -13,14 +14,8 @@ interface EnvMap {
     [key: string]: string;
 }
 const devMode: boolean = (process.env.NODE_ENV as keyof EnvMap) === 'development';
-const envMap: EnvMap = {
-    // build: '.build',
-    build: '',
-    // dist: '.dist',
-    dist: '',
-    development: '',
-};
-const tsconfig = getProjectUrl(`tsconfig${envMap[process.env.NODE_ENV || 'development']}.json`);
+
+const tsconfig = getProjectUrl(`tsconfig.${process.env.NODE_ENV === 'dist' ? 'dts.' : ''}json`);
 
 const config: webpack.Configuration = {
     resolve: {
@@ -30,6 +25,7 @@ const config: webpack.Configuration = {
             '@tests': getProjectUrl('scripts', 'tests'),
         },
     },
+    devtool: devMode ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
     module: {
         rules: [
             {
@@ -41,11 +37,6 @@ const config: webpack.Configuration = {
                         options: {
                             ...babelrc(),
                         },
-                        // options: {
-                        // configFile: tsconfig,
-                        // disable type checker - we will use it in fork plugin
-                        // transpileOnly: true,
-                        // },
                     },
                     {
                         loader: 'eslint-loader',
@@ -59,14 +50,15 @@ const config: webpack.Configuration = {
                 test: /\.svg$/,
                 loader: 'svg-sprite-loader',
             },
-            getStyleLoader(devMode),
+            {
+                test: /\.s?([ac])ss$/,
+                exclude: /(node_modules)/,
+                use: getStyleLoader(devMode),
+            },
         ],
     },
 
     plugins: [
-        // new DefinePlugin({
-        //     $PREFIX: JSON.stringify('edm'),
-        // }),
         new StyleLintPluginfrom({
             configFile: getProjectUrl('stylelint.config.js'),
             context: getProjectUrl(),
@@ -87,8 +79,5 @@ const config: webpack.Configuration = {
             // chunkFilename: devMode ? "[id].css" : "[id].[hash].css"
         }),
     ],
-    resolveLoader: {
-        modules: ['node_modules', getProjectUrl('loaders')],
-    },
 };
 export default config;
