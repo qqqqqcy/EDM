@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import classnames from 'classnames';
+import React, { useState, useEffect, useRef } from 'react';
 import { TabsProps } from './PropsType';
 import prefix from '../_util/prefix';
-const prefixCls = `${prefix}-tabs`;
+const prefixCls = `${prefix}-tabs-nav`;
 
 function setTransitionDuration(element: any, times: number): void {
     element.style.webkitTransitionDuration = times + 'ms';
@@ -14,32 +13,34 @@ function setTransitionDuration(element: any, times: number): void {
 export const Tabs = (props: TabsProps) => {
     const {
         children,
-        className,
         position = 'top',
         activeIndex = 0,
         centerMode,
         scrollable = false,
         onClick,
+        flex,
         ...restProps
     } = props;
-    const styleClass = classnames(prefixCls, `${prefixCls}-${position}`, className);
+    //  tabs组件 水平、垂直 结构；
+    const horizontal = position === 'left' || position === 'right';
     const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
-    console.log(y);
-    let tabNode: any;
+    const testNode: any = useRef(null);
+    const tabNode = testNode.current;
     let dragging: boolean;
     let touches: any = {};
     let isMobile: boolean = 'ontouchstart' in document;
 
-    const getLineOffset = () => {
-        const index = activeIndex!;
+    const getLineOffset = (index: any) => {
+        // const index = activeIndexCopy!;
         let width = 0,
             height = 0,
             left = 0,
             top = 0;
         if (tabNode) {
-            const tabs = tabNode.querySelectorAll('.edm-tab');
+            console.log(tabNode);
+            const tabs = tabNode.querySelectorAll('.edm-tabs-nav');
             for (let i = 0; i < tabs.length; i++) {
                 if (i < index) {
                     left += tabs[i].offsetWidth;
@@ -57,16 +58,6 @@ export const Tabs = (props: TabsProps) => {
             height,
             top,
         };
-    };
-
-    const getRef = (node: any) => {
-        if (!node) {
-            return;
-        }
-        tabNode = node;
-        if (activeIndex! > 0) {
-            // setActiveIndexCopy(activeIndex);
-        }
     };
 
     const getPoint = (e: any) => {
@@ -99,44 +90,45 @@ export const Tabs = (props: TabsProps) => {
     };
 
     const swipeStart = (event: any) => {
-        const wrapperNode = tabNode.firstElementChild;
+        const wrapperNode = tabNode && tabNode.firstElementChild;
+        if (wrapperNode) {
+            touches.moveWith = wrapperNode.offsetWidth - tabNode.offsetWidth;
+            touches.moveHeight = wrapperNode.offsetHeight - tabNode.offsetHeight;
 
-        touches.moveWith = wrapperNode.offsetWidth - tabNode.offsetWidth;
-        touches.moveHeight = wrapperNode.offsetHeight - tabNode.offsetHeight;
-
-        if (props.scrollable && touches.moveWith > 0) {
-            setTransitionDuration(tabNode.firstElementChild, 0);
-            event.stopPropagation();
-            const { x, y } = getPoint(event);
-            dragging = true;
-            touches.startX = x;
-            touches.startY = y;
-            document.addEventListener(isMobile ? 'touchmove' : 'mousemove', swipeMove);
-            document.addEventListener(isMobile ? 'touchend' : 'mouseup', swipeEnd);
+            if (props.scrollable && touches.moveWith > 0) {
+                setTransitionDuration(tabNode.firstElementChild, 0);
+                event.stopPropagation();
+                const { x, y } = getPoint(event);
+                dragging = true;
+                touches.startX = x;
+                touches.startY = y;
+                document.addEventListener(isMobile ? 'touchmove' : 'mousemove', swipeMove);
+                document.addEventListener(isMobile ? 'touchend' : 'mouseup', swipeEnd);
+            }
         }
     };
 
     const wrapperStyle = {
-        transform: `translate3d(${x}px, 0, 0)`,
+        transform: `translate3d(${horizontal ? y : x}px, 0, 0)`,
     };
-    const lineRect = getLineOffset();
-    let lineStyle: any;
-    if (position === 'left' || position === 'right') {
-        lineStyle = {
-            height: lineRect.height,
-            top: lineRect.top,
-        };
-    } else {
-        lineStyle = {
-            width: lineRect.width,
-            left: lineRect.left,
-        };
-    }
+    // const lineRect = getLineOffset();
+    // let lineStyle: any;
+    // if (position === 'left' || position === 'right') {
+    //     lineStyle = {
+    //         height: lineRect.height,
+    //         top: lineRect.top,
+    //     };
+    // } else {
+    //     lineStyle = {
+    //         width: lineRect.width,
+    //         left: lineRect.left,
+    //     };
+    // }
 
     useEffect(() => {
         console.log(centerMode);
-        if (centerMode) {
-            const { width, height, left, top } = getLineOffset();
+        if (centerMode && tabNode) {
+            const { width, height, left, top } = getLineOffset(activeIndexCopy);
             const wrapperNode = tabNode.firstElementChild;
             setTransitionDuration(wrapperNode, 300);
             if (position === 'left' || position === 'right') {
@@ -163,11 +155,8 @@ export const Tabs = (props: TabsProps) => {
                     diffWidth = 0;
                 }
                 setX(-diffWidth);
-                console.log(x);
             }
         }
-
-        // setActiveIndex(activeIndex);
 
         return () => {
             // Clean up the subscription
@@ -196,18 +185,17 @@ export const Tabs = (props: TabsProps) => {
             activeIndex: activeIndexCopy!,
         });
     });
+    console.log(childrenClone);
     return (
-        <div className={styleClass} {...restProps}>
-            <div
-                className={`${prefixCls}-nav`}
-                ref={getRef}
-                onMouseDown={isMobile ? () => false : swipeStart}
-                onTouchStart={isMobile ? swipeStart : () => false}
-            >
-                <div className={`${prefixCls}-nav-wrapper`} style={wrapperStyle}>
-                    {childrenClone}
-                    <div className={`${prefixCls}-indicator`} style={lineStyle} />
-                </div>
+        <div
+            className={`${prefixCls}-box`}
+            ref={testNode}
+            onMouseDown={isMobile ? () => false : swipeStart}
+            onTouchStart={isMobile ? swipeStart : () => false}
+            {...restProps}
+        >
+            <div className={`${prefixCls}-wrapper`} style={wrapperStyle}>
+                {childrenClone}
             </div>
         </div>
     );

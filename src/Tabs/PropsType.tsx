@@ -9,6 +9,7 @@ export interface TabsProps extends React.DetailedHTMLProps<React.HTMLAttributes<
     centerMode?: boolean;
     scrollable?: boolean;
     position?: 'top' | 'right' | 'bottom' | 'left';
+    flex?: boolean;
     // onChange?: (index: number) => void;
 }
 
@@ -24,4 +25,6 @@ export interface TabsGroupProps extends React.DetailedHTMLProps<React.HTMLAttrib
     centerMode?: boolean;
     position?: 'top' | 'right' | 'bottom' | 'left';
     scrollable?: boolean;
+    /** tabs项是否均等分 */
+    flex?: boolean;
 }

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import classnames from 'classnames';
 import { TabsGroupProps } from './PropsType';
 import prefix from '../_util/prefix';
-const prefixCls = `${prefix}-tab-group`;
+const prefixCls = `${prefix}-tabs`;
 
 export const TabsGroup = (props: TabsGroupProps) => {
     const {
@@ -14,21 +14,19 @@ export const TabsGroup = (props: TabsGroupProps) => {
         position = 'top',
         onChange,
         scrollable,
+        flex = true,
         ...restProps
     } = props;
 
     const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
-    console.log(activeIndexCopy);
+    const [x, setX] = useState(0);
+    const [y, setY] = useState(0);
 
+    const containerEle = useRef(null);
+    let wrapper = containerEle.current;
     const handleChange = (activeIndex: any) => {
         setActiveIndexCopy(activeIndex);
         onChange && onChange(activeIndex);
-    };
-
-    let wrapper: any;
-
-    const getRef = (node: any) => {
-        wrapper = node;
     };
 
     const navChildren: any = [],
@@ -41,26 +39,22 @@ export const TabsGroup = (props: TabsGroupProps) => {
         const props: any = { ...child.props };
         props.key = index;
         if (fnName === 'Tabs') {
-            console.log(centerMode);
-            props.activeIndex = activeIndex;
-            props.onChange = handleChange;
+            props.activeIndex = activeIndexCopy;
+            props.onClick = handleChange;
             props.position = position;
             props.centerMode = centerMode;
             props.scrollable = scrollable;
+            props.flex = flex;
             navChildren.push(React.cloneElement(child, props));
         } else if (fnName === 'TabContainer') {
-            props.index = num;
-            props.activeIndex = activeIndex;
+            props.index = num++;
+            props.activeIndex = activeIndexCopy;
             containerChildren.push(React.cloneElement(child, props));
-            num++;
         } else {
             otherChild.push(React.cloneElement(child, props));
         }
     });
 
-    console.log(centerMode);
-    const x = wrapper ? -(wrapper as any).offsetWidth * activeIndex! : 0;
-    const y = wrapper ? -(wrapper as any).offsetHeight * activeIndex! : 0;
     const horizontal = position === 'left' || position === 'right';
     const wrapperStyles = {
         transform: !horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
@@ -70,12 +64,17 @@ export const TabsGroup = (props: TabsGroupProps) => {
         transition: animated ? 'transform .3s cubic-bezier(0.35, 0, 0.25, 1)' : '',
     };
 
+    useEffect(() => {
+        setX(wrapper ? -(wrapper as any).offsetWidth * activeIndexCopy! : 0);
+        setY(wrapper ? -(wrapper as any).offsetHeight * activeIndexCopy! : 0);
+    });
+
     const styleClass = classnames(prefixCls, `${prefixCls}-${position}`, className);
     return (
         <div className={styleClass} {...restProps}>
             {navChildren}
-            <div className="bm-TabsContainerBox" ref={getRef}>
-                <div className="bm-TabsContainerWrapper" style={wrapperStyles}>
+            <div className="edm-tabs-con-box" ref={containerEle}>
+                <div className="edm-tabs-con-wrapper" style={wrapperStyles}>
                     {containerChildren}
                 </div>
             </div>

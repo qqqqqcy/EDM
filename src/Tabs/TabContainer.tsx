@@ -1,23 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { TabContainerProps } from './PropsType';
 
 import prefix from '../_util/prefix';
-const prefixCls = `${prefix}-tab-container`;
+const prefixCls = `${prefix}-tabs-con`;
 
 export const TabContainer = (props: TabContainerProps) => {
     const { children, className, index, activeIndex, ...restProps } = props;
-    const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
     const styleClass = classNames(
+        prefixCls,
         {
-            [`${prefixCls}-active`]: index === activeIndexCopy,
+            [`active`]: index === activeIndex,
         },
         className,
     );
-
-    useEffect(() => {
-        setActiveIndexCopy(activeIndex);
-    }, [activeIndex]);
 
     return (
         <div className={styleClass} {...restProps}>
