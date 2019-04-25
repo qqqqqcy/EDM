@@ -21,3 +21,5 @@ export { default as Portal } from './Portal';
 export { default as TransitionWrap } from './TransitionWrap';
 export { default as CountDown } from './CountDown';
 export { default as Popover } from './Popover';
+export { default as WingBlank } from './WingBlank';
+export { default as WhiteSpace } from './WhiteSpace';

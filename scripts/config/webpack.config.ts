@@ -53,7 +53,7 @@ const config: webpack.Configuration = {
             {
                 test: /\.s?([ac])ss$/,
                 exclude: /(node_modules)/,
-                use: getStyleLoader(devMode),
+                use: getStyleLoader(),
             },
         ],
     },

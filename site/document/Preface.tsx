@@ -11,18 +11,18 @@ const Preface = () => {
                 <p>
                     基于 React 的移动端组件{' '}
                     <a href="https://github.com/qqqqqcy/EDM">
-                        <Button className="preface-star" ghost size="middle" inline>
+                        <Button className="preface-star" ghost inline>
                             star ★
                         </Button>
                     </a>
                 </p>
                 <Link to="/document/button">
-                    <Button className="preface-btn" size="large" inline>
+                    <Button className="preface-btn" inline>
                         document
                     </Button>
                 </Link>
                 <Link to="/instance">
-                    <Button ghost className="preface-btn" size="large" inline>
+                    <Button ghost className="preface-btn" inline>
                         instance
                     </Button>
                 </Link>

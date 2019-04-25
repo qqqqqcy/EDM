@@ -14,7 +14,7 @@ const Demo = () => {
             >
                 <h1 className="hello">hello</h1>
             </TransitionWrap>
-            <TransitionWrap transitionClassName="world" unmountOnExit={false} visible={visible} time={500}>
+            <TransitionWrap transitionClassName="world" keepOnExit visible={visible} time={500}>
                 <h1 className="world">world</h1>
             </TransitionWrap>
         </div>

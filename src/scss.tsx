@@ -8,3 +8,5 @@ import './Portal/style';
 import './TransitionWrap/style';
 import './CountDown/style';
 import './Popover/style';
+import './WingBlank/style';
+import './WhiteSpace/style';

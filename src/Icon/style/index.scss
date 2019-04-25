@@ -3,19 +3,32 @@ $icon-prefix: $preifx + '-icon';
 
 .#{$icon-prefix} {
     vertical-align: middle;
-}
+    background-size: cover;
 
-.#{$icon-prefix}-middle {
-    width: $font-size;
-    height: $font-size;
-}
+    // fill: currentColor;
 
-.#{$icon-prefix}-small {
-    width: $font-size-sm;
-    height: $font-size-sm;
-}
+    &-xs {
+        width: $icon-size-xs;
+        height: $icon-size-xs;
+    }
 
-.#{$icon-prefix}-large {
-    width: $font-size-lg;
-    height: $font-size-lg;
+    &-s {
+        width: $icon-size-s;
+        height: $icon-size-s;
+    }
+
+    &-m {
+        width: $icon-size-m;
+        height: $icon-size-m;
+    }
+
+    &-l {
+        width: $icon-size-l;
+        height: $icon-size-l;
+    }
+
+    &-xl {
+        width: $icon-size-xl;
+        height: $icon-size-xl;
+    }
 }

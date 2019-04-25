@@ -20,8 +20,7 @@ const Aside = (props: AsideProps) => {
                             <Button
                                 className="document-aside-btn"
                                 ghost={true}
-                                radius={false}
-                                size="large"
+                                rectangle
                                 onClick={() => onClick(item.name)}
                             >
                                 {item.name}

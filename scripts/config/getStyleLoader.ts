@@ -4,9 +4,9 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 
-function getStyleLoader(devMode: boolean): webpack.RuleSetUse {
+function getStyleLoader(): webpack.RuleSetUse {
     return [
-        devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+        MiniCssExtractPlugin.loader,
         'css-loader',
         {
             loader: 'postcss-loader',

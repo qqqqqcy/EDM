@@ -16,7 +16,7 @@ const TransitionWrap = (props: TransitionWrapPropsWithChildren) => {
         children,
         time = 0,
         visible = true,
-        unmountOnExit = true,
+        keepOnExit = false,
         transitionClassName = 'transition',
         onExitDone = () => {},
     } = props;
@@ -64,7 +64,7 @@ const TransitionWrap = (props: TransitionWrapPropsWithChildren) => {
         return () => clearInterval(id);
     }, [visible, time, status, show, onExitDone]);
 
-    if (children && (show || !unmountOnExit)) {
+    if (children && (show || keepOnExit)) {
         return (
             <React.Fragment>
                 {React.Children.map(children, child => {

@@ -12,7 +12,7 @@ const Demo = () => {
     return (
         <>
             <div ref={testBtn}>
-                <Button size={'small'} onClick={showPopover}>
+                <Button size={'s'} onClick={showPopover}>
                     test
                 </Button>
             </div>
@@ -24,7 +24,7 @@ const Demo = () => {
                 hasArrow={true}
             >
                 {['red', 'yellow', 'blue'].map((v, i) => (
-                    <p key={i} style={{ padding: 0, margin: 0 }}>
+                    <p key={i} style={{ margin: 0, padding: 0 }}>
                         {v}
                     </p>
                 ))}

@@ -1,4 +1,5 @@
 export default [
+    { name: 'WingBlank', type: 'Layout' },
     { name: 'Icon', type: 'Data Display' },
     { name: 'Button', type: 'Data Entry' },
     { name: 'TouchFeedback', type: 'Depth' },
@@ -6,4 +7,5 @@ export default [
     { name: 'TransitionWrap', type: 'Depth' },
     { name: 'CountDown', type: 'Data Display' },
     { name: 'Popover', type: 'Data Display' },
+    { name: 'WhiteSpace', type: 'Layout' },
 ];
