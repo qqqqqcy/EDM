@@ -7,7 +7,7 @@ export interface ButtonProps
     theme?: 'primary' | 'secondary' | 'customize';
     /** 尺寸 */
     size?: 's' | 'm' | 'l';
-    /** 空心按钮 */
+    /** 幽灵按钮 */
     ghost?: boolean;
     /** 行内按钮 */
     inline?: boolean;

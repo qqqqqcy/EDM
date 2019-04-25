@@ -18,9 +18,9 @@ const Aside = (props: AsideProps) => {
                     {structure[key].map(item => (
                         <Link to={`/document/${item.name}`} key={item.name}>
                             <Button
+                                theme="primary"
                                 className="document-aside-btn"
-                                ghost={true}
-                                rectangle
+                                ghost
                                 onClick={() => onClick(item.name)}
                             >
                                 {item.name}

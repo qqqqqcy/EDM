@@ -17,12 +17,12 @@ const Preface = () => {
                     </a>
                 </p>
                 <Link to="/document/button">
-                    <Button className="preface-btn" inline>
+                    <Button theme="primary" className="preface-btn" inline>
                         document
                     </Button>
                 </Link>
                 <Link to="/instance">
-                    <Button ghost className="preface-btn" inline>
+                    <Button theme="primary" ghost className="preface-btn" inline>
                         instance
                     </Button>
                 </Link>
