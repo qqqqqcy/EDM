@@ -7,14 +7,14 @@ const prefixCls = `${prefix}-tabs`;
 export const TabsGroup = (props: TabsGroupProps) => {
     const {
         animated,
-        activeIndex,
+        activeIndex = 0,
         centerMode,
         children,
         className,
         position = 'top',
-        onChange,
+        onClick,
         scrollable,
-        flex = true,
+        flex = false,
         ...restProps
     } = props;
 
@@ -25,8 +25,9 @@ export const TabsGroup = (props: TabsGroupProps) => {
     const containerEle = useRef(null);
     let wrapper = containerEle.current;
     const handleChange = (activeIndex: any) => {
+        console.log('hello1');
         setActiveIndexCopy(activeIndex);
-        onChange && onChange(activeIndex);
+        onClick && onClick(activeIndex);
     };
 
     const navChildren: any = [],
@@ -45,6 +46,7 @@ export const TabsGroup = (props: TabsGroupProps) => {
             props.centerMode = centerMode;
             props.scrollable = scrollable;
             props.flex = flex;
+            console.log(props);
             navChildren.push(React.cloneElement(child, props));
         } else if (fnName === 'TabContainer') {
             props.index = num++;

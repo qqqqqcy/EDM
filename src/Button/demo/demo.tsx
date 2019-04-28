@@ -1,46 +1,60 @@
 import React from 'react';
-import { Button, Icon } from '@src/index';
+import { Button, Icon, WingBlank, WhiteSpace } from '@src/index';
 const Demo = () => {
-    function onClick() {
-        alert('onClick');
-    }
     return (
         <div className="Button">
-            <Button size="large" theme="primary" onClick={onClick}>
-                <Icon size="large" fill="#fff" value="alipay" /> primary
-            </Button>
-            <br />
-            <Button disabled size="large" theme="primary" onClick={onClick}>
-                <Icon size="large" fill="#fff" value="alipay" />
-                primary
-            </Button>
-            <br />
-            <br />
-            <Button size="large" disabled>
-                default
-            </Button>
-            <br />
-            <div>
-                <Button inline ghost onClick={onClick}>
-                    default|ghost
+            <h4>类型</h4>
+            <WingBlank>
+                <Button theme="primary">primary</Button>
+                <WhiteSpace />
+                <Button theme="secondary">
+                    <Icon fill="#fff" value="selected" /> icon with secondary
                 </Button>
-                <Button inline theme="secondary" onClick={onClick}>
-                    secondary
-                    <Icon fill="red" value="alipay" />
+                <WhiteSpace />
+                <Button ghost>customize</Button>
+                <WhiteSpace />
+                <Button theme="primary" disabled>
+                    primary | disabled
                 </Button>
-                <Button inline size="large" radius={false} theme="secondary" onClick={onClick}>
-                    <Icon size="large" fill="red" value="alipay" />
+                <WhiteSpace />
+                <Button theme="primary" disabled ghost>
+                    primary | ghost | disabled
+                </Button>
+                <WhiteSpace />
+            </WingBlank>
+
+            <h4>尺寸</h4>
+            <WingBlank>
+                <Button theme="primary" size="m">
+                    middle
+                </Button>
+                <WhiteSpace />
+                <Button theme="primary" size="s">
+                    small
+                </Button>
+            </WingBlank>
+            <WhiteSpace />
+            <div style={{ display: 'flex' }}>
+                <Button inline ghost>
+                    customize | ghost
+                </Button>
+                <Button rectangle theme="secondary">
                     secondary
+                </Button>
+                <Button rectangle theme="primary">
+                    primary
                 </Button>
             </div>
-            <br />
-            <Button ghost disabled theme="secondary" onClick={onClick}>
-                secondary|ghost
-            </Button>
-            <br />
-            <Button style={{ color: 'rgb(100,200,50)' }} radius="10px" ghost onClick={onClick}>
-                default|ghost
-            </Button>
+            <WhiteSpace />
+
+            <h4>自定义</h4>
+            <WingBlank>
+                <Button style={{ borderRadius: '10px', color: 'green' }} ghost>
+                    <Icon fill="currentColor" value="selected" /> color | radius | ghost
+                </Button>
+                <WhiteSpace />
+                <Button style={{ color: 'hotpink' }}>color | hotpink</Button>
+            </WingBlank>
         </div>
     );
 };

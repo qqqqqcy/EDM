@@ -35,11 +35,11 @@ other description
 
 ## API
 
-| 属性                | 说明                        | 类型                                        | 默认值         | 必填    |
-| ------------------- | --------------------------- | ------------------------------------------- | -------------- | ------- |
-| visible             | 是否展示                    | `boolean`                                   | `true`         | `false` |
-| time                | active 动画持续时长         | `number`                                    | `0`            | `false` |
-| transitionClassName | 动画的属性名                | `string`                                    | `'transition'` | `false` |
-| unmountOnExit       | visible 为 false 时删除节点 | `boolean`                                   | `true`         | `false` |
-| onExitDone          | 动画完成时的回调函数        | `() => void`                                | `() => {}`     | `false` |
-| children            | 子组件，可以包含多个        | `React.ReactElement | React.ReactElement[]` | -              | `true`  |
+| 属性                | 说明                            | 类型                                        | 默认值         | 必填    |
+| ------------------- | ------------------------------- | ------------------------------------------- | -------------- | ------- |
+| visible             | 是否展示                        | `boolean`                                   | `true`         | `false` |
+| time                | active 动画持续时长             | `number`                                    | `0`            | `false` |
+| transitionClassName | 动画的属性名                    | `string`                                    | `'transition'` | `false` |
+| keepOnExit          | visible 为 false 时节点也不删除 | `boolean`                                   | `false`        | `false` |
+| onExitDone          | 动画完成时的回调函数            | `() => void`                                | `() => {}`     | `false` |
+| children            | 子组件，可以包含多个            | `React.ReactElement | React.ReactElement[]` | -              | `true`  |

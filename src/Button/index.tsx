@@ -7,12 +7,11 @@ const prefixCls = `${prefix}-button`;
 
 const Button = (props: ButtonProps) => {
     const {
-        size = 'middle',
-        theme = 'default',
+        size = 'l',
+        theme = 'customize',
         ghost = false,
-        radius = true,
         inline = false,
-        style,
+        rectangle = false,
         disabled,
         className,
         activeStyle,
@@ -20,7 +19,7 @@ const Button = (props: ButtonProps) => {
         ...restProps
     } = props;
     const cls = classnames(prefixCls, className, `${prefixCls}-${size}`, `${prefixCls}-${theme}`, {
-        [`${prefixCls}-radius`]: radius === true,
+        [`${prefixCls}-rectangle`]: rectangle === true,
         [`${prefixCls}-disabled`]: disabled,
         [`${prefixCls}-ghost`]: ghost,
         [`${prefixCls}-inline`]: inline,
@@ -31,14 +30,7 @@ const Button = (props: ButtonProps) => {
             activeStyle={activeStyle}
             disabled={disabled}
         >
-            <button
-                {...restProps}
-                role="button"
-                className={cls}
-                style={typeof radius === 'string' ? { ...style, borderRadius: radius } : style}
-                aria-disabled={disabled}
-                disabled={disabled}
-            />
+            <button {...restProps} role="button" className={cls} aria-disabled={disabled} disabled={disabled} />
         </TouchFeedback>
     );
 };

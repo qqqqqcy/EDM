@@ -16,6 +16,8 @@ module.exports = {
         // project: './tsconfig.json',
     },
     rules: {
+        // 对象赋值，指定顺序
+        // 'sort-keys': ['error', 'asc', { caseSensitive: true, natural: false }],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/no-unused-vars': 'off',

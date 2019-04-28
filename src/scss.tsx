@@ -11,3 +11,5 @@ import './Popover/style';
 import './FixTop/style';
 import './Badge/style';
 import './Tabs/style';
+import './WingBlank/style';
+import './WhiteSpace/style';

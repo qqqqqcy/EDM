@@ -1,4 +1,5 @@
 export default [
+    { name: 'WingBlank', type: 'Layout' },
     { name: 'Icon', type: 'Data Display' },
     { name: 'Button', type: 'Data Entry' },
     { name: 'TouchFeedback', type: 'Depth' },
@@ -9,4 +10,5 @@ export default [
     { name: 'FixTop', type: 'Data Display' },
     { name: 'Badge', type: 'Data Display' },
     { name: 'Tabs', type: 'Data Display' },
+    { name: 'WhiteSpace', type: 'Layout' },
 ];

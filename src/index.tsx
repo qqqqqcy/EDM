@@ -32,3 +32,5 @@ export { default as Badge } from './Badge';
 // import Popover from './Popover';
 
 // export { Button, Icon, TouchFeedback, Portal, TransitionWrap, CountDown, Popover };
+export { default as WingBlank } from './WingBlank';
+export { default as WhiteSpace } from './WhiteSpace';

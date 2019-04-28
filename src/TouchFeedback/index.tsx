@@ -49,13 +49,13 @@ const TouchFeedback = (props: TouchFeedbackPropsWithChildren) => {
     const events = disabled
         ? undefined
         : {
-              onTouchStart,
-              onTouchMove,
-              onTouchEnd,
-              onTouchCancel,
               onMouseDown,
-              onMouseUp,
               onMouseLeave,
+              onMouseUp,
+              onTouchCancel,
+              onTouchEnd,
+              onTouchMove,
+              onTouchStart,
           };
     const child = React.Children.only(children);
 

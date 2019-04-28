@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Button } from '@src/index';
+import { Button, WhiteSpace, WingBlank } from '@src/index';
 import { Link } from 'react-router-dom';
 
 interface HomeProps {
@@ -9,21 +9,21 @@ interface HomeProps {
 const Home = (props: HomeProps) => {
     const { structure } = props;
     return (
-        <div className="instance-home">
+        <WingBlank className="instance-home">
             {Object.keys(structure).map(key => (
                 <Fragment key={key}>
                     <p>{key}</p>
                     {structure[key].map(item => (
                         <Link to={`/instance/${item.name}`} key={item.name}>
-                            <Button radius={false} ghost={true}>
+                            <Button theme="primary" ghost={true}>
                                 {item.name}
                             </Button>
-                            <br />
+                            <WhiteSpace />
                         </Link>
                     ))}
                 </Fragment>
             ))}
-        </div>
+        </WingBlank>
     );
 };
 export default Home;

@@ -30,7 +30,6 @@ const config: webpack.Configuration = {
     entry: {
         example: getProjectUrl('site', 'index.tsx'),
     },
-    devtool: 'source-map',
     // resolve: {
     //     plugins: [new TsconfigPathsPlugin({})],
     // },

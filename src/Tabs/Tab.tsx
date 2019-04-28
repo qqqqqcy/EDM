@@ -11,14 +11,8 @@ export const Tab = (props: TabProps) => {
         [`disabled`]: disabled,
     });
 
-    const handleChange = (index: any) => {
-        if (!disabled && onClick) {
-            onClick && onClick(index);
-        }
-    };
-
     return (
-        <div className={styleClass} onClick={handleChange.bind(handleChange, index)} {...restProps} data-index={index}>
+        <div className={styleClass} {...restProps} data-index={index}>
             <span className={`inner`}>{children}</span>
         </div>
     );

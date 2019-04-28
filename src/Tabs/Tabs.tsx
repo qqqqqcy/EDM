@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TabsProps } from './PropsType';
+import classnames from 'classnames';
 import prefix from '../_util/prefix';
 const prefixCls = `${prefix}-tabs-nav`;
 
@@ -21,25 +22,27 @@ export const Tabs = (props: TabsProps) => {
         flex,
         ...restProps
     } = props;
+
     //  tabs组件 水平、垂直 结构；
     const horizontal = position === 'left' || position === 'right';
-    const [activeIndexCopy, setActiveIndexCopy] = useState(activeIndex);
     const [x, setX] = useState(0);
     const [y, setY] = useState(0);
+
     const testNode: any = useRef(null);
     const tabNode = testNode.current;
+
     let dragging: boolean;
     let touches: any = {};
     let isMobile: boolean = 'ontouchstart' in document;
 
+    const boxCls = classnames({ [`${prefixCls}-flex`]: flex });
+
     const getLineOffset = (index: any) => {
-        // const index = activeIndexCopy!;
         let width = 0,
             height = 0,
             left = 0,
             top = 0;
         if (tabNode) {
-            console.log(tabNode);
             const tabs = tabNode.querySelectorAll('.edm-tabs-nav');
             for (let i = 0; i < tabs.length; i++) {
                 if (i < index) {
@@ -74,8 +77,10 @@ export const Tabs = (props: TabsProps) => {
             const { x, y } = getPoint(event);
             const diffX = x - touches.startX + x!;
             const diffY = y - touches.startY + y!;
-            setX(Math.max(Math.min(0, diffX), -touches.moveWith));
-            setY(Math.max(Math.min(0, diffY), -touches.moveHeight));
+            console.log(diffX);
+            console.log(diffY);
+            // setX(Math.max(Math.min(0, diffX), -touches.moveWith));
+            // setY(Math.max(Math.min(0, diffY), -touches.moveHeight));
 
             touches.startX = x;
             touches.startY = y;
@@ -108,27 +113,13 @@ export const Tabs = (props: TabsProps) => {
         }
     };
 
-    const wrapperStyle = {
+    let wrapperStyle = {
         transform: `translate3d(${horizontal ? y : x}px, 0, 0)`,
     };
-    // const lineRect = getLineOffset();
-    // let lineStyle: any;
-    // if (position === 'left' || position === 'right') {
-    //     lineStyle = {
-    //         height: lineRect.height,
-    //         top: lineRect.top,
-    //     };
-    // } else {
-    //     lineStyle = {
-    //         width: lineRect.width,
-    //         left: lineRect.left,
-    //     };
-    // }
 
-    useEffect(() => {
-        console.log(centerMode);
+    function updateTabPosition(activeIndex: any) {
         if (centerMode && tabNode) {
-            const { width, height, left, top } = getLineOffset(activeIndexCopy);
+            const { width, height, left, top } = getLineOffset(activeIndex);
             const wrapperNode = tabNode.firstElementChild;
             setTransitionDuration(wrapperNode, 300);
             if (position === 'left' || position === 'right') {
@@ -157,38 +148,41 @@ export const Tabs = (props: TabsProps) => {
                 setX(-diffWidth);
             }
         }
-
-        return () => {
-            // Clean up the subscription
-            document.removeEventListener(isMobile ? 'touchmove' : 'mousemove', swipeMove);
-            document.removeEventListener(isMobile ? 'touchend' : 'mouseup', swipeEnd);
-        };
-    });
+    }
 
     function handleChange(activeIndex: any) {
-        setActiveIndexCopy(activeIndex);
+        if (flex) {
+        } else {
+            updateTabPosition(activeIndex);
+        }
         onClick && onClick(activeIndex);
     }
 
-    let childIndex = -1;
+    let childIndex = 0;
     let childrenCopy: any = children;
     const childrenClone = React.Children.map(childrenCopy, (child: React.ReactElement<any>) => {
         if (!React.isValidElement(child)) {
             return null;
         }
-        childIndex += 1;
         const props: any = { ...child.props };
         return React.cloneElement(child as React.ReactElement<any>, {
-            index: childIndex,
+            index: childIndex++,
             disabled: props.disabled,
             onClick: handleChange,
-            activeIndex: activeIndexCopy!,
+            activeIndex: activeIndex,
         });
     });
-    console.log(childrenClone);
+
+    useEffect(() => {
+        return () => {
+            document.removeEventListener(isMobile ? 'touchmove' : 'mousemove', swipeMove);
+            document.removeEventListener(isMobile ? 'touchend' : 'mouseup', swipeEnd);
+        };
+    });
+
     return (
         <div
-            className={`${prefixCls}-box`}
+            className={`${prefixCls}-box ` + boxCls}
             ref={testNode}
             onMouseDown={isMobile ? () => false : swipeStart}
             onTouchStart={isMobile ? swipeStart : () => false}

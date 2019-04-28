@@ -5,7 +5,7 @@ import { Icon } from '@src/index';
 const Demo = () => {
     return (
         <>
-            <TabsGroup centerMode={true} animated={false}>
+            <TabsGroup centerMode={true} animated={false} flex={true}>
                 <Tabs>
                     <Tab>Login</Tab>
                     <Tab>Sign up</Tab>

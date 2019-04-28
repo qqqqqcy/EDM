@@ -5,8 +5,8 @@ export interface TransitionWrapProps {
     time?: number;
     /** 动画的属性名 */
     transitionClassName?: string;
-    /** visible 为 false 时删除节点 */
-    unmountOnExit?: boolean;
+    /** visible 为 false 时节点也不删除 */
+    keepOnExit?: boolean;
     /** 动画完成时的回调函数 */
     onExitDone?: () => void;
 }
